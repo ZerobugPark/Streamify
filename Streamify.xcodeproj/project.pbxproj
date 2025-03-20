@@ -8,33 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		D037370A2D8C2AD9006CED4A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D03737092D8C2AD9006CED4A /* .gitignore */; };
+		D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737B92D8C33CD006CED4A /* AppDelegate.swift */; };
+		D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */; };
+		D03737C32D8C33CD006CED4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BF2D8C33CD006CED4A /* ViewController.swift */; };
+		D03737C42D8C33CD006CED4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03737BA2D8C33CD006CED4A /* Assets.xcassets */; };
+		D03737C62D8C33CD006CED4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03737BD2D8C33CD006CED4A /* LaunchScreen.storyboard */; };
+		D03737D42D8C34DD006CED4A /* empty4 in Resources */ = {isa = PBXBuildFile; fileRef = D03737D32D8C34DD006CED4A /* empty4 */; };
+		D03737D62D8C34DF006CED4A /* empty5 in Resources */ = {isa = PBXBuildFile; fileRef = D03737D52D8C34DF006CED4A /* empty5 */; };
+		D03737D82D8C34E0006CED4A /* empty6 in Resources */ = {isa = PBXBuildFile; fileRef = D03737D72D8C34E0006CED4A /* empty6 */; };
+		D03737DA2D8C34E3006CED4A /* empty2 in Resources */ = {isa = PBXBuildFile; fileRef = D03737D92D8C34E3006CED4A /* empty2 */; };
+		D03737DC2D8C34E4006CED4A /* empty1 in Resources */ = {isa = PBXBuildFile; fileRef = D03737DB2D8C34E4006CED4A /* empty1 */; };
+		D03737DE2D8C34ED006CED4A /* empty3 in Resources */ = {isa = PBXBuildFile; fileRef = D03737DD2D8C34ED006CED4A /* empty3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D03736F12D8C2AC9006CED4A /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03737092D8C2AD9006CED4A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D03737B92D8C33CD006CED4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D03737BA2D8C33CD006CED4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D03737BB2D8C33CD006CED4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D03737BC2D8C33CD006CED4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D03737BF2D8C33CD006CED4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D03737D32D8C34DD006CED4A /* empty4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty4; sourceTree = "<group>"; };
+		D03737D52D8C34DF006CED4A /* empty5 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty5; sourceTree = "<group>"; };
+		D03737D72D8C34E0006CED4A /* empty6 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty6; sourceTree = "<group>"; };
+		D03737D92D8C34E3006CED4A /* empty2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty2; sourceTree = "<group>"; };
+		D03737DB2D8C34E4006CED4A /* empty1 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty1; sourceTree = "<group>"; };
+		D03737DD2D8C34ED006CED4A /* empty3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D03737032D8C2ACB006CED4A /* Exceptions for "Streamify" folder in "Streamify" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = D03736F02D8C2AC9006CED4A /* Streamify */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D03736F32D8C2AC9006CED4A /* Streamify */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				D03737032D8C2ACB006CED4A /* Exceptions for "Streamify" folder in "Streamify" target */,
-			);
-			path = Streamify;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D03736EE2D8C2AC9006CED4A /* Frameworks */ = {
@@ -51,7 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				D03737092D8C2AD9006CED4A /* .gitignore */,
-				D03736F32D8C2AC9006CED4A /* Streamify */,
+				D03737C02D8C33CD006CED4A /* Streamify */,
 				D03736F22D8C2AC9006CED4A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,6 +64,105 @@
 				D03736F12D8C2AC9006CED4A /* Streamify.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D03737C02D8C33CD006CED4A /* Streamify */ = {
+			isa = PBXGroup;
+			children = (
+				D03737C72D8C33D3006CED4A /* Application */,
+				D03737C82D8C33EA006CED4A /* Core */,
+				D03737C92D8C33F1006CED4A /* Feature */,
+				D03737CA2D8C33F7006CED4A /* Resource */,
+			);
+			path = Streamify;
+			sourceTree = "<group>";
+		};
+		D03737C72D8C33D3006CED4A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D03737CE2D8C3442006CED4A /* Services */,
+				D03737CD2D8C343C006CED4A /* Model */,
+				D03737CC2D8C3436006CED4A /* DTO */,
+				D03737B92D8C33CD006CED4A /* AppDelegate.swift */,
+				D03737BD2D8C33CD006CED4A /* LaunchScreen.storyboard */,
+				D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		D03737C82D8C33EA006CED4A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D03737D12D8C3485006CED4A /* Utilities */,
+				D03737D02D8C3478006CED4A /* Extensions */,
+				D03737CF2D8C3474006CED4A /* Base */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D03737C92D8C33F1006CED4A /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				D03737BF2D8C33CD006CED4A /* ViewController.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		D03737CA2D8C33F7006CED4A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D03737BB2D8C33CD006CED4A /* Info.plist */,
+				D03737BA2D8C33CD006CED4A /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D03737CC2D8C3436006CED4A /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				D03737DD2D8C34ED006CED4A /* empty3 */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		D03737CD2D8C343C006CED4A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D03737D92D8C34E3006CED4A /* empty2 */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D03737CE2D8C3442006CED4A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D03737DB2D8C34E4006CED4A /* empty1 */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D03737CF2D8C3474006CED4A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D03737D72D8C34E0006CED4A /* empty6 */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D03737D02D8C3478006CED4A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D03737D52D8C34DF006CED4A /* empty5 */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D03737D12D8C3485006CED4A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D03737D32D8C34DD006CED4A /* empty4 */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,9 +179,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				D03736F32D8C2AC9006CED4A /* Streamify */,
 			);
 			name = Streamify;
 			packageProductDependencies = (
@@ -128,7 +226,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D03737D82D8C34E0006CED4A /* empty6 in Resources */,
+				D03737D42D8C34DD006CED4A /* empty4 in Resources */,
 				D037370A2D8C2AD9006CED4A /* .gitignore in Resources */,
+				D03737DA2D8C34E3006CED4A /* empty2 in Resources */,
+				D03737DC2D8C34E4006CED4A /* empty1 in Resources */,
+				D03737D62D8C34DF006CED4A /* empty5 in Resources */,
+				D03737DE2D8C34ED006CED4A /* empty3 in Resources */,
+				D03737C42D8C33CD006CED4A /* Assets.xcassets in Resources */,
+				D03737C62D8C33CD006CED4A /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,10 +245,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */,
+				D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */,
+				D03737C32D8C33CD006CED4A /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D03737BD2D8C33CD006CED4A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D03737BC2D8C33CD006CED4A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D03737052D8C2ACB006CED4A /* Debug */ = {
@@ -153,10 +273,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Streamify/Info.plist;
+				INFOPLIST_FILE = Streamify/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -185,10 +304,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Streamify/Info.plist;
+				INFOPLIST_FILE = Streamify/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
