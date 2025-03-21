@@ -13,7 +13,6 @@
 		D03737C32D8C33CD006CED4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BF2D8C33CD006CED4A /* ViewController.swift */; };
 		D03737C42D8C33CD006CED4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03737BA2D8C33CD006CED4A /* Assets.xcassets */; };
 		D03737C62D8C33CD006CED4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03737BD2D8C33CD006CED4A /* LaunchScreen.storyboard */; };
-		D03737D42D8C34DD006CED4A /* empty4 in Resources */ = {isa = PBXBuildFile; fileRef = D03737D32D8C34DD006CED4A /* empty4 */; };
 		D03737D62D8C34DF006CED4A /* empty5 in Resources */ = {isa = PBXBuildFile; fileRef = D03737D52D8C34DF006CED4A /* empty5 */; };
 		D03737DA2D8C34E3006CED4A /* empty2 in Resources */ = {isa = PBXBuildFile; fileRef = D03737D92D8C34E3006CED4A /* empty2 */; };
 		D03737DC2D8C34E4006CED4A /* empty1 in Resources */ = {isa = PBXBuildFile; fileRef = D03737DB2D8C34E4006CED4A /* empty1 */; };
@@ -30,6 +29,8 @@
 		D09E0EF42D8C44D5004EEC6C /* ViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E0EF32D8C44D5004EEC6C /* ViewControllerType.swift */; };
 		D09E0EF62D8C4561004EEC6C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E0EF52D8C4561004EEC6C /* BaseViewModel.swift */; };
 		D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E0EF72D8C45A1004EEC6C /* ViewModelType.swift */; };
+		D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E18302D8D79FF004EEC6C /* StarRatingView.swift */; };
+		D09E18342D8D7A1D004EEC6C /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = D09E18332D8D7A1D004EEC6C /* Cosmos */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,7 +56,6 @@
 		D03737BC2D8C33CD006CED4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D03737BF2D8C33CD006CED4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D03737D32D8C34DD006CED4A /* empty4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty4; sourceTree = "<group>"; };
 		D03737D52D8C34DF006CED4A /* empty5 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty5; sourceTree = "<group>"; };
 		D03737D92D8C34E3006CED4A /* empty2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty2; sourceTree = "<group>"; };
 		D03737DB2D8C34E4006CED4A /* empty1 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty1; sourceTree = "<group>"; };
@@ -67,6 +67,7 @@
 		D09E0EF32D8C44D5004EEC6C /* ViewControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewControllerType.swift; path = Streamify/Core/ViewControllerType.swift; sourceTree = SOURCE_ROOT; };
 		D09E0EF52D8C4561004EEC6C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		D09E0EF72D8C45A1004EEC6C /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		D09E18302D8D79FF004EEC6C /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D09E18342D8D7A1D004EEC6C /* Cosmos in Frameworks */,
 				D09E0EEE2D8C3FB5004EEC6C /* RealmSwift in Frameworks */,
 				D09E0EEB2D8C3F44004EEC6C /* SnapKit in Frameworks */,
 				D09E0EE82D8C3F32004EEC6C /* RxSwift in Frameworks */,
@@ -201,9 +203,17 @@
 		D03737D12D8C3485006CED4A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D03737D32D8C34DD006CED4A /* empty4 */,
+				D09E182F2D8D79D9004EEC6C /* Components */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D09E182F2D8D79D9004EEC6C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D09E18302D8D79FF004EEC6C /* StarRatingView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +238,7 @@
 				D09E0EE72D8C3F32004EEC6C /* RxSwift */,
 				D09E0EEA2D8C3F44004EEC6C /* SnapKit */,
 				D09E0EED2D8C3FB5004EEC6C /* RealmSwift */,
+				D09E18332D8D7A1D004EEC6C /* Cosmos */,
 			);
 			productName = Streamify;
 			productReference = D03736F12D8C2AC9006CED4A /* Streamify.app */;
@@ -261,6 +272,7 @@
 				D09E0EE42D8C3F32004EEC6C /* XCRemoteSwiftPackageReference "RxSwift" */,
 				D09E0EE92D8C3F44004EEC6C /* XCRemoteSwiftPackageReference "SnapKit" */,
 				D09E0EEC2D8C3FB5004EEC6C /* XCRemoteSwiftPackageReference "realm-swift" */,
+				D09E18322D8D7A1D004EEC6C /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D03736F22D8C2AC9006CED4A /* Products */;
@@ -277,7 +289,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D03737D42D8C34DD006CED4A /* empty4 in Resources */,
 				D037370A2D8C2AD9006CED4A /* .gitignore in Resources */,
 				D03737DA2D8C34E3006CED4A /* empty2 in Resources */,
 				D03737DC2D8C34E4006CED4A /* empty1 in Resources */,
@@ -297,6 +308,7 @@
 			files = (
 				D09E0DC12D8C3763004EEC6C /* BaseCollectionViewCell.swift in Sources */,
 				D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */,
+				D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */,
 				D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */,
 				D03737C32D8C33CD006CED4A /* ViewController.swift in Sources */,
 				D09E0EF42D8C44D5004EEC6C /* ViewControllerType.swift in Sources */,
@@ -551,6 +563,14 @@
 				version = 20.0.1;
 			};
 		};
+		D09E18322D8D7A1D004EEC6C /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 25.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -573,6 +593,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D09E0EEC2D8C3FB5004EEC6C /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		D09E18332D8D7A1D004EEC6C /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D09E18322D8D7A1D004EEC6C /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
