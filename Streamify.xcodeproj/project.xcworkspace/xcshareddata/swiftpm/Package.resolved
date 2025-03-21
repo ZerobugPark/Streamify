@@ -1,6 +1,15 @@
 {
-  "originHash" : "f3204f39fe477dceb320c6d24cffa4dfa9c66be4f3ac98ae87e2b8b21bd8169f",
+  "originHash" : "7f3ca4f6b10341b58affb97f15bb6bab310bb7a4ea75c4f938339800454db937",
   "pins" : [
+    {
+      "identity" : "cosmos",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/Cosmos.git",
+      "state" : {
+        "revision" : "40ba10aaf175bf50abefd0e518bd3b40862af3b1",
+        "version" : "25.0.1"
+      }
+    },
     {
       "identity" : "realm-core",
       "kind" : "remoteSourceControl",
