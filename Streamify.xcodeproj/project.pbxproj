@@ -18,10 +18,22 @@
 		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
 		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
 		AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */; };
+		3EE1E8322D8E8ECE00681B6B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8312D8E8ECE00681B6B /* Coordinator.swift */; };
+		3EE1E83E2D8E9BB200681B6B /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E83D2D8E9BB200681B6B /* Genre.swift */; };
+		3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E83F2D8E9D7C00681B6B /* OnboardingCoordinator.swift */; };
+		3EE1E8472D8E9E6100681B6B /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8442D8E9E6100681B6B /* GenreCell.swift */; };
+		3EE1E8482D8E9E6100681B6B /* NameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8462D8E9E6100681B6B /* NameInputViewController.swift */; };
+		3EE1E8492D8E9E6100681B6B /* GenreSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8452D8E9E6100681B6B /* GenreSelectionViewController.swift */; };
+		3EE1E84B2D8E9E8100681B6B /* GenreSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E84A2D8E9E8100681B6B /* GenreSelectionViewModel.swift */; };
+		3EE1E84F2D8E9F4600681B6B /* NameInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E84E2D8E9F4600681B6B /* NameInputViewModel.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
-		D00926A72D8E7E0B00A10742 /* CoordinatorEmpty in Resources */ = {isa = PBXBuildFile; fileRef = D00926A62D8E7E0B00A10742 /* CoordinatorEmpty */; };
+		D00926F72D8E998A00A10742 /* VerticalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926F62D8E998A00A10742 /* VerticalListView.swift */; };
+		D00926F92D8E99CE00A10742 /* StarRatingStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926F82D8E99CE00A10742 /* StarRatingStorageViewController.swift */; };
+		D00926FB2D8E99EC00A10742 /* StarRatingStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926FA2D8E99EC00A10742 /* StarRatingStorageView.swift */; };
+		D00926FD2D8E9A0400A10742 /* StarRatingStorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926FC2D8E9A0400A10742 /* StarRatingStorageViewModel.swift */; };
+		D00926FF2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926FE2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift */; };
 		D037370A2D8C2AD9006CED4A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D03737092D8C2AD9006CED4A /* .gitignore */; };
 		D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737B92D8C33CD006CED4A /* AppDelegate.swift */; };
 		D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */; };
@@ -71,10 +83,22 @@
 		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
 		AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		3EE1E8312D8E8ECE00681B6B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		3EE1E83D2D8E9BB200681B6B /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		3EE1E83F2D8E9D7C00681B6B /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		3EE1E8442D8E9E6100681B6B /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
+		3EE1E8452D8E9E6100681B6B /* GenreSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectionViewController.swift; sourceTree = "<group>"; };
+		3EE1E8462D8E9E6100681B6B /* NameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputViewController.swift; sourceTree = "<group>"; };
+		3EE1E84A2D8E9E8100681B6B /* GenreSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectionViewModel.swift; sourceTree = "<group>"; };
+		3EE1E84E2D8E9F4600681B6B /* NameInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputViewModel.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
-		D00926A62D8E7E0B00A10742 /* CoordinatorEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoordinatorEmpty; sourceTree = "<group>"; };
+		D00926F62D8E998A00A10742 /* VerticalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalListView.swift; sourceTree = "<group>"; };
+		D00926F82D8E99CE00A10742 /* StarRatingStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStorageViewController.swift; sourceTree = "<group>"; };
+		D00926FA2D8E99EC00A10742 /* StarRatingStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStorageView.swift; sourceTree = "<group>"; };
+		D00926FC2D8E9A0400A10742 /* StarRatingStorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStorageViewModel.swift; sourceTree = "<group>"; };
+		D00926FE2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStorageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D03736F12D8C2AC9006CED4A /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03737092D8C2AD9006CED4A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D03737B92D8C33CD006CED4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +134,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EE1E8412D8E9DF200681B6B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E8422D8E9E0100681B6B /* View */,
+				3EE1E8432D8E9E1300681B6B /* ViewModel */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		3EE1E8422D8E9E0100681B6B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E8442D8E9E6100681B6B /* GenreCell.swift */,
+				3EE1E8452D8E9E6100681B6B /* GenreSelectionViewController.swift */,
+				3EE1E8462D8E9E6100681B6B /* NameInputViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3EE1E8432D8E9E1300681B6B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E84A2D8E9E8100681B6B /* GenreSelectionViewModel.swift */,
+				3EE1E84E2D8E9F4600681B6B /* NameInputViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D009269E2D8E742300A10742 /* Designs */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,9 +175,29 @@
 		D00926A52D8E7DF300A10742 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				D00926A62D8E7E0B00A10742 /* CoordinatorEmpty */,
+				3EE1E8312D8E8ECE00681B6B /* Coordinator.swift */,
+				3EE1E83F2D8E9D7C00681B6B /* OnboardingCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		D00926F42D8E98DA00A10742 /* StorageBox */ = {
+			isa = PBXGroup;
+			children = (
+				D00926F52D8E98F600A10742 /* StarRatingStorage */,
+			);
+			path = StorageBox;
+			sourceTree = "<group>";
+		};
+		D00926F52D8E98F600A10742 /* StarRatingStorage */ = {
+			isa = PBXGroup;
+			children = (
+				D00926F82D8E99CE00A10742 /* StarRatingStorageViewController.swift */,
+				D00926FA2D8E99EC00A10742 /* StarRatingStorageView.swift */,
+				D00926FC2D8E9A0400A10742 /* StarRatingStorageViewModel.swift */,
+				D00926FE2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift */,
+			);
+			path = StarRatingStorage;
 			sourceTree = "<group>";
 		};
 		D03736E82D8C2AC9006CED4A = {
@@ -184,6 +256,8 @@
 		D03737C92D8C33F1006CED4A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				3EE1E8412D8E9DF200681B6B /* Onboarding */,
+				D00926F42D8E98DA00A10742 /* StorageBox */,
 				D03737BF2D8C33CD006CED4A /* ViewController.swift */,
 			);
 			path = Feature;
@@ -210,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				AEF04B192D8E9919001D3274 /* DramaTable.swift */,
+				3EE1E83D2D8E9BB200681B6B /* Genre.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +339,7 @@
 			children = (
 				D09E18302D8D79FF004EEC6C /* StarRatingView.swift */,
 				AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */,
+				D00926F62D8E998A00A10742 /* VerticalListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -342,7 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D037370A2D8C2AD9006CED4A /* .gitignore in Resources */,
-				D00926A72D8E7E0B00A10742 /* CoordinatorEmpty in Resources */,
+				D03737DA2D8C34E3006CED4A /* empty2 in Resources */,
 				D03737DE2D8C34ED006CED4A /* empty3 in Resources */,
 				D03737C42D8C33CD006CED4A /* Assets.xcassets in Resources */,
 				D03737C62D8C33CD006CED4A /* LaunchScreen.storyboard in Resources */,
@@ -359,21 +435,33 @@
 				D09E0DC12D8C3763004EEC6C /* BaseCollectionViewCell.swift in Sources */,
 				AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */,
 				D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */,
+				D00926F72D8E998A00A10742 /* VerticalListView.swift in Sources */,
 				D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */,
 				D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */,
 				D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */,
 				3EE1E8242D8E80DE00681B6B /* TMDBEndpoint.swift in Sources */,
+				3EE1E8322D8E8ECE00681B6B /* Coordinator.swift in Sources */,
+				3EE1E8472D8E9E6100681B6B /* GenreCell.swift in Sources */,
+				3EE1E8482D8E9E6100681B6B /* NameInputViewController.swift in Sources */,
+				3EE1E8492D8E9E6100681B6B /* GenreSelectionViewController.swift in Sources */,
 				3EE1E8302D8E852000681B6B /* Reusable.swift in Sources */,
 				D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */,
 				AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */,
 				D03737C32D8C33CD006CED4A /* ViewController.swift in Sources */,
+				D00926F92D8E99CE00A10742 /* StarRatingStorageViewController.swift in Sources */,
 				3EE1E82C2D8E83CA00681B6B /* TMDBRequest.swift in Sources */,
 				D09E0EF42D8C44D5004EEC6C /* ViewControllerType.swift in Sources */,
+				3EE1E84B2D8E9E8100681B6B /* GenreSelectionViewModel.swift in Sources */,
+				D00926FB2D8E99EC00A10742 /* StarRatingStorageView.swift in Sources */,
+				D00926FD2D8E9A0400A10742 /* StarRatingStorageViewModel.swift in Sources */,
 				D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */,
+				3EE1E84F2D8E9F4600681B6B /* NameInputViewModel.swift in Sources */,
+				3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */,
 				D09E0EF62D8C4561004EEC6C /* BaseViewModel.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
 				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
 				AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */,
+				D00926FF2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift in Sources */,
 				3EE1E8222D8E7FF400681B6B /* TMDBResponse.swift in Sources */,
 				AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */,
 				D09E0E552D8C3805004EEC6C /* BaseTableViewCell.swift in Sources */,
@@ -381,6 +469,7 @@
 				D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */,
 				AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */,
 				D09E0DBF2D8C3748004EEC6C /* BaseView.swift in Sources */,
+				3EE1E83E2D8E9BB200681B6B /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
