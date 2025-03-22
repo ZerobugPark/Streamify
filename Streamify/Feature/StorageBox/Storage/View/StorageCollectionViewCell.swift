@@ -13,8 +13,7 @@ class StorageCollectionViewCell: BaseCollectionViewCell {
     let label = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
     
     override func configureHierarchy() {
-        contentView.addSubview(image)
-        contentView.addSubview(label)
+        contentView.addSubviews(image,label)
     }
     
     override func configureLayout() {

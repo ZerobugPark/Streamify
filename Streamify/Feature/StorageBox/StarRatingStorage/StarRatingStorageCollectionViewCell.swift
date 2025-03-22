@@ -13,8 +13,7 @@ final class StarRatingStorageCollectionViewCell: BaseCollectionViewCell {
     let label = UILabel()
     
     override func configureHierarchy() {
-        contentView.addSubview(image)
-        contentView.addSubview(label)
+        contentView.addSubviews(image,label)
     }
     
     override func configureLayout() {

@@ -12,7 +12,7 @@ final class CompositionalListView: BaseView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: creatCompositionalLayout())
     
     override func configureHierarchy() {
-        addSubview(collectionView)
+        addSubviews(collectionView)
     }
     
     override func configureLayout() {

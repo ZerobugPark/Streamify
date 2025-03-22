@@ -22,10 +22,7 @@ final class CompositionalHeaderReusableView: UICollectionReusableView {
     }
     
     private func configurationLayout() {
-   
-        addSubview(titleLabel)
-        addSubview(lineView)
-        
+        addSubviews(titleLabel, lineView)
         
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

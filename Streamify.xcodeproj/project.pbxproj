@@ -13,11 +13,6 @@
 		3EE1E82C2D8E83CA00681B6B /* TMDBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E82B2D8E83CA00681B6B /* TMDBRequest.swift */; };
 		3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E82D2D8E846000681B6B /* NetworkManager.swift */; };
 		3EE1E8302D8E852000681B6B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E82F2D8E852000681B6B /* Reusable.swift */; };
-		AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04AC52D8E94C8001D3274 /* APIKey.swift */; };
-		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
-		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
-		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
-		AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */; };
 		3EE1E8322D8E8ECE00681B6B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8312D8E8ECE00681B6B /* Coordinator.swift */; };
 		3EE1E83E2D8E9BB200681B6B /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E83D2D8E9BB200681B6B /* Genre.swift */; };
 		3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E83F2D8E9D7C00681B6B /* OnboardingCoordinator.swift */; };
@@ -26,6 +21,11 @@
 		3EE1E8492D8E9E6100681B6B /* GenreSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8452D8E9E6100681B6B /* GenreSelectionViewController.swift */; };
 		3EE1E84B2D8E9E8100681B6B /* GenreSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E84A2D8E9E8100681B6B /* GenreSelectionViewModel.swift */; };
 		3EE1E84F2D8E9F4600681B6B /* NameInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E84E2D8E9F4600681B6B /* NameInputViewModel.swift */; };
+		AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04AC52D8E94C8001D3274 /* APIKey.swift */; };
+		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
+		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
+		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
+		AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -44,6 +44,7 @@
 		D00927A32D8EF47F00A10742 /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00927A22D8EF47F00A10742 /* BaseImageView.swift */; };
 		D00927A62D8EF52300A10742 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = D00927A52D8EF52300A10742 /* Differentiator */; };
 		D00927A82D8EF52300A10742 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = D00927A72D8EF52300A10742 /* RxDataSources */; };
+		D00927AA2D8F072600A10742 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00927A92D8F072600A10742 /* UIView+Extension.swift */; };
 		D037370A2D8C2AD9006CED4A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D03737092D8C2AD9006CED4A /* .gitignore */; };
 		D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737B92D8C33CD006CED4A /* AppDelegate.swift */; };
 		D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */; };
@@ -88,11 +89,6 @@
 		3EE1E82B2D8E83CA00681B6B /* TMDBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBRequest.swift; sourceTree = "<group>"; };
 		3EE1E82D2D8E846000681B6B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3EE1E82F2D8E852000681B6B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
-		AEF04AC52D8E94C8001D3274 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
-		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
-		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
-		AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		3EE1E8312D8E8ECE00681B6B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3EE1E83D2D8E9BB200681B6B /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		3EE1E83F2D8E9D7C00681B6B /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
@@ -101,6 +97,11 @@
 		3EE1E8462D8E9E6100681B6B /* NameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputViewController.swift; sourceTree = "<group>"; };
 		3EE1E84A2D8E9E8100681B6B /* GenreSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectionViewModel.swift; sourceTree = "<group>"; };
 		3EE1E84E2D8E9F4600681B6B /* NameInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputViewModel.swift; sourceTree = "<group>"; };
+		AEF04AC52D8E94C8001D3274 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
+		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
+		AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 		D009279E2D8EF2F800A10742 /* CompositionalHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalHeaderReusableView.swift; sourceTree = "<group>"; };
 		D00927A02D8EF41C00A10742 /* StorageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D00927A22D8EF47F00A10742 /* BaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseImageView.swift; sourceTree = "<group>"; };
+		D00927A92D8F072600A10742 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D03736F12D8C2AC9006CED4A /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03737092D8C2AD9006CED4A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D03737B92D8C33CD006CED4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE1E82F2D8E852000681B6B /* Reusable.swift */,
+				D00927A92D8F072600A10742 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				D00926FD2D8E9A0400A10742 /* StarRatingStorageViewModel.swift in Sources */,
 				D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */,
 				3EE1E84F2D8E9F4600681B6B /* NameInputViewModel.swift in Sources */,
+				D00927AA2D8F072600A10742 /* UIView+Extension.swift in Sources */,
 				3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */,
 				D09E0EF62D8C4561004EEC6C /* BaseViewModel.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
@@ -529,7 +533,6 @@
 				D09E0EF22D8C445F004EEC6C /* BaseViewController.swift in Sources */,
 				D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */,
 				D00927092D8EE77A00A10742 /* ActionButton.swift in Sources */,
-				3EE1E8282D8E818900681B6B /* APIKey.swift in Sources */,
 				AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */,
 				D09E0DBF2D8C3748004EEC6C /* BaseView.swift in Sources */,
 				3EE1E83E2D8E9BB200681B6B /* Genre.swift in Sources */,
