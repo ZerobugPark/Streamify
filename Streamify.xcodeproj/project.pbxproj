@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		3EE1E8222D8E7FF400681B6B /* TMDBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8212D8E7FF400681B6B /* TMDBResponse.swift */; };
 		3EE1E8242D8E80DE00681B6B /* TMDBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8232D8E80DE00681B6B /* TMDBEndpoint.swift */; };
-		3EE1E8282D8E818900681B6B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8272D8E818900681B6B /* APIKey.swift */; };
 		3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8292D8E82AF00681B6B /* Config.swift */; };
 		3EE1E82C2D8E83CA00681B6B /* TMDBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E82B2D8E83CA00681B6B /* TMDBRequest.swift */; };
 		3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E82D2D8E846000681B6B /* NetworkManager.swift */; };
 		3EE1E8302D8E852000681B6B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E82F2D8E852000681B6B /* Reusable.swift */; };
+		AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04AC52D8E94C8001D3274 /* APIKey.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -59,11 +59,11 @@
 /* Begin PBXFileReference section */
 		3EE1E8212D8E7FF400681B6B /* TMDBResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBResponse.swift; sourceTree = "<group>"; };
 		3EE1E8232D8E80DE00681B6B /* TMDBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBEndpoint.swift; sourceTree = "<group>"; };
-		3EE1E8272D8E818900681B6B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		3EE1E8292D8E82AF00681B6B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		3EE1E82B2D8E83CA00681B6B /* TMDBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBRequest.swift; sourceTree = "<group>"; };
 		3EE1E82D2D8E846000681B6B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3EE1E82F2D8E852000681B6B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		AEF04AC52D8E94C8001D3274 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 		D03736E82D8C2AC9006CED4A = {
 			isa = PBXGroup;
 			children = (
+				AEF04AC52D8E94C8001D3274 /* APIKey.swift */,
 				D03737092D8C2AD9006CED4A /* .gitignore */,
-				3EE1E8272D8E818900681B6B /* APIKey.swift */,
 				D03737C02D8C33CD006CED4A /* Streamify */,
 				D03736F22D8C2AC9006CED4A /* Products */,
 			);
@@ -334,9 +334,7 @@
 			files = (
 				D037370A2D8C2AD9006CED4A /* .gitignore in Resources */,
 				D03737DA2D8C34E3006CED4A /* empty2 in Resources */,
-				D03737DC2D8C34E4006CED4A /* empty1 in Resources */,
 				D00926A72D8E7E0B00A10742 /* CoordinatorEmpty in Resources */,
-				D03737D62D8C34DF006CED4A /* empty5 in Resources */,
 				D03737DE2D8C34ED006CED4A /* empty3 in Resources */,
 				D03737C42D8C33CD006CED4A /* Assets.xcassets in Resources */,
 				D03737C62D8C33CD006CED4A /* LaunchScreen.storyboard in Resources */,
@@ -351,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09E0DC12D8C3763004EEC6C /* BaseCollectionViewCell.swift in Sources */,
+				AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */,
 				D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */,
 				D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */,
 				D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */,
@@ -369,7 +368,6 @@
 				D09E0E552D8C3805004EEC6C /* BaseTableViewCell.swift in Sources */,
 				D09E0EF22D8C445F004EEC6C /* BaseViewController.swift in Sources */,
 				D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */,
-				3EE1E8282D8E818900681B6B /* APIKey.swift in Sources */,
 				D09E0DBF2D8C3748004EEC6C /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
