@@ -15,10 +15,7 @@ final class StarRatingStorageView: BaseView {
     let verticalList = VerticalListView()
     
     override func configureHierarchy() {
-        
-        [searchBar, verticalList].forEach {
-            self.addSubview($0)
-        }
+        addSubviews(searchBar, verticalList)
     }
     
     override func configureLayout() {

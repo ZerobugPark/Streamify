@@ -1,5 +1,5 @@
 //
-//  StarRatingStorageCollectionViewCell.swift
+//  StorageCollectionViewCell.swift
 //  Streamify
 //
 //  Created by youngkyun park on 3/22/25.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class StarRatingStorageCollectionViewCell: BaseCollectionViewCell {
-    
-    let image = UIImageView()
-    let label = UILabel()
+class StorageCollectionViewCell: BaseCollectionViewCell {
+   
+    let image = BaseImageView(radius: 10)
+    let label = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
     
     override func configureHierarchy() {
         contentView.addSubviews(image,label)
@@ -32,7 +32,6 @@ final class StarRatingStorageCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureView() {
-        label.text = "test"
         image.image = .setSymbol(.starCircle)
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
