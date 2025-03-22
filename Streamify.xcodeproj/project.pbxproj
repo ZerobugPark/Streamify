@@ -17,6 +17,7 @@
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
+		D00926A72D8E7E0B00A10742 /* CoordinatorEmpty in Resources */ = {isa = PBXBuildFile; fileRef = D00926A62D8E7E0B00A10742 /* CoordinatorEmpty */; };
 		D037370A2D8C2AD9006CED4A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D03737092D8C2AD9006CED4A /* .gitignore */; };
 		D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737B92D8C33CD006CED4A /* AppDelegate.swift */; };
 		D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */; };
@@ -66,6 +67,7 @@
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
+		D00926A62D8E7E0B00A10742 /* CoordinatorEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoordinatorEmpty; sourceTree = "<group>"; };
 		D03736F12D8C2AC9006CED4A /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03737092D8C2AD9006CED4A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D03737B92D8C33CD006CED4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 			path = Designs;
 			sourceTree = "<group>";
 		};
+		D00926A52D8E7DF300A10742 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D00926A62D8E7E0B00A10742 /* CoordinatorEmpty */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		D03736E82D8C2AC9006CED4A = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 		D03737C72D8C33D3006CED4A /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				D00926A52D8E7DF300A10742 /* Coordinator */,
 				D03737CE2D8C3442006CED4A /* Services */,
 				D03737CD2D8C343C006CED4A /* Model */,
 				D03737CC2D8C3436006CED4A /* DTO */,
@@ -323,6 +334,9 @@
 			files = (
 				D037370A2D8C2AD9006CED4A /* .gitignore in Resources */,
 				D03737DA2D8C34E3006CED4A /* empty2 in Resources */,
+				D03737DC2D8C34E4006CED4A /* empty1 in Resources */,
+				D00926A72D8E7E0B00A10742 /* CoordinatorEmpty in Resources */,
+				D03737D62D8C34DF006CED4A /* empty5 in Resources */,
 				D03737DE2D8C34ED006CED4A /* empty3 in Resources */,
 				D03737C42D8C33CD006CED4A /* Assets.xcassets in Resources */,
 				D03737C62D8C33CD006CED4A /* LaunchScreen.storyboard in Resources */,
