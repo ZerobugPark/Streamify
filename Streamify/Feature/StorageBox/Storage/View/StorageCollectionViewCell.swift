@@ -33,7 +33,6 @@ class StorageCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureView() {
-        label.text = "test"
         image.image = .setSymbol(.starCircle)
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true

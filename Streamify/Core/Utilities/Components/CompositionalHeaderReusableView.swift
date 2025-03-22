@@ -38,7 +38,7 @@ final class CompositionalHeaderReusableView: UICollectionReusableView {
             make.width.equalTo(titleLabel.snp.width).offset(8)
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(12)
             make.height.equalTo(2)
-            lineView.backgroundColor = .baseBlack
+            lineView.backgroundColor = .setStreamifyColor(.baseWhite)
         }
     
     }

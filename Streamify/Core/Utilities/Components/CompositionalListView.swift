@@ -23,7 +23,7 @@ final class CompositionalListView: BaseView {
     
     override func configureView() {
         
-        self.backgroundColor = .black
+        collectionView.backgroundColor = .setStreamifyColor(.baseBlack)
         collectionView.showsHorizontalScrollIndicator = false
     }
     
