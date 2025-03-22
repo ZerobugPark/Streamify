@@ -19,16 +19,16 @@ class OnboardingCoordinator: Coordinator {
     }
 
     private func showNameInputScreen() {
-//        let nameInputVC = NameInputViewController()
-//        nameInputVC.coordinator = self
-//        navigationController.pushViewController(nameInputVC, animated: true)
+        let nameInputVC = NameInputViewController()
+        nameInputVC.coordinator = self
+        navigationController.pushViewController(nameInputVC, animated: true)
     }
 
     func showGenreSelectionScreen(userName: String) {
-//        let genreSelectionVC = GenreSelectionViewController()
-//        genreSelectionVC.coordinator = self
-//        genreSelectionVC.userName = userName
-//        navigationController.pushViewController(genreSelectionVC, animated: true)
+        let genreSelectionVC = GenreSelectionViewController()
+        genreSelectionVC.coordinator = self
+        genreSelectionVC.userName = userName
+        navigationController.pushViewController(genreSelectionVC, animated: true)
     }
 
     func finishOnboarding() {
