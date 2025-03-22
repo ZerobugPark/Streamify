@@ -10,15 +10,29 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var coordinator: OnboardingCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-  
+
         guard let scene = (scene as? UIWindowScene) else { return }
-        
+
+        let navigationController = UINavigationController()
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = ViewController()
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+
+        let isOnboardingCompleted = UserDefaults.standard.bool(forKey: "isOnboardingCompleted")
+        print("isOnboardingCompleted", UserDefaults.standard.bool(forKey: "isOnboardingCompleted"))
+
+        if isOnboardingCompleted {
+            // 온보딩 완료 → 메인 화면 바로 진입
+            let mainVC = ViewController() // TODO: 실제 MainCoordinator 연동 시 변경
+            navigationController.setViewControllers([mainVC], animated: false)
+        } else {
+            // 온보딩 미완료 → OnboardingCoordinator로 온보딩 플로우 시작
+            coordinator = OnboardingCoordinator(navigationController: navigationController)
+            coordinator?.start()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
