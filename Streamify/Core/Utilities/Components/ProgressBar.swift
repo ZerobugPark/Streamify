@@ -11,7 +11,7 @@ class ProgressBar: UIProgressView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         trackTintColor = .lightGray
-        progressTintColor = .systemYellow
+        progressTintColor = .setStreamifyColor(.primaryYellow)
         progress = 0.0
         transform = CGAffineTransform(scaleX: 1.0, y: 3.0)
     }
