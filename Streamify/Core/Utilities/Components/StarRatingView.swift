@@ -15,7 +15,7 @@ final class StarRatingView: BaseView {
     let starRating = CosmosView()
     
     override func configureHierarchy() {
-        addSubview(starRating)
+        addSubviews(starRating)
     }
     
     override func configureLayout() {
