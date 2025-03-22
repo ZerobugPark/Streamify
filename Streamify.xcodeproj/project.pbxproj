@@ -13,11 +13,6 @@
 		3EE1E82C2D8E83CA00681B6B /* TMDBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E82B2D8E83CA00681B6B /* TMDBRequest.swift */; };
 		3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E82D2D8E846000681B6B /* NetworkManager.swift */; };
 		3EE1E8302D8E852000681B6B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E82F2D8E852000681B6B /* Reusable.swift */; };
-		AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04AC52D8E94C8001D3274 /* APIKey.swift */; };
-		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
-		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
-		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
-		AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */; };
 		3EE1E8322D8E8ECE00681B6B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8312D8E8ECE00681B6B /* Coordinator.swift */; };
 		3EE1E83E2D8E9BB200681B6B /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E83D2D8E9BB200681B6B /* Genre.swift */; };
 		3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E83F2D8E9D7C00681B6B /* OnboardingCoordinator.swift */; };
@@ -26,6 +21,15 @@
 		3EE1E8492D8E9E6100681B6B /* GenreSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8452D8E9E6100681B6B /* GenreSelectionViewController.swift */; };
 		3EE1E84B2D8E9E8100681B6B /* GenreSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E84A2D8E9E8100681B6B /* GenreSelectionViewModel.swift */; };
 		3EE1E84F2D8E9F4600681B6B /* NameInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E84E2D8E9F4600681B6B /* NameInputViewModel.swift */; };
+		3EE1E8522D8EEB7B00681B6B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8512D8EEB7B00681B6B /* MainCoordinator.swift */; };
+		3EE1E8572D8EEFE400681B6B /* TopRatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8562D8EEFE400681B6B /* TopRatedCell.swift */; };
+		3EE1E85B2D8EF1BE00681B6B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */; };
+		3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */; };
+		AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04AC52D8E94C8001D3274 /* APIKey.swift */; };
+		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
+		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
+		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
+		AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -78,11 +82,6 @@
 		3EE1E82B2D8E83CA00681B6B /* TMDBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBRequest.swift; sourceTree = "<group>"; };
 		3EE1E82D2D8E846000681B6B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3EE1E82F2D8E852000681B6B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
-		AEF04AC52D8E94C8001D3274 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
-		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
-		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
-		AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		3EE1E8312D8E8ECE00681B6B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3EE1E83D2D8E9BB200681B6B /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		3EE1E83F2D8E9D7C00681B6B /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
@@ -91,6 +90,15 @@
 		3EE1E8462D8E9E6100681B6B /* NameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputViewController.swift; sourceTree = "<group>"; };
 		3EE1E84A2D8E9E8100681B6B /* GenreSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectionViewModel.swift; sourceTree = "<group>"; };
 		3EE1E84E2D8E9F4600681B6B /* NameInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputViewModel.swift; sourceTree = "<group>"; };
+		3EE1E8512D8EEB7B00681B6B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		3EE1E8562D8EEFE400681B6B /* TopRatedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedCell.swift; sourceTree = "<group>"; };
+		3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		AEF04AC52D8E94C8001D3274 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
+		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
+		AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -162,6 +170,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		3EE1E8542D8EEFAA00681B6B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E8552D8EEFDD00681B6B /* View */,
+				3EE1E85C2D8F01C700681B6B /* ViewModel */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3EE1E8552D8EEFDD00681B6B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E8562D8EEFE400681B6B /* TopRatedCell.swift */,
+				3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3EE1E85C2D8F01C700681B6B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D009269E2D8E742300A10742 /* Designs */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +211,7 @@
 			children = (
 				3EE1E8312D8E8ECE00681B6B /* Coordinator.swift */,
 				3EE1E83F2D8E9D7C00681B6B /* OnboardingCoordinator.swift */,
+				3EE1E8512D8EEB7B00681B6B /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -257,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE1E8412D8E9DF200681B6B /* Onboarding */,
+				3EE1E8542D8EEFAA00681B6B /* Main */,
 				D00926F42D8E98DA00A10742 /* StorageBox */,
 				D03737BF2D8C33CD006CED4A /* ViewController.swift */,
 			);
@@ -418,7 +454,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D037370A2D8C2AD9006CED4A /* .gitignore in Resources */,
-				D03737DA2D8C34E3006CED4A /* empty2 in Resources */,
 				D03737DE2D8C34ED006CED4A /* empty3 in Resources */,
 				D03737C42D8C33CD006CED4A /* Assets.xcassets in Resources */,
 				D03737C62D8C33CD006CED4A /* LaunchScreen.storyboard in Resources */,
@@ -437,10 +472,12 @@
 				D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */,
 				D00926F72D8E998A00A10742 /* VerticalListView.swift in Sources */,
 				D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */,
+				3EE1E8572D8EEFE400681B6B /* TopRatedCell.swift in Sources */,
 				D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */,
 				D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */,
 				3EE1E8242D8E80DE00681B6B /* TMDBEndpoint.swift in Sources */,
 				3EE1E8322D8E8ECE00681B6B /* Coordinator.swift in Sources */,
+				3EE1E8522D8EEB7B00681B6B /* MainCoordinator.swift in Sources */,
 				3EE1E8472D8E9E6100681B6B /* GenreCell.swift in Sources */,
 				3EE1E8482D8E9E6100681B6B /* NameInputViewController.swift in Sources */,
 				3EE1E8492D8E9E6100681B6B /* GenreSelectionViewController.swift in Sources */,
@@ -453,6 +490,7 @@
 				D09E0EF42D8C44D5004EEC6C /* ViewControllerType.swift in Sources */,
 				3EE1E84B2D8E9E8100681B6B /* GenreSelectionViewModel.swift in Sources */,
 				D00926FB2D8E99EC00A10742 /* StarRatingStorageView.swift in Sources */,
+				3EE1E85B2D8EF1BE00681B6B /* MainViewController.swift in Sources */,
 				D00926FD2D8E9A0400A10742 /* StarRatingStorageViewModel.swift in Sources */,
 				D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */,
 				3EE1E84F2D8E9F4600681B6B /* NameInputViewModel.swift in Sources */,
@@ -464,6 +502,7 @@
 				D00926FF2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift in Sources */,
 				3EE1E8222D8E7FF400681B6B /* TMDBResponse.swift in Sources */,
 				AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */,
+				3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */,
 				D09E0E552D8C3805004EEC6C /* BaseTableViewCell.swift in Sources */,
 				D09E0EF22D8C445F004EEC6C /* BaseViewController.swift in Sources */,
 				D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */,
