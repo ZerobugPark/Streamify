@@ -17,6 +17,20 @@ enum DramaType: String, PersistableEnum {
 }
 
 final class DramaTable: Object {
+    
+    var watchingProgress: Float {
+        let watchedCount = episodes.filter { $0.isWatched }.count
+        return episodes.isEmpty ? 0.0 : Float(watchedCount) / Float(episodes.count)
+    }
+    
+    var dramaType: DramaType {
+        switch watchingProgress {
+        case 0.0: return .none
+        case 1.0: return .watched
+        default: return .watching
+        }
+    }
+    
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var titleID: Int
     @Persisted var title: String
@@ -24,9 +38,7 @@ final class DramaTable: Object {
     @Persisted var genre: String
     @Persisted var imagePath: String
     @Persisted var comment: String
-    @Persisted var watching: Float
     @Persisted var episodes: List<Episodes>
-    @Persisted var dramaType: DramaType
 }
 
 class Episodes: Object {
