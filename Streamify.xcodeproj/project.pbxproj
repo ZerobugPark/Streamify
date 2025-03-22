@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3EE1E8222D8E7FF400681B6B /* TMDBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8212D8E7FF400681B6B /* TMDBResponse.swift */; };
 		3EE1E8242D8E80DE00681B6B /* TMDBEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8232D8E80DE00681B6B /* TMDBEndpoint.swift */; };
+		3EE1E8282D8E818900681B6B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8272D8E818900681B6B /* APIKey.swift */; };
+		3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8292D8E82AF00681B6B /* Config.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -55,6 +57,8 @@
 /* Begin PBXFileReference section */
 		3EE1E8212D8E7FF400681B6B /* TMDBResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBResponse.swift; sourceTree = "<group>"; };
 		3EE1E8232D8E80DE00681B6B /* TMDBEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBEndpoint.swift; sourceTree = "<group>"; };
+		3EE1E8272D8E818900681B6B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		3EE1E8292D8E82AF00681B6B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				D03737092D8C2AD9006CED4A /* .gitignore */,
+				3EE1E8272D8E818900681B6B /* APIKey.swift */,
 				D03737C02D8C33CD006CED4A /* Streamify */,
 				D03736F22D8C2AC9006CED4A /* Products */,
 			);
@@ -193,6 +198,7 @@
 		D03737CE2D8C3442006CED4A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3EE1E8292D8E82AF00681B6B /* Config.swift */,
 				3EE1E8212D8E7FF400681B6B /* TMDBResponse.swift */,
 				3EE1E8232D8E80DE00681B6B /* TMDBEndpoint.swift */,
 				D03737DB2D8C34E4006CED4A /* empty1 */,
@@ -340,10 +346,12 @@
 				D09E0EF42D8C44D5004EEC6C /* ViewControllerType.swift in Sources */,
 				D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */,
 				D09E0EF62D8C4561004EEC6C /* BaseViewModel.swift in Sources */,
+				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
 				3EE1E8222D8E7FF400681B6B /* TMDBResponse.swift in Sources */,
 				D09E0E552D8C3805004EEC6C /* BaseTableViewCell.swift in Sources */,
 				D09E0EF22D8C445F004EEC6C /* BaseViewController.swift in Sources */,
 				D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */,
+				3EE1E8282D8E818900681B6B /* APIKey.swift in Sources */,
 				D09E0DBF2D8C3748004EEC6C /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
