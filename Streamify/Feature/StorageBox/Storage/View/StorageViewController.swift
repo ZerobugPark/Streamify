@@ -47,12 +47,12 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         registerStorageList()
         
         view.backgroundColor = .setStreamifyColor(.baseBlack)
-        
         bind()
+        //bindViewModel()
         
     }
     
-    private func bind() {
+    func bind() {
         
         
         let actionButtonTapped = Observable.merge(
@@ -145,14 +145,16 @@ extension StorageViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StorageCollectionViewCell.id, for: indexPath) as? StorageCollectionViewCell else { return UICollectionViewCell() }
             
             switch dataSource[indexPath] {
-            case .firstSection:
-                cell.label.text = "1"
-            case .secondSection:
-                cell.label.text = "2"
-            case .thirdSection:
-                cell.label.text = "3"
+            case .firstSection(let data):
+                cell.setupUI(data)
+            case .secondSection(let data):
+                cell.setupUI(data)
+            case .thirdSection(let data):
+                cell.setupUI(data)
             }
             return cell
+            
+    
         }
         
     }
