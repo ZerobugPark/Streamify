@@ -6,8 +6,23 @@
 //
 
 import Foundation
-
+import RxSwift
+import RxCocoa
 
 final class DramaViewModel: BaseViewModel {
+    
+    struct Input {
+        
+    }
+    
+    struct Output {
+        
+    }
+    
+    func transform(input: BaseViewModel.Input) -> Output {
+        
+        
+        return Output()
+    }
     
 }
