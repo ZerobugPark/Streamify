@@ -27,6 +27,7 @@
 		3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */; };
 		3EE1E8602D903B5700681B6B /* HorizontalMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */; };
 		3EE1E8652D9059EA00681B6B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8642D9059EA00681B6B /* SearchViewController.swift */; };
+		3EE1E8672D90D1AF00681B6B /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */; };
 		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
 		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
 		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
@@ -125,6 +126,7 @@
 		3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMediaCell.swift; sourceTree = "<group>"; };
 		3EE1E8642D9059EA00681B6B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
 		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE1E8642D9059EA00681B6B /* SearchViewController.swift */,
+				3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */,
 				D00927A12D8EF41C00A10742 /* StorageCollectionViewCell.swift in Sources */,
 				D00927072D8EE72C00A10742 /* StorageViewController.swift in Sources */,
+				3EE1E8672D90D1AF00681B6B /* SearchCollectionViewCell.swift in Sources */,
 				AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */,
 				AEF04C2F2D8F0E63001D3274 /* APIKey.swift in Sources */,
 				D00926FF2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift in Sources */,

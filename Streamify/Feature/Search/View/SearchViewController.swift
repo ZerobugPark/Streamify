@@ -43,7 +43,7 @@ class SearchViewController: UIViewController {
         return button
     }()
 
-    // TODO: Add segmented control, collection view, etc.
+    private let verticalListView = VerticalListView()
 
     // MARK: - Lifecycle
 
@@ -60,6 +60,7 @@ class SearchViewController: UIViewController {
         searchBarContainerView.addSubview(searchIconImageView)
         searchBarContainerView.addSubview(searchTextField)
         view.addSubview(cancelButton)
+        view.addSubview(verticalListView)
 
         searchBarContainerView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
@@ -84,5 +85,11 @@ class SearchViewController: UIViewController {
             make.centerY.equalTo(searchBarContainerView)
             make.trailing.equalToSuperview().inset(16)
         }
+
+        verticalListView.snp.makeConstraints { make in
+            make.top.equalTo(searchBarContainerView.snp.bottom).offset(12)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
     }
 }
+
