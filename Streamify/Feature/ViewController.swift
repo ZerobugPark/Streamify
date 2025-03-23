@@ -47,8 +47,8 @@ class ViewController: UIViewController {
         
         collectionViewTestBtn.addAction(UIAction { [weak self] _ in
             
-            let viewModel = StarRatingStorageViewModel()
-            let vc = StorageViewController()//StarRatingStorageViewController(viewModel: viewModel)
+            let viewModel = StorageViewModel()//StarRatingStorageViewModel()
+            let vc = StorageViewController(viewModel: viewModel)//StarRatingStorageViewController(viewModel: viewModel)
             
             self?.present(vc,animated: true)
             

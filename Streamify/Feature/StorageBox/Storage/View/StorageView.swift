@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 final class StorageView: BaseView {
 
    
@@ -45,6 +47,10 @@ final class StorageView: BaseView {
         stackView.distribution = .fillEqually
         stackView.spacing = 4
         stackView.axis = .horizontal
+        
+        [wantToWatchButton, watchedButton, watchingButton, commentButton, ratingButton].enumerated().forEach { index, button in
+            button.tag = index
+        }
         
     }
     
