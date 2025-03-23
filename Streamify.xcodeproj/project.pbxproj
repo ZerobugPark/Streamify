@@ -345,10 +345,8 @@
 		D00926F52D8E98F600A10742 /* StarRatingStorage */ = {
 			isa = PBXGroup;
 			children = (
-				D00926F82D8E99CE00A10742 /* StarRatingStorageViewController.swift */,
-				D00926FA2D8E99EC00A10742 /* StarRatingStorageView.swift */,
-				D00926FC2D8E9A0400A10742 /* StarRatingStorageViewModel.swift */,
-				D00926FE2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift */,
+				D00929172D9040C300A10742 /* ViewModel */,
+				D00929162D9040BE00A10742 /* View */,
 			);
 			path = StarRatingStorage;
 			sourceTree = "<group>";
@@ -402,6 +400,24 @@
 			isa = PBXGroup;
 			children = (
 				D009287A2D8FF32D00A10742 /* CommentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D00929162D9040BE00A10742 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D00926F82D8E99CE00A10742 /* StarRatingStorageViewController.swift */,
+				D00926FA2D8E99EC00A10742 /* StarRatingStorageView.swift */,
+				D00926FE2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D00929172D9040C300A10742 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D00926FC2D8E9A0400A10742 /* StarRatingStorageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

@@ -29,7 +29,7 @@ final class VerticalListView: BaseView {
         collectionView.backgroundColor = .setStreamifyColor(.baseBlack)
         collectionView.showsVerticalScrollIndicator = false
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .setStreamifyColor(.baseBlack)
     }
     
     private func createCollectionViewLayout() -> UICollectionViewLayout {
