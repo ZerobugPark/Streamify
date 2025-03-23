@@ -12,15 +12,21 @@ class DramaEpisodeCell: BaseCollectionViewCell {
     private let imageView = BaseImageView()
     private let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
     private let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    private let progressBar = ProgressBar()
+    private let containerView = UIView()
     
     override func configureHierarchy() {
-        addSubviews(imageView, titleLabel, countLabel)
+        addSubviews(titleLabel, countLabel, containerView)
+        containerView.addSubviews(imageView, progressBar)
     }
     
     override func configureLayout() {
-        imageView.snp.makeConstraints { make in
+        containerView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.9)
+        }
+        imageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(4)
@@ -30,11 +36,15 @@ class DramaEpisodeCell: BaseCollectionViewCell {
             make.top.equalTo(titleLabel.snp.bottom).offset(2)
             make.horizontalEdges.equalToSuperview()
         }
+        progressBar.snp.makeConstraints { make in
+            make.bottom.horizontalEdges.equalTo(imageView)
+        }
     }
     
     override func configureView() {
         imageView.backgroundColor = .darkGray
-        imageView.layer.cornerRadius = 10
+        containerView.layer.cornerRadius = 5
+        containerView.clipsToBounds = true
     }
     
     func configure(_ item: DramaEpisode) {
