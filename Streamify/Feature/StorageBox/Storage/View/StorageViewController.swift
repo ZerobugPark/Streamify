@@ -42,17 +42,13 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
     
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         registerStorageList()
-        
         view.backgroundColor = .setStreamifyColor(.baseBlack)
-        bind()
-        //bindViewModel()
         
     }
     
-    func bind() {
+    override func bindViewModel() {
         
         
         let actionButtonTapped = Observable.merge(
