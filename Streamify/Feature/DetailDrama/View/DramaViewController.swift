@@ -53,8 +53,8 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
     }
     
     override func bindViewModel() {
-//        let input = DramaViewModel.Input()
-//        let output = viewModel.transform(input: input)
+        let input = DramaViewModel.Input()
+        let output = viewModel.transform(input: input)
         
         
         

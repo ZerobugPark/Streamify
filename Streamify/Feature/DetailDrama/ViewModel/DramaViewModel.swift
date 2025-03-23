@@ -19,7 +19,7 @@ final class DramaViewModel: BaseViewModel {
         let sectionModel: Driver<[DramaSectionModel]>
     }
     
-    func transform(input: BaseViewModel.Input) -> Output {
+    func transform(input: DramaViewModel.Input) -> Output {
         let sectionModel = BehaviorRelay<[DramaSectionModel]>(value: [])
         
         
