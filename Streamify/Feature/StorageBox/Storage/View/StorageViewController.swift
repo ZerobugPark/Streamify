@@ -26,8 +26,8 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
     
     weak var coordinator: MainCoordinator?
     
-    typealias listDataSource = RxCollectionViewSectionedReloadDataSource<CollectionViewSectionModel>
-    typealias colltionViewDataSource = CollectionViewSectionedDataSource<CollectionViewSectionModel>
+    typealias listDataSource = RxCollectionViewSectionedReloadDataSource<ListViewSectionModel>
+    typealias colltionViewDataSource = CollectionViewSectionedDataSource<ListViewSectionModel>
     
     lazy var dataSource = listDataSource (
         configureCell: { [weak self] dataSource, collectionView, indexPath, item in
@@ -134,7 +134,7 @@ extension StorageViewController {
     }
     
     // MARK: - RxDataSource Function Definition
-    private func configureCell(dataSource:   colltionViewDataSource, collectionView: UICollectionView, indexPath: IndexPath, item: SectionItem) -> UICollectionViewCell {
+    private func configureCell(dataSource:   colltionViewDataSource, collectionView: UICollectionView, indexPath: IndexPath, item: StorageSectionItem) -> UICollectionViewCell {
         
         switch dataSource[indexPath] {
         case .firstSection, .secondSection, .thirdSection:

@@ -11,24 +11,24 @@ import RxCocoa
 import RxDataSources
 import RxSwift
 
-enum SectionItem { //셀의 종류
+enum StorageSectionItem { //셀의 종류
     case firstSection(Drama)
     case secondSection(Drama)
     case thirdSection(Drama)
 }
 
-enum CollectionViewSectionModel { //섹션 정의
-    case first(header: String ,[SectionItem])
-    case second(header: String,[SectionItem])
-    case third(header: String, [SectionItem])
+enum ListViewSectionModel { //섹션 정의
+    case first(header: String ,[StorageSectionItem])
+    case second(header: String,[StorageSectionItem])
+    case third(header: String, [StorageSectionItem])
     
 }
 
-extension CollectionViewSectionModel: SectionModelType {
+extension ListViewSectionModel: SectionModelType {
     
-    typealias Item = SectionItem
+    typealias Item = StorageSectionItem
     
-    var items: [SectionItem] {
+    var items: [StorageSectionItem] {
         switch self {
         case .first(_, let items):
             return items
@@ -51,7 +51,7 @@ extension CollectionViewSectionModel: SectionModelType {
         }
     }
 
-    init(original: CollectionViewSectionModel, items: [Self.Item]) {
+    init(original: ListViewSectionModel, items: [Self.Item]) {
         self = original
         
     }
@@ -66,17 +66,17 @@ final class StorageViewModel: BaseViewModel {
     }
     
     struct Output {
-        let setSetcion: BehaviorRelay<[CollectionViewSectionModel]>
+        let setSetcion: BehaviorRelay<[ListViewSectionModel]>
         let buttonTogle: PublishRelay<ActionButtonStatus>
         let goToStarRating: PublishRelay<Void>
         let goToComment: PublishRelay<Void>
     }
     
     
-    private var wantedWatchDramas: [SectionItem] = []
-    private var watchedDramas: [SectionItem] = []
-    private var watchingDramas: [SectionItem] = []
-    private let emptySection: [SectionItem] = []
+    private var wantedWatchDramas: [StorageSectionItem] = []
+    private var watchedDramas: [StorageSectionItem] = []
+    private var watchingDramas: [StorageSectionItem] = []
+    private let emptySection: [StorageSectionItem] = []
 
     private var previousStatus: ActionButtonStatus = .all
     
@@ -109,7 +109,7 @@ final class StorageViewModel: BaseViewModel {
         
         let title = ["내가 찜한 리스트", "내가 본 콘텐츠", "시청 중인 콘텐츠", ""]
         
-        let sectiomModel = BehaviorRelay<[CollectionViewSectionModel]>(value: [.first(header: title[0], watchedDramas), .second(header: title[1], wantedWatchDramas), .third(header: title[2], watchingDramas)])
+        let sectiomModel = BehaviorRelay<[ListViewSectionModel]>(value: [.first(header: title[0], watchedDramas), .second(header: title[1], wantedWatchDramas), .third(header: title[2], watchingDramas)])
         
         let buttonToggle = PublishRelay<ActionButtonStatus>()
         let goToStarRating = PublishRelay<Void>()

@@ -7,7 +7,45 @@
 
 import Foundation
 import RxSwift
+import RxDataSources
 import RxCocoa
+
+enum SectionItem { //셀의 종류
+    case firstSection([Int])
+    case secondSection([Int])
+    case thirdSection([Int])
+}
+
+enum CollectionViewSectionModel { //섹션 정의
+    case first([SectionItem])
+    case second([SectionItem])
+    case third([SectionItem])
+    
+}
+
+extension CollectionViewSectionModel: SectionModelType {
+    
+    typealias Item = SectionItem
+    
+    var items: [SectionItem] {
+        switch self {
+        case .first(let items):
+            return items
+        case .second(let items):
+            return items
+        case .third(let items):
+            return items
+        }
+    }
+    
+    
+
+    init(original: CollectionViewSectionModel, items: [Self.Item]) {
+        self = original
+        
+    }
+}
+
 
 final class MainViewModel {
 
