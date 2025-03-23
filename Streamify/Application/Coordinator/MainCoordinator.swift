@@ -25,7 +25,13 @@ class MainCoordinator: Coordinator {
         navigationController.setViewControllers([homeVC], animated: true)
     }
     
-    func showStorageScreen() {
+    func showSearchScreen() {
+        let searchVC = SearchViewController()
+//        let storageVC = StorageViewController(viewModel: viewModel)
+        searchVC.coordinator = self
+        navigationController.pushViewController(searchVC, animated: true)
+    }
+        func showStorageScreen() {
         let viewModel = StorageViewModel()
         let storageVC = StorageViewController(viewModel: viewModel)
         storageVC.coordinator = self
