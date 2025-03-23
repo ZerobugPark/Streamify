@@ -9,15 +9,11 @@ import UIKit
 
 final class CommentView: BaseView {
 
-    
     let searchBar = UISearchBar()
-    
     let tableView = UITableView()
     
     override func configureHierarchy() {
         addSubviews(searchBar, tableView)
-        
-
     }
     
     override func configureLayout() {
@@ -35,7 +31,13 @@ final class CommentView: BaseView {
     }
     
     override func configureView() {
-        searchBar.backgroundColor = .blue
+        
+        searchBar.showsCancelButton = true
+        searchBar.searchTextField.leftView?.tintColor = .setStreamifyColor(.baseWhite) // 돋보기 색상 변경
+        searchBar.searchTextField.textColor = .setStreamifyColor(.baseWhite)
+        searchBar.tintColor = .setStreamifyColor(.baseWhite)
+        searchBar.searchBarStyle = .minimal
+        
         
         tableView.backgroundColor = .setStreamifyColor(.baseBlack)
         tableView.bounces = false
