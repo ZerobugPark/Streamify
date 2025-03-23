@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isOnboardingCompleted {
             // 온보딩 완료 → 메인 화면 바로 진입
-            let mainVC = DramaViewController(viewModel: DramaViewModel()) // TODO: 실제 MainCoordinator 연동 시 변경
+            let mainVC = ViewController() // TODO: 실제 MainCoordinator 연동 시 변경
             navigationController.setViewControllers([mainVC], animated: false)
         } else {
             // 온보딩 미완료 → OnboardingCoordinator로 온보딩 플로우 시작
