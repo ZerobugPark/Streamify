@@ -21,7 +21,7 @@ class DramaHeaderCell: BaseCollectionViewCell {
     override func configureLayout() {
         backdropImage.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalToSuperview().multipliedBy(0.5)
+            make.height.equalToSuperview().multipliedBy(0.55)
         }
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(backdropImage.snp.bottom).offset(20)
@@ -39,11 +39,14 @@ class DramaHeaderCell: BaseCollectionViewCell {
         }
     }
     
+    func configure(_ item: DramaHeader) {
+        titleLabel.text = item.title
+        infoLabel.text = item.info
+        overviewLabel.text = item.overview
+    }
+    
     override func configureView() {
         backdropImage.backgroundColor = .gray
-        titleLabel.text = "슬기로운 의사생활"
-        infoLabel.text = "시즌 2개 · 방영종료 · 드라마 · 코미디"
-        overviewLabel.text = "누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는"
     }
     
 }

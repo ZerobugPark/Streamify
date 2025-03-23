@@ -16,7 +16,7 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
         switch item {
         case .header(let header):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DramaHeaderCell.id, for: indexPath) as! DramaHeaderCell
-            //                cell.configure(with: header)
+            cell.configure(header)
             return cell
         case .platform(let platforms):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DramaPlatformCell", for: indexPath) as! UICollectionViewListCell
@@ -27,15 +27,13 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
             var backgroundConfig = UIBackgroundConfiguration.listGroupedCell()
             backgroundConfig.backgroundColor = .darkGray
             backgroundConfig.cornerRadius = 10
+            backgroundConfig.backgroundInsets = NSDirectionalEdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10)
             cell.backgroundConfiguration = backgroundConfig
-            cell.accessories = [.disclosureIndicator()]
-            
-            //                    cell.configure(with: platforms)
+            cell.accessories = [.disclosureIndicator(options: .init(tintColor: .baseWhite))]
             return cell
         case .episode(let episodes):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DramaEpisodeCell.id, for: indexPath) as! DramaEpisodeCell
-            cell.backgroundColor = .darkGray
-            //                    cell.configure(with: episodes[indexPath.item])
+            cell.configure(episodes)
             return cell
         }
     }, configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
@@ -64,19 +62,19 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
             backdropImage: nil,
             title: "슬기로운 의사생활",
             info: "시즌 2개 · 방영종료 · 드라마 · 코미디",
-            overview: "누군가는 태어나고 누군가는 삶을 끝내는..."
+            overview: "누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는"
         )
         
         let platforms: [DramaPlatform] = [
-            DramaPlatform(image: .setSymbol(.eye)!),
-            DramaPlatform(image: .setSymbol(.pencil)!)
+            DramaPlatform(image: .setSymbol(.eye)),
+            DramaPlatform(image: .setSymbol(.pencil))
         ]
         
         let episodes: [DramaEpisode] = [
-            DramaEpisode(image: .setSymbol(.star)!, title: "스페셜", episodeCount: 4),
-            DramaEpisode(image: .setSymbol(.star)!, title: "시즌 1", episodeCount: 12),
-            DramaEpisode(image: .setSymbol(.star)!, title: "시즌 2", episodeCount: 12),
-            DramaEpisode(image: .setSymbol(.star)!, title: "시즌 3", episodeCount: 12)
+            DramaEpisode(image: nil, title: "스페셜", episodeCount: 4),
+            DramaEpisode(image: nil, title: "시즌 1", episodeCount: 12),
+            DramaEpisode(image: nil, title: "시즌 2", episodeCount: 12),
+            DramaEpisode(image: nil, title: "시즌 3", episodeCount: 12)
         ]
         
         sections.accept([

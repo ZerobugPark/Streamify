@@ -6,52 +6,41 @@
 //
 
 import UIKit
+import SnapKit
 
 class DramaEpisodeCell: BaseCollectionViewCell {
-    private let imageView = UIImageView()
-    private let titleLabel = UILabel()
-    private let countLabel = UILabel()
-//    
-//    class DramaEpisodeCell: UICollectionViewCell {
-//        static let id = "DramaEpisodeCell"
-//        
-//        
-//        override init(frame: CGRect) {
-//            super.init(frame: frame)
-//            contentView.addSubview(imageView)
-//            contentView.addSubview(titleLabel)
-//            contentView.addSubview(countLabel)
-//            
-//            imageView.snp.makeConstraints { make in
-//                make.top.leading.trailing.equalToSuperview()
-//                make.height.equalToSuperview().multipliedBy(0.6)
-//            }
-//            titleLabel.snp.makeConstraints { make in
-//                make.top.equalTo(imageView.snp.bottom).offset(4)
-//                make.leading.trailing.equalToSuperview()
-//            }
-//            countLabel.snp.makeConstraints { make in
-//                make.top.equalTo(titleLabel.snp.bottom).offset(2)
-//                make.leading.trailing.equalToSuperview()
-//            }
-//            
-//            imageView.contentMode = .scaleAspectFill
-//            imageView.clipsToBounds = true
-//            titleLabel.textColor = .white
-//            titleLabel.font = .systemFont(ofSize: 14)
-//            countLabel.textColor = .gray
-//            countLabel.font = .systemFont(ofSize: 12)
-//        }
-//        
-//        required init?(coder: NSCoder) {
-//            fatalError("init(coder:) has not been implemented")
-//        }
-//        
-//        func configure(with episode: DramaEpisode) {
-//            imageView.image = episode.image
-//            titleLabel.text = episode.title
-//            countLabel.text = "\(episode.episodeCount)개 에피소드"
-//        }
-//    }
+    private let imageView = BaseImageView()
+    private let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
+    private let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    
+    override func configureHierarchy() {
+        addSubviews(imageView, titleLabel, countLabel)
+    }
+    
+    override func configureLayout() {
+        imageView.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.9)
+        }
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(4)
+            make.horizontalEdges.equalToSuperview()
+        }
+        countLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(2)
+            make.horizontalEdges.equalToSuperview()
+        }
+    }
+    
+    override func configureView() {
+        imageView.backgroundColor = .darkGray
+        imageView.layer.cornerRadius = 10
+    }
+    
+    func configure(_ item: DramaEpisode) {
+        imageView.image = item.image
+        titleLabel.text = item.title
+        countLabel.text = "\(item.episodeCount)개 에피소드"
+    }
     
 }

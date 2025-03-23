@@ -74,7 +74,7 @@ final class DramaView: BaseView {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, environment) -> NSCollectionLayoutSection? in
             switch sectionIndex {
             case 0:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(400))
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(430))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitems: [item])
                 
@@ -82,9 +82,8 @@ final class DramaView: BaseView {
                 return section
             case 1:
                 var config = UICollectionLayoutListConfiguration(appearance: .plain)
-//                config.headerMode = .supplementary
+                config.backgroundColor = .baseBlack
                 let section = NSCollectionLayoutSection.list(using: config, layoutEnvironment: environment)
-//                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 10)
                 
                 return section
                 
