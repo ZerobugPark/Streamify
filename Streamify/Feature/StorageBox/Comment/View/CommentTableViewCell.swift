@@ -30,12 +30,13 @@ final class CommentTableViewCell: BaseTableViewCell {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).offset(8)
-            make.leading.equalTo(image.snp.trailing).offset(4)
+            make.leading.equalTo(image.snp.trailing).offset(16)
         }
         
         commnetLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(4)
-            make.leading.equalTo(image.snp.trailing).offset(4)
+            make.leading.equalTo(image.snp.trailing).offset(16)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).offset(-8)
         }
     }
     
@@ -50,7 +51,7 @@ final class CommentTableViewCell: BaseTableViewCell {
     }
     
     
-    func setupUI(data: Comments) {
+    func setupUI(_ data: Comments) {
      
         titleLabel.text = data.title
         commnetLabel.text = data.comment

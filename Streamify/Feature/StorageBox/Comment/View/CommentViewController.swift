@@ -42,7 +42,7 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
         
         testData.asDriver(onErrorJustReturn: []).drive(mainView.tableView.rx.items(cellIdentifier: CommentTableViewCell.id, cellType: CommentTableViewCell.self)) { row, element, cell in
         
-            cell.setupUI(data: element)
+            cell.setupUI(element)
             
         }.disposed(by: disposeBag)
         
