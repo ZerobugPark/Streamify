@@ -12,6 +12,21 @@ import RxSwift
 
 final class CommentViewController: BaseViewController <CommentView, CommentViewModel> {
 
+    var data = ""
+    
+    init(vm: CommentViewModel, data: String) {
+        self.data = data
+        print("Custom parameter: \(data)")
+        
+        // BaseViewController의 생성자 호출
+        super.init(viewModel: vm)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

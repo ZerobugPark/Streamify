@@ -84,7 +84,7 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
             .drive(with: self) { owner, _ in
                 
                 let viewModel = CommentViewModel()
-                let starRatingVC = CommentViewController(viewModel: viewModel)
+                let starRatingVC = CommentViewController(vm: viewModel, data: "hello")
                 owner.navigationController?.pushViewController(starRatingVC, animated: true)
                 
                 //owner.coordinator?.starRatingScreeCommentViewModeln()
