@@ -42,11 +42,26 @@ final class CommentTableViewCell: BaseTableViewCell {
     override func configureView() {
         image.image = UIImage(systemName: "star.fill")
         
-        titleLabel.text = "213"
+        
         titleLabel.numberOfLines = 1
         commnetLabel.text = "ssssdadadsadsadas"
         
         contentView.backgroundColor = .setStreamifyColor(.baseBlack)
+    }
+    
+    
+    func setupUI(data: Comments) {
+     
+        titleLabel.text = data.title
+        commnetLabel.text = data.comment
+        
+        if let img = UIImage(data: data.imagePath) {
+            image.image = img
+        } else {
+            image.image = UIImage(systemName: "star.fill")
+        }
+        
+        
     }
 
 }

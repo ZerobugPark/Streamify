@@ -12,9 +12,11 @@ import RxSwift
 
 final class CommentViewController: BaseViewController <CommentView, CommentViewModel> {
 
-    var data = ""
+    var data: [Comments]
     
-    init(vm: CommentViewModel, data: String) {
+    lazy var testData = BehaviorRelay(value: data)
+    
+    init(vm: CommentViewModel, data: [Comments]) {
         self.data = data
         print("Custom parameter: \(data)")
         
@@ -36,11 +38,14 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
     
     
     override func bindViewModel() {
-        let a = Array(1...100)
         
-        Observable.just(a).bind(to: mainView.tableView.rx.items(cellIdentifier: CommentTableViewCell.id, cellType: CommentTableViewCell.self)) { row, element, cell in
+        
+        testData.asDriver(onErrorJustReturn: []).drive(mainView.tableView.rx.items(cellIdentifier: CommentTableViewCell.id, cellType: CommentTableViewCell.self)) { row, element, cell in
+        
+            cell.setupUI(data: element)
             
         }.disposed(by: disposeBag)
+        
         
     }
    

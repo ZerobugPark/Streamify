@@ -8,55 +8,7 @@
 import Foundation
 
 import RxCocoa
-import RxDataSources
 import RxSwift
-
-enum StorageSectionItem { //셀의 종류
-    case firstSection(Drama)
-    case secondSection(Drama)
-    case thirdSection(Drama)
-}
-
-enum ListViewSectionModel { //섹션 정의
-    case first(header: String ,[StorageSectionItem])
-    case second(header: String,[StorageSectionItem])
-    case third(header: String, [StorageSectionItem])
-    
-}
-
-extension ListViewSectionModel: SectionModelType {
-    
-    typealias Item = StorageSectionItem
-    
-    var items: [StorageSectionItem] {
-        switch self {
-        case .first(_, let items):
-            return items
-        case .second(_, let items):
-            return items
-        case .third(_, let items):
-            return items
-        }
-    }
-    
-    
-    var header: String {
-        switch self {
-        case .first(let header, _):
-            return header
-        case .second(let header, _):
-            return header
-        case .third(let header, _):
-            return header
-        }
-    }
-
-    init(original: ListViewSectionModel, items: [Self.Item]) {
-        self = original
-        
-    }
-}
-
 
 final class StorageViewModel: BaseViewModel {
     
@@ -69,7 +21,7 @@ final class StorageViewModel: BaseViewModel {
         let setSetcion: BehaviorRelay<[ListViewSectionModel]>
         let buttonTogle: PublishRelay<ActionButtonStatus>
         let goToStarRating: PublishRelay<Void>
-        let goToComment: PublishRelay<Void>
+        let goToComment: PublishRelay<[Comments]>
     }
     
     
@@ -80,8 +32,17 @@ final class StorageViewModel: BaseViewModel {
 
     private var previousStatus: ActionButtonStatus = .all
     
+    private var commentsData: [Comments] = []
+    
     override init() {
+        super.init()
+        
         let data = generateMockData()
+        geteData(origin: data) { [weak self]  in
+            guard let self = self else { return }
+            self.commentsData = $0
+        }
+        
         
         let wantedWatchList = data.filter { $0.dramaType == .none }
         let watchedList = data.filter { $0.dramaType == .watched }
@@ -113,7 +74,7 @@ final class StorageViewModel: BaseViewModel {
         
         let buttonToggle = PublishRelay<ActionButtonStatus>()
         let goToStarRating = PublishRelay<Void>()
-        let goToComment = PublishRelay<Void>()
+        let goToComment = PublishRelay<[Comments]>()
                 
         input.actionButtonTapped.bind(with: self) { owner, tag in
             
@@ -137,7 +98,7 @@ final class StorageViewModel: BaseViewModel {
                 sectiomModel.accept([.first(header: title[2], owner.watchingDramas), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
                 buttonToggle.accept(.watchingButton)
             case .commentButton:
-                goToComment.accept(())
+                goToComment.accept((owner.commentsData))
                 return
             case .ratingButton:
                 goToStarRating.accept(())
@@ -155,6 +116,49 @@ final class StorageViewModel: BaseViewModel {
     
     
 }
+
+
+extension StorageViewModel {
+    func geteData(origin: [Drama], completionHandler: @escaping ([Comments]) -> Void)  {
+        
+        var commentArray: [Comments] = []
+        let dispatchGroup = DispatchGroup()
+        
+        for i in 0..<origin.count {
+            
+            let urlString = origin[i].imagePath
+            guard let url = URL(string: urlString) else { return }
+            
+            dispatchGroup.enter()
+            
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                defer { dispatchGroup.leave() }
+                
+                  
+                  if let error = error {
+                      print("Error loading image: \(error.localizedDescription)")
+                      return
+                  }
+                  
+                  guard let data = data else {
+                      print("Invalid image data")
+                      return
+                  }
+                  
+                var comment = Comments(id: origin[i].id, titleID: origin[i].titleID, title: origin[i].title, imagePath: data, comment: origin[i].comment)
+                commentArray.append(comment)
+               
+              }.resume()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            print("Completed")
+            completionHandler(commentArray)
+         }
+        
+    }
+}
+
 
 struct Drama {
     var id: String
