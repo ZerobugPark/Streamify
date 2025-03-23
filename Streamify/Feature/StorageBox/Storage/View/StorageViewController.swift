@@ -77,11 +77,11 @@ class StorageViewController: UIViewController {
         
         switch indexPath.section {
         case 0:
-            headerView.titleLabel.text = "인기 검색어"
+            headerView.titleLabel.text = "내가 찜한 리스트"
         case 1:
-            headerView.titleLabel.text = "봤어요"
+            headerView.titleLabel.text = "내가 본 콘텐츠"
         case 2:
-            headerView.titleLabel.text = "보는중"
+            headerView.titleLabel.text = "시청 중인 콘텐츠"
         default:
             break
         }
@@ -91,19 +91,24 @@ class StorageViewController: UIViewController {
     })
     
     
-    let testView = CompositionalListView()
+    let testView = StorageView()
+    
     let disposeBag = DisposeBag()
+    
+    
+    override func loadView() {
+        view = testView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        config()
         view.backgroundColor = .baseBlack
         
         //레지스터 등록
-        testView.collectionView.register(StorageCollectionViewCell.self, forCellWithReuseIdentifier: StorageCollectionViewCell.id)
+        testView.storageList.collectionView.register(StorageCollectionViewCell.self, forCellWithReuseIdentifier: StorageCollectionViewCell.id)
         
-        testView.collectionView.register(CompositionalHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CompositionalHeaderReusableView.reuseId)
+        testView.storageList.collectionView.register(CompositionalHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CompositionalHeaderReusableView.reuseId)
         
         bind()
         
@@ -123,18 +128,9 @@ class StorageViewController: UIViewController {
         ])
         
         
-        sectiomModel.bind(to: testView.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        sectiomModel.bind(to: testView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
-    
-    func config() {
-        view.addSubview(testView)
-        
-        testView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
-            make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-    }
+
 }
     
     

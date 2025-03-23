@@ -18,21 +18,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let navigationController = UINavigationController()
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = navigationController
+        window?.rootViewController = ViewController()//navigationController
         window?.makeKeyAndVisible()
 
-        let isOnboardingCompleted = UserDefaults.standard.bool(forKey: "isOnboardingCompleted")
-        print("isOnboardingCompleted", UserDefaults.standard.bool(forKey: "isOnboardingCompleted"))
-
-        if isOnboardingCompleted {
-            // 온보딩 완료 → 메인 화면 바로 진입
-            let mainVC = MainViewController() // TODO: 실제 MainCoordinator 연동 시 변경
-            navigationController.setViewControllers([mainVC], animated: false)
-        } else {
-            // 온보딩 미완료 → OnboardingCoordinator로 온보딩 플로우 시작
-            coordinator = OnboardingCoordinator(navigationController: navigationController)
-            coordinator?.start()
-        }
+//        let isOnboardingCompleted = UserDefaults.standard.bool(forKey: "isOnboardingCompleted")
+//        print("isOnboardingCompleted", UserDefaults.standard.bool(forKey: "isOnboardingCompleted"))
+//
+//        if isOnboardingCompleted {
+//            // 온보딩 완료 → 메인 화면 바로 진입
+//            let mainVC = MainViewController() // TODO: 실제 MainCoordinator 연동 시 변경
+//            navigationController.setViewControllers([mainVC], animated: false)
+//        } else {
+//            // 온보딩 미완료 → OnboardingCoordinator로 온보딩 플로우 시작
+//            coordinator = OnboardingCoordinator(navigationController: navigationController)
+//            coordinator?.start()
+//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
