@@ -61,10 +61,6 @@ final class DramaView: BaseView {
     
     override func configureLayout() {
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            //            make.top.equalTo(overviewLabel.snp.bottom).offset(15)
-            //            make.horizontalEdges.equalToSuperview().inset(10)
-            //            make.bottom.equalTo(safeAreaLayoutGuide)
         }
         
     }
@@ -73,7 +69,7 @@ final class DramaView: BaseView {
         collectionView.backgroundColor = .baseBlack
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(DramaHeaderCell.self, forCellWithReuseIdentifier: DramaHeaderCell.id)
-        collectionView.register(UICollectionViewListCell.self, forCellWithReuseIdentifier: DramaPlatformCell.id)
+        collectionView.register(UICollectionViewListCell.self, forCellWithReuseIdentifier: "DramaPlatformCell")
         collectionView.register(DramaEpisodeCell.self, forCellWithReuseIdentifier: DramaEpisodeCell.id)
         collectionView.register(CompositionalHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CompositionalHeaderReusableView")
         bindCollectionView()
@@ -152,14 +148,14 @@ final class DramaView: BaseView {
     private static func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, environment) -> NSCollectionLayoutSection? in
             switch sectionIndex {
-            case 0: // 헤더 섹션
+            case 0:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(400))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitems: [item])
                 
                 let section = NSCollectionLayoutSection(group: group)
                 return section
-            case 1: // 플랫폼 섹션 (세로 스크롤)
+            case 1:
                 var config = UICollectionLayoutListConfiguration(appearance: .plain)
 //                config.headerMode = .supplementary
                 let section = NSCollectionLayoutSection.list(using: config, layoutEnvironment: environment)
@@ -167,7 +163,7 @@ final class DramaView: BaseView {
                 
                 return section
                 
-            case 2: // 에피소드 섹션 (가로 스크롤)
+            case 2:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4)
@@ -178,7 +174,6 @@ final class DramaView: BaseView {
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .continuous
                 
-                // 헤더
                 let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
                 let headerItem = NSCollectionLayoutBoundarySupplementaryItem(
                     layoutSize: headerSize,

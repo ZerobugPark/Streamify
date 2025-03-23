@@ -29,7 +29,6 @@
 		AEF04C342D8FCD7F001D3274 /* DramaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04C332D8FCD7F001D3274 /* DramaView.swift */; };
 		AEF04C362D8FCD8A001D3274 /* DramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04C352D8FCD8A001D3274 /* DramaViewController.swift */; };
 		AEF04C382D8FCD95001D3274 /* DramaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04C372D8FCD95001D3274 /* DramaViewModel.swift */; };
-		AEF04CD72D8FD869001D3274 /* DramaPlatformCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04CD62D8FD869001D3274 /* DramaPlatformCell.swift */; };
 		AEF04CD92D8FD982001D3274 /* DramaEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04CD82D8FD982001D3274 /* DramaEpisodeCell.swift */; };
 		AEF04CDB2D8FE9B9001D3274 /* DramaHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04CDA2D8FE9B9001D3274 /* DramaHeaderCell.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
@@ -111,7 +110,6 @@
 		AEF04C332D8FCD7F001D3274 /* DramaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaView.swift; sourceTree = "<group>"; };
 		AEF04C352D8FCD8A001D3274 /* DramaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaViewController.swift; sourceTree = "<group>"; };
 		AEF04C372D8FCD95001D3274 /* DramaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaViewModel.swift; sourceTree = "<group>"; };
-		AEF04CD62D8FD869001D3274 /* DramaPlatformCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaPlatformCell.swift; sourceTree = "<group>"; };
 		AEF04CD82D8FD982001D3274 /* DramaEpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaEpisodeCell.swift; sourceTree = "<group>"; };
 		AEF04CDA2D8FE9B9001D3274 /* DramaHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaHeaderCell.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 			children = (
 				AEF04C332D8FCD7F001D3274 /* DramaView.swift */,
 				AEF04C352D8FCD8A001D3274 /* DramaViewController.swift */,
-				AEF04CD62D8FD869001D3274 /* DramaPlatformCell.swift */,
 				AEF04CD82D8FD982001D3274 /* DramaEpisodeCell.swift */,
 				AEF04CDA2D8FE9B9001D3274 /* DramaHeaderCell.swift */,
 			);
@@ -531,7 +528,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEF04CD72D8FD869001D3274 /* DramaPlatformCell.swift in Sources */,
 				AEF04CDB2D8FE9B9001D3274 /* DramaHeaderCell.swift in Sources */,
 				D09E0DC12D8C3763004EEC6C /* BaseCollectionViewCell.swift in Sources */,
 				D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */,
