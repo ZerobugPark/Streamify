@@ -26,7 +26,6 @@
 		3EE1E85B2D8EF1BE00681B6B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */; };
 		3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */; };
 		3EE1E8602D903B5700681B6B /* HorizontalMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */; };
-		AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04AC52D8E94C8001D3274 /* APIKey.swift */; };
 		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
 		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
 		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
@@ -67,6 +66,7 @@
 		D00928772D8FF30C00A10742 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00928762D8FF30C00A10742 /* CommentView.swift */; };
 		D00928792D8FF31C00A10742 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00928782D8FF31C00A10742 /* CommentViewController.swift */; };
 		D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009287A2D8FF32D00A10742 /* CommentViewModel.swift */; };
+		D00929192D9050D900A10742 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00929182D9050D900A10742 /* CommentTableViewCell.swift */; };
 		D037370A2D8C2AD9006CED4A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D03737092D8C2AD9006CED4A /* .gitignore */; };
 		D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737B92D8C33CD006CED4A /* AppDelegate.swift */; };
 		D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */; };
@@ -124,7 +124,6 @@
 		3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMediaCell.swift; sourceTree = "<group>"; };
-		AEF04AC52D8E94C8001D3274 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
 		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
@@ -163,6 +162,7 @@
 		D00928762D8FF30C00A10742 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		D00928782D8FF31C00A10742 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		D009287A2D8FF32D00A10742 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		D00929182D9050D900A10742 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		D03736F12D8C2AC9006CED4A /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03737092D8C2AD9006CED4A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D03737B92D8C33CD006CED4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -243,8 +243,16 @@
 				3EE1E8562D8EEFE400681B6B /* TopRatedCell.swift */,
 				3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */,
 				3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */,
-				);
+			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3EE1E85C2D8F01C700681B6B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AEF04C302D8FCD61001D3274 /* DetailDrama */ = {
@@ -265,14 +273,6 @@
 				AEF04CDA2D8FE9B9001D3274 /* DramaHeaderCell.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3EE1E85C2D8F01C700681B6B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */,
-				);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AEF04C322D8FCD72001D3274 /* ViewModel */ = {
@@ -392,6 +392,7 @@
 			children = (
 				D00928762D8FF30C00A10742 /* CommentView.swift */,
 				D00928782D8FF31C00A10742 /* CommentViewController.swift */,
+				D00929182D9050D900A10742 /* CommentTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -715,6 +716,7 @@
 				AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */,
 				AEF04DA42D9002DD001D3274 /* EpisodeViewController.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
+				D00929192D9050D900A10742 /* CommentTableViewCell.swift in Sources */,
 				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
 				D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */,
 				D00927A12D8EF41C00A10742 /* StorageCollectionViewCell.swift in Sources */,

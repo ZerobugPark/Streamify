@@ -8,5 +8,42 @@
 import UIKit
 
 final class CommentView: BaseView {
+
+    
+    let searchBar = UISearchBar()
+    
+    let tableView = UITableView()
+    
+    override func configureHierarchy() {
+        addSubviews(searchBar, tableView)
+        
+
+    }
+    
+    override func configureLayout() {
+        
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(4)
+            make.horizontalEdges.equalTo(self)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom).offset(4)
+            make.horizontalEdges.bottom.equalTo(self)
+        }
+        
+    }
+    
+    override func configureView() {
+        searchBar.backgroundColor = .blue
+        
+        tableView.backgroundColor = .setStreamifyColor(.baseBlack)
+        tableView.bounces = false
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.rowHeight = 100
+        
+    }
+    
     
 }
