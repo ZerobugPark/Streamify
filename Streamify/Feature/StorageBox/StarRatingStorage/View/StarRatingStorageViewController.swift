@@ -16,26 +16,30 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bind()
+        registerStorageList()
+        setupNavigation()
         view.backgroundColor = .baseBlack
         
-        mainView.verticalList.collectionView.register(StarRatingStorageCollectionViewCell.self, forCellWithReuseIdentifier: StarRatingStorageCollectionViewCell.id)
+   
     }
     
 
-    private func bind() {
-        let list = Array(0...100)
+    override func bindViewModel() {
         
-        let listObserver = Observable.just(list)
         
-        listObserver.bind(to: mainView.verticalList.collectionView.rx.items(cellIdentifier: StarRatingStorageCollectionViewCell.id, cellType: StarRatingStorageCollectionViewCell.self)) { item, element, cell in
+        let input = StarRatingStorageViewModel.Input(setInitialData: Observable.just(()))
+        let output = viewModel.transform(input: input)
+        
+        output.setInitialData.bind(to: mainView.verticalList.collectionView.rx.items(cellIdentifier: StarRatingStorageCollectionViewCell.id, cellType: StarRatingStorageCollectionViewCell.self)) { item, element, cell in
             
-            print(cell.contentView.frame.size)
-            
+            cell.setupUI(element)
             
         }.disposed(by: disposeBag)
         
-        mainView.verticalList.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+        
+        
+        
     }
 
 
@@ -47,7 +51,6 @@ extension StarRatingStorageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let deviceWidth = view.frame.width
         
-        print(deviceWidth)
         let spacing: CGFloat = 10
         let inset: CGFloat = 8
         
@@ -57,4 +60,20 @@ extension StarRatingStorageViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: objectWidth, height: objectWidth * 1.5)
     }
   
+}
+
+
+extension StarRatingStorageViewController {
+    
+    // MARK: - ColletionView Register
+    private func registerStorageList() {
+        mainView.verticalList.collectionView.register(StarRatingStorageCollectionViewCell.self, forCellWithReuseIdentifier: StarRatingStorageCollectionViewCell.id)
+        
+        mainView.verticalList.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+    }
+    
+    private func setupNavigation() {
+        let title = "별점"
+        navigationItem.title = title
+    }
 }
