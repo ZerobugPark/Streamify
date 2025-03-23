@@ -18,10 +18,11 @@ enum ActionButtonStatus {
     case watchingButton
     case commentButton
     case ratingButton
+    case all
 }
 
 
-class StorageViewController: BaseViewController<StorageView, StorageViewModel> {
+final class StorageViewController: BaseViewController<StorageView, StorageViewModel> {
     
     weak var coordinator: MainCoordinator?
     
@@ -34,7 +35,7 @@ class StorageViewController: BaseViewController<StorageView, StorageViewModel> {
             self?.configureCell(dataSource: dataSource, collectionView: collectionView, indexPath: indexPath, item: item) ?? UICollectionViewCell()
         },
         configureSupplementaryView: { [weak self] dataSource, collectionView, kind, indexPath in
-            
+
             self?.configureSupplementary(dataSource: dataSource, collectionView: collectionView, kind: kind, indexPath: indexPath) ?? UICollectionReusableView()
         }
     )
@@ -71,9 +72,9 @@ class StorageViewController: BaseViewController<StorageView, StorageViewModel> {
         
         
         
-        output.test.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        output.setSetcion.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         
-        output.goToStarRationg.asDriver(onErrorJustReturn: ())
+        output.goToStarRating.asDriver(onErrorJustReturn: ())
             .drive(with: self) { owner, _ in
                 
                 let viewModel = StarRatingStorageViewModel()
@@ -82,6 +83,40 @@ class StorageViewController: BaseViewController<StorageView, StorageViewModel> {
                 
                 //owner.coordinator?.starRatingScreen()
             }.disposed(by: disposeBag)
+        
+        output.goToComment.asDriver(onErrorJustReturn: ())
+            .drive(with: self) { owner, _ in
+                
+                let viewModel = CommentViewModel()
+                let starRatingVC = CommentViewController(viewModel: viewModel)
+                owner.navigationController?.pushViewController(starRatingVC, animated: true)
+                
+                //owner.coordinator?.starRatingScreeCommentViewModeln()
+            }.disposed(by: disposeBag)
+        
+        
+        output.buttonTogle.asDriver(onErrorJustReturn: .all).drive(with: self) { owner, status in
+            
+            [owner.mainView.wantToWatchButton, owner.mainView.watchedButton, owner.mainView.watchingButton].forEach {
+                $0.isSelected = false
+            }
+
+            switch status {
+            case .wantToWatchButton:
+                owner.mainView.wantToWatchButton.isSelected.toggle()
+            case .watchedButton:
+                owner.mainView.watchedButton.isSelected.toggle()
+            case .watchingButton:
+                owner.mainView.watchingButton.isSelected.toggle()
+            case .commentButton:
+                fallthrough
+            case .ratingButton:
+                fallthrough
+            case .all:
+                return
+            }
+            
+        }.disposed(by: disposeBag)
     }
     
     
@@ -98,6 +133,8 @@ extension StorageViewController {
         mainView.storageList.collectionView.register(StorageCollectionViewCell.self, forCellWithReuseIdentifier: StorageCollectionViewCell.id)
         
         mainView.storageList.collectionView.register(CompositionalHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CompositionalHeaderReusableView.reuseId)
+        
+        mainView.storageList.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "basicHeader")
     }
     
     // MARK: - RxDataSource Function Definition
@@ -122,16 +159,36 @@ extension StorageViewController {
     
     private func configureSupplementary(dataSource: colltionViewDataSource, collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {
         
+        
+        let sectionModel = dataSource.sectionModels[indexPath.section]
+        
+        print(sectionModel.items.isEmpty)
+          
+          // 해당 섹션이 비어있으면 헤더 안 보이게 처리
+        
+        if sectionModel.items.isEmpty {
+            // 섹션이 비어있을 경우, 기본 헤더를 반환
+            let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "basicHeader",
+                for: indexPath)
+            return headerView
+        }
+        
+   
+        
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CompositionalHeaderReusableView.reuseId, for: indexPath) as? CompositionalHeaderReusableView else {
             return UICollectionReusableView()
         }
+        
+        
         switch indexPath.section {
         case 0:
-            headerView.titleLabel.text = "내가 찜한 리스트"
+            headerView.titleLabel.text = dataSource.sectionModels[indexPath.section].header
         case 1:
-            headerView.titleLabel.text = "내가 본 콘텐츠"
+            headerView.titleLabel.text = dataSource.sectionModels[indexPath.section].header
         case 2:
-            headerView.titleLabel.text = "시청 중인 콘텐츠"
+            headerView.titleLabel.text = dataSource.sectionModels[indexPath.section].header
         default:
             break
         }

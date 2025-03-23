@@ -12,15 +12,15 @@ import RxDataSources
 import RxSwift
 
 enum SectionItem { //셀의 종류
-    case firstSection([Int])
-    case secondSection([Int])
-    case thirdSection([Int])
+    case firstSection(Int)
+    case secondSection(Int)
+    case thirdSection(Int)
 }
 
 enum CollectionViewSectionModel { //섹션 정의
-    case first([SectionItem])
-    case second([SectionItem])
-    case third([SectionItem])
+    case first(header: String ,[SectionItem])
+    case second(header: String,[SectionItem])
+    case third(header: String, [SectionItem])
     
 }
 
@@ -30,16 +30,27 @@ extension CollectionViewSectionModel: SectionModelType {
     
     var items: [SectionItem] {
         switch self {
-        case .first(let items):
+        case .first(_, let items):
             return items
-        case .second(let items):
+        case .second(_, let items):
             return items
-        case .third(let items):
+        case .third(_, let items):
             return items
         }
     }
     
     
+    var header: String {
+        switch self {
+        case .first(let header, _):
+            return header
+        case .second(let header, _):
+            return header
+        case .third(let header, _):
+            return header
+        }
+    }
+
     init(original: CollectionViewSectionModel, items: [Self.Item]) {
         self = original
         
@@ -55,58 +66,83 @@ final class StorageViewModel: BaseViewModel {
     }
     
     struct Output {
-        let test: Observable<[CollectionViewSectionModel]>
-        let goToStarRationg: PublishRelay<Void>
+        let setSetcion: BehaviorRelay<[CollectionViewSectionModel]>
+        let buttonTogle: PublishRelay<ActionButtonStatus>
+        let goToStarRating: PublishRelay<Void>
+        let goToComment: PublishRelay<Void>
     }
     
     
+    
+    
+    let firstValue: [SectionItem] = [
+        .firstSection(1),
+        .firstSection(2),
+        .firstSection(3)
+    ]
 
-    
-    let firstValue = Array(1...100)
-    let secondValue = Array(1...100)
-    let thirdValue = Array(1...100)
-    
+    let secondValue: [SectionItem] = [
+        .secondSection(4),
+        .secondSection(5)
+    ]
 
+    let thirdValue: [SectionItem] = [
+        .thirdSection(6),
+        .thirdSection(7),
+        .thirdSection(8),
+        .thirdSection(9)
+    ]
     
+    private let emptySection: [SectionItem] = []
+
+    private var previousStatus: ActionButtonStatus = .all
     
     func transform(input: Input) -> Output {
         
-        lazy var sectiomModel: Observable<[CollectionViewSectionModel]> = Observable.just([
-            .first(firstValue.map { .firstSection([$0]) }),
-            .second(secondValue.map { .secondSection([$0]) }),
-            .third(thirdValue.map { .thirdSection([$0]) }),
-        ])
+        let title = ["내가 찜한 리스트", "내가 본 콘텐츠", "시청 중인 콘텐츠", ""]
         
-        let goToStarRationg = PublishRelay<Void>()
+        let sectiomModel = BehaviorRelay<[CollectionViewSectionModel]>(value: [.first(header: title[0], firstValue), .second(header: title[1], secondValue), .third(header: title[2], thirdValue)])
         
-        enum actionButton: Int {
-            case wantToWatchButton = 0
-            case watchedButton
-            case watchingButton
-            case commentButton
-            case ratingButton
-        }
-        
+        let buttonToggle = PublishRelay<ActionButtonStatus>()
+        let goToStarRating = PublishRelay<Void>()
+        let goToComment = PublishRelay<Void>()
+                
         input.actionButtonTapped.bind(with: self) { owner, tag in
+            
+            if owner.previousStatus == tag {
+                
+                sectiomModel.accept([.first(header: title[0], owner.firstValue), .second(header: title[1], owner.secondValue), .third(header: title[2], owner.thirdValue)])
+                buttonToggle.accept(.all)
+                
+                owner.previousStatus = .all
+                return
+            }
             
             switch tag {
             case .wantToWatchButton:
-                print("1")
+                sectiomModel.accept([.first(header: title[0], owner.firstValue), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
+                buttonToggle.accept(.wantToWatchButton)
             case .watchedButton:
-                print("2")
+                sectiomModel.accept([.first(header: title[1], owner.secondValue), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
+                buttonToggle.accept(.watchedButton)
             case .watchingButton:
-                print("3")
+                sectiomModel.accept([.first(header: title[2], owner.thirdValue), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
+                buttonToggle.accept(.watchingButton)
             case .commentButton:
-                print("4")
+                goToComment.accept(())
+                return
             case .ratingButton:
-                goToStarRationg.accept(())
-                
+                goToStarRating.accept(())
+                return
+            case .all:
+                break
             }
             
+            owner.previousStatus = tag
             
         }.disposed(by: disposeBag)
         
-        return Output(test: sectiomModel, goToStarRationg: goToStarRationg)
+        return Output(setSetcion: sectiomModel, buttonTogle: buttonToggle, goToStarRating: goToStarRating, goToComment: goToComment)
     }
     
     
