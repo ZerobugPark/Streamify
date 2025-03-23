@@ -31,6 +31,18 @@
 		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
 		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
 		AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */; };
+		AEF04C2F2D8F0E63001D3274 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04C2E2D8F0E63001D3274 /* APIKey.swift */; };
+		AEF04C342D8FCD7F001D3274 /* DramaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04C332D8FCD7F001D3274 /* DramaView.swift */; };
+		AEF04C362D8FCD8A001D3274 /* DramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04C352D8FCD8A001D3274 /* DramaViewController.swift */; };
+		AEF04C382D8FCD95001D3274 /* DramaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04C372D8FCD95001D3274 /* DramaViewModel.swift */; };
+		AEF04CD92D8FD982001D3274 /* DramaEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04CD82D8FD982001D3274 /* DramaEpisodeCell.swift */; };
+		AEF04CDB2D8FE9B9001D3274 /* DramaHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04CDA2D8FE9B9001D3274 /* DramaHeaderCell.swift */; };
+		AEF04DA42D9002DD001D3274 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA32D9002DD001D3274 /* EpisodeViewController.swift */; };
+		AEF04DA62D9002E8001D3274 /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA52D9002E8001D3274 /* EpisodeView.swift */; };
+		AEF04DA82D9002FC001D3274 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA72D9002FC001D3274 /* EpisodeViewModel.swift */; };
+		AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */; };
+		AEF04DAC2D901329001D3274 /* EpisodeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */; };
+		AEF04DAE2D901334001D3274 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAD2D901334001D3274 /* EpisodeCell.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -117,6 +129,18 @@
 		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
 		AEF04B832D8EF0E0001D3274 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		AEF04C2E2D8F0E63001D3274 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		AEF04C332D8FCD7F001D3274 /* DramaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaView.swift; sourceTree = "<group>"; };
+		AEF04C352D8FCD8A001D3274 /* DramaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaViewController.swift; sourceTree = "<group>"; };
+		AEF04C372D8FCD95001D3274 /* DramaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaViewModel.swift; sourceTree = "<group>"; };
+		AEF04CD82D8FD982001D3274 /* DramaEpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaEpisodeCell.swift; sourceTree = "<group>"; };
+		AEF04CDA2D8FE9B9001D3274 /* DramaHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaHeaderCell.swift; sourceTree = "<group>"; };
+		AEF04DA32D9002DD001D3274 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
+		AEF04DA52D9002E8001D3274 /* EpisodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
+		AEF04DA72D9002FC001D3274 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
+		AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeHeaderCell.swift; sourceTree = "<group>"; };
+		AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeButtonCell.swift; sourceTree = "<group>"; };
+		AEF04DAD2D901334001D3274 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -219,6 +243,26 @@
 				3EE1E8562D8EEFE400681B6B /* TopRatedCell.swift */,
 				3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */,
 				3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */,
+				);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AEF04C302D8FCD61001D3274 /* DetailDrama */ = {
+			isa = PBXGroup;
+			children = (
+				AEF04C322D8FCD72001D3274 /* ViewModel */,
+				AEF04C312D8FCD6A001D3274 /* View */,
+			);
+			path = DetailDrama;
+			sourceTree = "<group>";
+		};
+		AEF04C312D8FCD6A001D3274 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AEF04C332D8FCD7F001D3274 /* DramaView.swift */,
+				AEF04C352D8FCD8A001D3274 /* DramaViewController.swift */,
+				AEF04CD82D8FD982001D3274 /* DramaEpisodeCell.swift */,
+				AEF04CDA2D8FE9B9001D3274 /* DramaHeaderCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +271,43 @@
 			isa = PBXGroup;
 			children = (
 				3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */,
+				);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AEF04C322D8FCD72001D3274 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AEF04C372D8FCD95001D3274 /* DramaViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AEF04DA02D9002B2001D3274 /* DetailEpisode */ = {
+			isa = PBXGroup;
+			children = (
+				AEF04DA22D9002C9001D3274 /* ViewModel */,
+				AEF04DA12D9002C5001D3274 /* View */,
+			);
+			path = DetailEpisode;
+			sourceTree = "<group>";
+		};
+		AEF04DA12D9002C5001D3274 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AEF04DA32D9002DD001D3274 /* EpisodeViewController.swift */,
+				AEF04DA52D9002E8001D3274 /* EpisodeView.swift */,
+				AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */,
+				AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */,
+				AEF04DAD2D901334001D3274 /* EpisodeCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AEF04DA22D9002C9001D3274 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AEF04DA72D9002FC001D3274 /* EpisodeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -328,7 +409,7 @@
 		D03736E82D8C2AC9006CED4A = {
 			isa = PBXGroup;
 			children = (
-				AEF04AC52D8E94C8001D3274 /* APIKey.swift */,
+				AEF04C2E2D8F0E63001D3274 /* APIKey.swift */,
 				D03737092D8C2AD9006CED4A /* .gitignore */,
 				D03737C02D8C33CD006CED4A /* Streamify */,
 				D03736F22D8C2AC9006CED4A /* Products */,
@@ -381,6 +462,8 @@
 		D03737C92D8C33F1006CED4A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				AEF04DA02D9002B2001D3274 /* DetailEpisode */,
+				AEF04C302D8FCD61001D3274 /* DetailDrama */,
 				3EE1E8412D8E9DF200681B6B /* Onboarding */,
 				3EE1E8542D8EEFAA00681B6B /* Main */,
 				D00926F42D8E98DA00A10742 /* StorageBox */,
@@ -567,9 +650,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEF04CDB2D8FE9B9001D3274 /* DramaHeaderCell.swift in Sources */,
 				D09E0DC12D8C3763004EEC6C /* BaseCollectionViewCell.swift in Sources */,
-				AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */,
 				D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */,
+				AEF04DA82D9002FC001D3274 /* EpisodeViewModel.swift in Sources */,
 				D009270B2D8EEBCD00A10742 /* StorageView.swift in Sources */,
 				D00926F72D8E998A00A10742 /* VerticalListView.swift in Sources */,
 				D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */,
@@ -579,6 +663,7 @@
 				3EE1E8242D8E80DE00681B6B /* TMDBEndpoint.swift in Sources */,
 				D00928792D8FF31C00A10742 /* CommentViewController.swift in Sources */,
 				D009279F2D8EF2F800A10742 /* CompositionalHeaderReusableView.swift in Sources */,
+				AEF04DA62D9002E8001D3274 /* EpisodeView.swift in Sources */,
 				3EE1E8322D8E8ECE00681B6B /* Coordinator.swift in Sources */,
 				3EE1E8522D8EEB7B00681B6B /* MainCoordinator.swift in Sources */,
 				3EE1E8472D8E9E6100681B6B /* GenreCell.swift in Sources */,
@@ -593,6 +678,9 @@
 				AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */,
 				D03737C32D8C33CD006CED4A /* ViewController.swift in Sources */,
 				D00926F92D8E99CE00A10742 /* StarRatingStorageViewController.swift in Sources */,
+				AEF04DAE2D901334001D3274 /* EpisodeCell.swift in Sources */,
+				AEF04DAC2D901329001D3274 /* EpisodeButtonCell.swift in Sources */,
+				AEF04C382D8FCD95001D3274 /* DramaViewModel.swift in Sources */,
 				3EE1E82C2D8E83CA00681B6B /* TMDBRequest.swift in Sources */,
 				D09E0EF42D8C44D5004EEC6C /* ViewControllerType.swift in Sources */,
 				3EE1E84B2D8E9E8100681B6B /* GenreSelectionViewModel.swift in Sources */,
@@ -600,22 +688,28 @@
 				3EE1E85B2D8EF1BE00681B6B /* MainViewController.swift in Sources */,
 				D00926FD2D8E9A0400A10742 /* StarRatingStorageViewModel.swift in Sources */,
 				D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */,
+				AEF04C342D8FCD7F001D3274 /* DramaView.swift in Sources */,
+				AEF04C362D8FCD8A001D3274 /* DramaViewController.swift in Sources */,
 				3EE1E84F2D8E9F4600681B6B /* NameInputViewModel.swift in Sources */,
 				3EE1E8602D903B5700681B6B /* HorizontalMediaCell.swift in Sources */,
 				D00927AA2D8F072600A10742 /* UIView+Extension.swift in Sources */,
 				3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */,
 				D09E0EF62D8C4561004EEC6C /* BaseViewModel.swift in Sources */,
 				D00928772D8FF30C00A10742 /* CommentView.swift in Sources */,
+				AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */,
+				AEF04DA42D9002DD001D3274 /* EpisodeViewController.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
 				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
 				D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */,
 				D00927A12D8EF41C00A10742 /* StorageCollectionViewCell.swift in Sources */,
 				D00927072D8EE72C00A10742 /* StorageViewController.swift in Sources */,
 				AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */,
+				AEF04C2F2D8F0E63001D3274 /* APIKey.swift in Sources */,
 				D00926FF2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift in Sources */,
 				3EE1E8222D8E7FF400681B6B /* TMDBResponse.swift in Sources */,
 				AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */,
 				3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */,
+				AEF04CD92D8FD982001D3274 /* DramaEpisodeCell.swift in Sources */,
 				D09E0E552D8C3805004EEC6C /* BaseTableViewCell.swift in Sources */,
 				D00927052D8EE65000A10742 /* BaseLabel.swift in Sources */,
 				D09E0EF22D8C445F004EEC6C /* BaseViewController.swift in Sources */,
@@ -648,6 +742,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HFR7W36699;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Streamify/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -679,6 +774,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HFR7W36699;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Streamify/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
