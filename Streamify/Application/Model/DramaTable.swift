@@ -11,7 +11,6 @@ import RealmSwift
 
 enum DramaType: String, PersistableEnum {
     case none = "안봤어요"
-    case wantToWatch = "보고싶어요"
     case watching = "보는중"
     case watched = "봤어요"
 }
@@ -38,7 +37,21 @@ final class DramaTable: Object {
     @Persisted var genre: String
     @Persisted var imagePath: String
     @Persisted var comment: String
+    @Persisted var wantToWatch: Bool
     @Persisted var episodes: List<Episodes>
+    
+    convenience init(titleID: Int, title: String, vote_average: Double, genre: String, imagePath: String, comment: String, wantToWatch: Bool, episodes: List<Episodes>) {
+        self.init()
+        self.titleID = titleID
+        self.title = title
+        self.vote_average = vote_average
+        self.genre = genre
+        self.imagePath = imagePath
+        self.comment = comment
+        self.wantToWatch = wantToWatch
+        self.episodes = episodes
+    }
+    
 }
 
 class Episodes: Object {
