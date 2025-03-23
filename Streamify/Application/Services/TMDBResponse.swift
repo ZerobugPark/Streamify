@@ -23,7 +23,7 @@ struct TMDBResponse: Codable {
 struct MediaItem: Codable {
     let id: Int
     let name: String
-    let posterPath: String
+    let posterPath: String?
     let backdropPath: String?
     let genreIDS: [Int]
 
@@ -35,9 +35,9 @@ struct MediaItem: Codable {
     }
 }
 
-typealias SearchResult = MediaItem
+typealias TopRatedResult = MediaItem
+typealias TrendingResult = MediaItem
 typealias SimilarResult = MediaItem
 typealias PopularResult = MediaItem
-typealias RecommendResult = MediaItem
-typealias TrendingResult = MediaItem
-typealias TopRatedResult = MediaItem
+typealias SearchResult = MediaItem
+//typealias RecommendResult = MediaItem

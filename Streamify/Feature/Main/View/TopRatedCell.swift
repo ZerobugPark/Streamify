@@ -34,13 +34,14 @@ class TopRatedCell: UICollectionViewCell {
         }
     }
 
-    func configure(with posterPath: String) {
+    func configure(with posterPath: String?) {
+        guard let posterURL = posterPath else { return }
         // 기본 플레이스홀더
         posterImageView.image = UIImage(systemName: "photo")
 
         // TMDB 기본 이미지 URL 구성
         let baseURL = "https://image.tmdb.org/t/p/w780"
-        let urlString = baseURL + posterPath
+        let urlString = baseURL + posterURL
 
         guard let url = URL(string: urlString) else { return }
 

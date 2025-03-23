@@ -25,6 +25,7 @@
 		3EE1E8572D8EEFE400681B6B /* TopRatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8562D8EEFE400681B6B /* TopRatedCell.swift */; };
 		3EE1E85B2D8EF1BE00681B6B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */; };
 		3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */; };
+		3EE1E8602D903B5700681B6B /* HorizontalMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */; };
 		AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04AC52D8E94C8001D3274 /* APIKey.swift */; };
 		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
 		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
@@ -122,6 +123,7 @@
 		3EE1E8562D8EEFE400681B6B /* TopRatedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedCell.swift; sourceTree = "<group>"; };
 		3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMediaCell.swift; sourceTree = "<group>"; };
 		AEF04AC52D8E94C8001D3274 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
 		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			children = (
 				3EE1E8562D8EEFE400681B6B /* TopRatedCell.swift */,
 				3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */,
+				3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */,
 				);
 			path = View;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				AEF04C342D8FCD7F001D3274 /* DramaView.swift in Sources */,
 				AEF04C362D8FCD8A001D3274 /* DramaViewController.swift in Sources */,
 				3EE1E84F2D8E9F4600681B6B /* NameInputViewModel.swift in Sources */,
+				3EE1E8602D903B5700681B6B /* HorizontalMediaCell.swift in Sources */,
 				D00927AA2D8F072600A10742 /* UIView+Extension.swift in Sources */,
 				3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */,
 				D09E0EF62D8C4561004EEC6C /* BaseViewModel.swift in Sources */,
