@@ -34,6 +34,9 @@
 		AEF04DA42D9002DD001D3274 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA32D9002DD001D3274 /* EpisodeViewController.swift */; };
 		AEF04DA62D9002E8001D3274 /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA52D9002E8001D3274 /* EpisodeView.swift */; };
 		AEF04DA82D9002FC001D3274 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA72D9002FC001D3274 /* EpisodeViewModel.swift */; };
+		AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */; };
+		AEF04DAC2D901329001D3274 /* EpisodeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */; };
+		AEF04DAE2D901334001D3274 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAD2D901334001D3274 /* EpisodeCell.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -118,6 +121,9 @@
 		AEF04DA32D9002DD001D3274 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
 		AEF04DA52D9002E8001D3274 /* EpisodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
 		AEF04DA72D9002FC001D3274 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
+		AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeHeaderCell.swift; sourceTree = "<group>"; };
+		AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeButtonCell.swift; sourceTree = "<group>"; };
+		AEF04DAD2D901334001D3274 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -242,6 +248,9 @@
 			children = (
 				AEF04DA32D9002DD001D3274 /* EpisodeViewController.swift */,
 				AEF04DA52D9002E8001D3274 /* EpisodeView.swift */,
+				AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */,
+				AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */,
+				AEF04DAD2D901334001D3274 /* EpisodeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -584,6 +593,8 @@
 				AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */,
 				D03737C32D8C33CD006CED4A /* ViewController.swift in Sources */,
 				D00926F92D8E99CE00A10742 /* StarRatingStorageViewController.swift in Sources */,
+				AEF04DAE2D901334001D3274 /* EpisodeCell.swift in Sources */,
+				AEF04DAC2D901329001D3274 /* EpisodeButtonCell.swift in Sources */,
 				AEF04C382D8FCD95001D3274 /* DramaViewModel.swift in Sources */,
 				3EE1E82C2D8E83CA00681B6B /* TMDBRequest.swift in Sources */,
 				D09E0EF42D8C44D5004EEC6C /* ViewControllerType.swift in Sources */,
@@ -597,6 +608,7 @@
 				D00927AA2D8F072600A10742 /* UIView+Extension.swift in Sources */,
 				3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */,
 				D09E0EF62D8C4561004EEC6C /* BaseViewModel.swift in Sources */,
+				AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */,
 				AEF04DA42D9002DD001D3274 /* EpisodeViewController.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
 				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
