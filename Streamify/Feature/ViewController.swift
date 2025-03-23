@@ -50,7 +50,7 @@ class ViewController: UIViewController {
             let viewModel = StorageViewModel()//StarRatingStorageViewModel()
             let vc = StorageViewController(viewModel: viewModel)//StarRatingStorageViewController(viewModel: viewModel)
             
-            self?.present(vc,animated: true)
+            self?.navigationController?.pushViewController(vc,animated: true)
             
         }, for: .touchUpInside)
     }

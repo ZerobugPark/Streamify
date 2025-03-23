@@ -12,55 +12,89 @@ import RxSwift
 import RxDataSources
 import SnapKit
 
+enum ActionButtonStatus {
+    case wantToWatchButton
+    case watchedButton
+    case watchingButton
+    case commentButton
+    case ratingButton
+}
+
 
 class StorageViewController: BaseViewController<StorageView, StorageViewModel> {
     
+    weak var coordinator: MainCoordinator?
     
     typealias listDataSource = RxCollectionViewSectionedReloadDataSource<CollectionViewSectionModel>
     typealias colltionViewDataSource = CollectionViewSectionedDataSource<CollectionViewSectionModel>
     
     lazy var dataSource = listDataSource (
         configureCell: { [weak self] dataSource, collectionView, indexPath, item in
-           
+            
             self?.configureCell(dataSource: dataSource, collectionView: collectionView, indexPath: indexPath, item: item) ?? UICollectionViewCell()
         },
         configureSupplementaryView: { [weak self] dataSource, collectionView, kind, indexPath in
-           
+            
             self?.configureSupplementary(dataSource: dataSource, collectionView: collectionView, kind: kind, indexPath: indexPath) ?? UICollectionReusableView()
         }
     )
-                                                                                                 
-                                                                                                     
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         registerStorageList()
         
         view.backgroundColor = .setStreamifyColor(.baseBlack)
-
+        
         bind()
         
     }
     
     private func bind() {
         
-    
-        let input = StorageViewModel.Input(setInitialData: Observable.just(()))
+        
+        let actionButtonTapped = Observable.merge(
+            mainView.wantToWatchButton.rx.tap.map { ActionButtonStatus.wantToWatchButton },
+            mainView.watchedButton.rx.tap.map { ActionButtonStatus.watchedButton },
+            mainView.watchingButton.rx.tap.map { ActionButtonStatus.watchingButton },
+            mainView.commentButton.rx.tap.map { ActionButtonStatus.commentButton },
+            mainView.ratingButton.rx.tap.map { ActionButtonStatus.ratingButton }
+        )
+        
+        
+        let input = StorageViewModel.Input(setInitialData: Observable.just(()),
+                                           actionButtonTapped: actionButtonTapped)
+        
+        
         let output = viewModel.transform(input: input)
         
         
+        
         output.test.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        
+        output.goToStarRationg.asDriver(onErrorJustReturn: ())
+            .drive(with: self) { owner, _ in
+                
+                let viewModel = StarRatingStorageViewModel()
+                let starRatingVC = StarRatingStorageViewController(viewModel: viewModel)
+                owner.navigationController?.pushViewController(starRatingVC, animated: true)
+                
+                //owner.coordinator?.starRatingScreen()
+            }.disposed(by: disposeBag)
     }
-
+    
+    
+    
 }
-    
-    
+
+
 
 extension StorageViewController {
     
     // MARK: - ColletionView Register
     private func registerStorageList() {
-       
+        
         mainView.storageList.collectionView.register(StorageCollectionViewCell.self, forCellWithReuseIdentifier: StorageCollectionViewCell.id)
         
         mainView.storageList.collectionView.register(CompositionalHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CompositionalHeaderReusableView.reuseId)
@@ -68,7 +102,7 @@ extension StorageViewController {
     
     // MARK: - RxDataSource Function Definition
     private func configureCell(dataSource:   colltionViewDataSource, collectionView: UICollectionView, indexPath: IndexPath, item: SectionItem) -> UICollectionViewCell {
-       
+        
         switch dataSource[indexPath] {
         case .firstSection, .secondSection, .thirdSection:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StorageCollectionViewCell.id, for: indexPath) as? StorageCollectionViewCell else { return UICollectionViewCell() }

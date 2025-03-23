@@ -245,6 +245,7 @@
 		D00926F42D8E98DA00A10742 /* StorageBox */ = {
 			isa = PBXGroup;
 			children = (
+				D00928732D8FF2CC00A10742 /* Comment */,
 				D00927012D8EE49100A10742 /* Storage */,
 				D00926F52D8E98F600A10742 /* StarRatingStorage */,
 			);
@@ -287,6 +288,13 @@
 				D009283B2D8FB20F00A10742 /* StorageViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D00928732D8FF2CC00A10742 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 		D03736E82D8C2AC9006CED4A = {

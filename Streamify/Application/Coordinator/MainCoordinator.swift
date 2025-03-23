@@ -23,4 +23,17 @@ class MainCoordinator: Coordinator {
         // TODO: 나중에 ViewModel 주입, 탭바 연동 등이 들``어갈 수 있음
         navigationController.setViewControllers([homeVC], animated: true)
     }
+    
+    func showStorageScreen() {
+        let viewModel = StorageViewModel()
+        let storageVC = StorageViewController(viewModel: viewModel)
+        storageVC.coordinator = self
+        navigationController.pushViewController(storageVC, animated: true)
+    }
+    
+    func starRatingScreen() {
+        let viewModel = StarRatingStorageViewModel()
+        let starRatingVC = StarRatingStorageViewController(viewModel: viewModel)
+        navigationController.pushViewController(starRatingVC, animated: true)
+    }
 }

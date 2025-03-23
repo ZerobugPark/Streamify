@@ -51,12 +51,16 @@ final class StorageViewModel: BaseViewModel {
     
     struct Input {
         let setInitialData: Observable<()>
+        let actionButtonTapped: Observable<ActionButtonStatus>
     }
     
     struct Output {
         let test: Observable<[CollectionViewSectionModel]>
+        let goToStarRationg: PublishRelay<Void>
     }
     
+    
+
     
     let firstValue = Array(1...100)
     let secondValue = Array(1...100)
@@ -73,7 +77,36 @@ final class StorageViewModel: BaseViewModel {
             .third(thirdValue.map { .thirdSection([$0]) }),
         ])
         
-        return Output(test: sectiomModel)
+        let goToStarRationg = PublishRelay<Void>()
+        
+        enum actionButton: Int {
+            case wantToWatchButton = 0
+            case watchedButton
+            case watchingButton
+            case commentButton
+            case ratingButton
+        }
+        
+        input.actionButtonTapped.bind(with: self) { owner, tag in
+            
+            switch tag {
+            case .wantToWatchButton:
+                print("1")
+            case .watchedButton:
+                print("2")
+            case .watchingButton:
+                print("3")
+            case .commentButton:
+                print("4")
+            case .ratingButton:
+                goToStarRationg.accept(())
+                
+            }
+            
+            
+        }.disposed(by: disposeBag)
+        
+        return Output(test: sectiomModel, goToStarRationg: goToStarRationg)
     }
     
     

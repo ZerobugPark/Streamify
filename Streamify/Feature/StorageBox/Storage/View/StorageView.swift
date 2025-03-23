@@ -20,6 +20,7 @@ final class StorageView: BaseView {
     
     let storageList = CompositionalListView()
     
+    
     private let stackView = UIStackView()
     
     override func configureHierarchy() {
