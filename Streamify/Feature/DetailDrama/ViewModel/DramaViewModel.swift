@@ -16,13 +16,15 @@ final class DramaViewModel: BaseViewModel {
     }
     
     struct Output {
-        
+        let sectionModel: Driver<[DramaSectionModel]>
     }
     
     func transform(input: BaseViewModel.Input) -> Output {
+        let sectionModel = BehaviorRelay<[DramaSectionModel]>(value: [])
         
         
-        return Output()
+        
+        return Output(sectionModel: sectionModel.asDriver())
     }
     
 }

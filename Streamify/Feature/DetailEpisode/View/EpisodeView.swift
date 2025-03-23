@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EpisodeView: UIView {
+class EpisodeView: BaseView {
 
     /*
     // Only override draw() if you perform custom drawing.

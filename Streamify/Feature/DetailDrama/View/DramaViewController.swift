@@ -12,7 +12,9 @@ import RxDataSources
 
 class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
     
-    let dataSource = RxCollectionViewSectionedReloadDataSource<DramaSectionModel>(configureCell: { dataSource, collectionView, indexPath, item in
+    typealias collectionViewDataSource = RxCollectionViewSectionedReloadDataSource<DramaSectionModel>
+    
+    let dataSource = collectionViewDataSource(configureCell: { dataSource, collectionView, indexPath, item in
         switch item {
         case .header(let header):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DramaHeaderCell.id, for: indexPath) as! DramaHeaderCell
@@ -43,7 +45,7 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
     }
     )
     
-    let sections = BehaviorRelay<[DramaSectionModel]>(value: [])
+    let sectionModel = BehaviorRelay<[DramaSectionModel]>(value: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +53,28 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
     }
     
     override func bindViewModel() {
-        sections
+//        let input = DramaViewModel.Input()
+//        let output = viewModel.transform(input: input)
+        
+        
+        
+        sectionModel
             .bind(to: mainView.collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        
+        mainView.collectionView.rx.modelSelected(DramaItem.self)
+            .bind(with: self) { owner, value in
+                switch value {
+                case .episode(let episode):
+                    let vm = EpisodeViewModel()
+                    let vc = EpisodeViewController(viewModel: vm)
+                    owner.navigationController?.pushViewController(vc, animated: true)
+                default: break
+                }
+            }
+            .disposed(by: disposeBag)
+        
     }
     
     private func mockData() {
@@ -77,7 +98,7 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
             DramaEpisode(image: nil, title: "시즌 3", episodeCount: 12)
         ]
         
-        sections.accept([
+        sectionModel.accept([
             DramaSectionModel(model: "", items: [.header(header)]),
             DramaSectionModel(model: "", items: platforms.map { .platform($0) }),
             DramaSectionModel(model: "작품 정보", items: episodes.map { .episode($0) })

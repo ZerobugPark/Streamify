@@ -21,7 +21,7 @@ class DramaHeaderCell: BaseCollectionViewCell {
     override func configureLayout() {
         backdropImage.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalToSuperview().multipliedBy(0.55)
+            make.height.equalToSuperview().multipliedBy(0.5)
         }
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(backdropImage.snp.bottom).offset(20)
