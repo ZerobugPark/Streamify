@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if isOnboardingCompleted {
             // 온보딩 완료 → 메인 화면 바로 진입
+//            let mainVC = ViewController() // MARK: 작업하시는 테스트 화면 첫 화면으로 두고 사용!
             let mainVC = MainViewController() // TODO: 실제 MainCoordinator 연동 시 변경
             navigationController.setViewControllers([mainVC], animated: false)
         } else {
