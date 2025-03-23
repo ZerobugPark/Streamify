@@ -50,6 +50,11 @@
 		D00927A62D8EF52300A10742 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = D00927A52D8EF52300A10742 /* Differentiator */; };
 		D00927A82D8EF52300A10742 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = D00927A72D8EF52300A10742 /* RxDataSources */; };
 		D00927AA2D8F072600A10742 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00927A92D8F072600A10742 /* UIView+Extension.swift */; };
+		D009283A2D8FB1BF00A10742 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00928392D8FB1BF00A10742 /* UIStackView + Extension.swift */; };
+		D009283C2D8FB20F00A10742 /* StorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009283B2D8FB20F00A10742 /* StorageViewModel.swift */; };
+		D00928772D8FF30C00A10742 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00928762D8FF30C00A10742 /* CommentView.swift */; };
+		D00928792D8FF31C00A10742 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00928782D8FF31C00A10742 /* CommentViewController.swift */; };
+		D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009287A2D8FF32D00A10742 /* CommentViewModel.swift */; };
 		D037370A2D8C2AD9006CED4A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D03737092D8C2AD9006CED4A /* .gitignore */; };
 		D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737B92D8C33CD006CED4A /* AppDelegate.swift */; };
 		D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */; };
@@ -129,6 +134,11 @@
 		D00927A02D8EF41C00A10742 /* StorageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D00927A22D8EF47F00A10742 /* BaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseImageView.swift; sourceTree = "<group>"; };
 		D00927A92D8F072600A10742 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		D00928392D8FB1BF00A10742 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
+		D009283B2D8FB20F00A10742 /* StorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewModel.swift; sourceTree = "<group>"; };
+		D00928762D8FF30C00A10742 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		D00928782D8FF31C00A10742 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		D009287A2D8FF32D00A10742 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		D03736F12D8C2AC9006CED4A /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03737092D8C2AD9006CED4A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D03737B92D8C33CD006CED4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +254,7 @@
 		D00926F42D8E98DA00A10742 /* StorageBox */ = {
 			isa = PBXGroup;
 			children = (
+				D00928732D8FF2CC00A10742 /* Comment */,
 				D00927012D8EE49100A10742 /* Storage */,
 				D00926F52D8E98F600A10742 /* StarRatingStorage */,
 			);
@@ -283,6 +294,33 @@
 		D00927032D8EE49E00A10742 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D009283B2D8FB20F00A10742 /* StorageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D00928732D8FF2CC00A10742 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				D00928752D8FF2F900A10742 /* ViewModel */,
+				D00928742D8FF2F300A10742 /* View */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		D00928742D8FF2F300A10742 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D00928762D8FF30C00A10742 /* CommentView.swift */,
+				D00928782D8FF31C00A10742 /* CommentViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D00928752D8FF2F900A10742 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D009287A2D8FF32D00A10742 /* CommentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -410,6 +448,7 @@
 			children = (
 				3EE1E82F2D8E852000681B6B /* Reusable.swift */,
 				D00927A92D8F072600A10742 /* UIView+Extension.swift */,
+				D00928392D8FB1BF00A10742 /* UIStackView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -538,12 +577,15 @@
 				D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */,
 				D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */,
 				3EE1E8242D8E80DE00681B6B /* TMDBEndpoint.swift in Sources */,
+				D00928792D8FF31C00A10742 /* CommentViewController.swift in Sources */,
 				D009279F2D8EF2F800A10742 /* CompositionalHeaderReusableView.swift in Sources */,
 				3EE1E8322D8E8ECE00681B6B /* Coordinator.swift in Sources */,
 				3EE1E8522D8EEB7B00681B6B /* MainCoordinator.swift in Sources */,
 				3EE1E8472D8E9E6100681B6B /* GenreCell.swift in Sources */,
 				3EE1E8482D8E9E6100681B6B /* NameInputViewController.swift in Sources */,
+				D009283A2D8FB1BF00A10742 /* UIStackView + Extension.swift in Sources */,
 				3EE1E8492D8E9E6100681B6B /* GenreSelectionViewController.swift in Sources */,
+				D009283C2D8FB20F00A10742 /* StorageViewModel.swift in Sources */,
 				D00927A32D8EF47F00A10742 /* BaseImageView.swift in Sources */,
 				D009279D2D8EF26800A10742 /* CompositionalListView.swift in Sources */,
 				3EE1E8302D8E852000681B6B /* Reusable.swift in Sources */,
@@ -563,8 +605,10 @@
 				D00927AA2D8F072600A10742 /* UIView+Extension.swift in Sources */,
 				3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */,
 				D09E0EF62D8C4561004EEC6C /* BaseViewModel.swift in Sources */,
+				D00928772D8FF30C00A10742 /* CommentView.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
 				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
+				D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */,
 				D00927A12D8EF41C00A10742 /* StorageCollectionViewCell.swift in Sources */,
 				D00927072D8EE72C00A10742 /* StorageViewController.swift in Sources */,
 				AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */,

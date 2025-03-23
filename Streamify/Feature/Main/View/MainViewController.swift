@@ -12,6 +12,8 @@ import RxDataSources
 
 class MainViewController: UIViewController {
 
+    weak var coordinator: MainCoordinator?
+
     private let topRatedCollectionView: UICollectionView = {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, environment in
             return MainViewController.createTopRatedSectionLayout()
@@ -69,9 +71,40 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        setupNavigationBar()
         setupUI()
         bindViewModel()
         viewModel.viewDidLoad.accept(())
+    }
+
+    private func setupNavigationBar() {
+        title = "Streamify"
+
+        let storageButton = UIBarButtonItem(
+            image: UIImage(systemName: "folder"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapStorage)
+        )
+
+        let searchButton = UIBarButtonItem(
+            image: UIImage(systemName: "magnifyingglass"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapSearch)
+        )
+
+        navigationItem.leftBarButtonItem = storageButton
+        navigationItem.rightBarButtonItem = searchButton
+    }
+
+    @objc private func didTapStorage() {
+        print("보관함 버튼 탭")
+        coordinator?.showStorageScreen()
+    }
+
+    @objc private func didTapSearch() {
+        print("검색 버튼 탭")
     }
 
     private func setupUI() {
@@ -132,4 +165,3 @@ class MainViewController: UIViewController {
         return section
     }
 }
-

@@ -11,7 +11,7 @@ import SnapKit
 class HorizontalMediaCell: BaseCollectionViewCell {
 
     let thumbnailImageView = BaseImageView(radius: 10)
-    let titleLabel = BaseLabel(fontSize: .body_bold_24, color: .baseWhite)
+    let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
     let genreLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
 
     override func configureHierarchy() {

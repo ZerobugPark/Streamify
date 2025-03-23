@@ -6,55 +6,104 @@
 //
 
 import UIKit
-import SnapKit
 
 import RxCocoa
 import RxSwift
 import RxDataSources
 import SnapKit
 
-enum SectionItem { //셀의 종류
-    case firstSection([Int])
-    case secondSection([Int])
-    case thirdSection([Int])
+enum ActionButtonStatus {
+    case wantToWatchButton
+    case watchedButton
+    case watchingButton
+    case commentButton
+    case ratingButton
 }
 
-enum CollectionViewSectionModel { //섹션 정의
-    case first([SectionItem])
-    case second([SectionItem])
-    case third([SectionItem])
-    
-}
 
-extension CollectionViewSectionModel: SectionModelType {
+class StorageViewController: BaseViewController<StorageView, StorageViewModel> {
     
-    typealias Item = SectionItem
+    weak var coordinator: MainCoordinator?
     
-    // dataSource의 타입에 따라서 호출 됨
-    var items: [SectionItem] {
-        switch self {
-        case .first(let items):
-            return items
-        case .second(let items):
-            return items
-        case .third(let items):
-            return items
+    typealias listDataSource = RxCollectionViewSectionedReloadDataSource<CollectionViewSectionModel>
+    typealias colltionViewDataSource = CollectionViewSectionedDataSource<CollectionViewSectionModel>
+    
+    lazy var dataSource = listDataSource (
+        configureCell: { [weak self] dataSource, collectionView, indexPath, item in
+            
+            self?.configureCell(dataSource: dataSource, collectionView: collectionView, indexPath: indexPath, item: item) ?? UICollectionViewCell()
+        },
+        configureSupplementaryView: { [weak self] dataSource, collectionView, kind, indexPath in
+            
+            self?.configureSupplementary(dataSource: dataSource, collectionView: collectionView, kind: kind, indexPath: indexPath) ?? UICollectionReusableView()
         }
-    }
+    )
     
     
-    init(original: CollectionViewSectionModel, items: [Self.Item]) {
-        self = original
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        registerStorageList()
+        
+        view.backgroundColor = .setStreamifyColor(.baseBlack)
+        
+        bind()
         
     }
+    
+    private func bind() {
+        
+        
+        let actionButtonTapped = Observable.merge(
+            mainView.wantToWatchButton.rx.tap.map { ActionButtonStatus.wantToWatchButton },
+            mainView.watchedButton.rx.tap.map { ActionButtonStatus.watchedButton },
+            mainView.watchingButton.rx.tap.map { ActionButtonStatus.watchingButton },
+            mainView.commentButton.rx.tap.map { ActionButtonStatus.commentButton },
+            mainView.ratingButton.rx.tap.map { ActionButtonStatus.ratingButton }
+        )
+        
+        
+        let input = StorageViewModel.Input(setInitialData: Observable.just(()),
+                                           actionButtonTapped: actionButtonTapped)
+        
+        
+        let output = viewModel.transform(input: input)
+        
+        
+        
+        output.test.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        
+        output.goToStarRationg.asDriver(onErrorJustReturn: ())
+            .drive(with: self) { owner, _ in
+                
+                let viewModel = StarRatingStorageViewModel()
+                let starRatingVC = StarRatingStorageViewController(viewModel: viewModel)
+                owner.navigationController?.pushViewController(starRatingVC, animated: true)
+                
+                //owner.coordinator?.starRatingScreen()
+            }.disposed(by: disposeBag)
+    }
+    
+    
+    
 }
 
-class StorageViewController: UIViewController {
+
+
+extension StorageViewController {
     
-    lazy var dataSource = RxCollectionViewSectionedReloadDataSource<CollectionViewSectionModel> (configureCell: { dataSource, collectionView, indexPath, item in
+    // MARK: - ColletionView Register
+    private func registerStorageList() {
         
+        mainView.storageList.collectionView.register(StorageCollectionViewCell.self, forCellWithReuseIdentifier: StorageCollectionViewCell.id)
         
-        switch dataSource[indexPath] { // dataSource Type == sectionItem
+        mainView.storageList.collectionView.register(CompositionalHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CompositionalHeaderReusableView.reuseId)
+    }
+    
+    // MARK: - RxDataSource Function Definition
+    private func configureCell(dataSource:   colltionViewDataSource, collectionView: UICollectionView, indexPath: IndexPath, item: SectionItem) -> UICollectionViewCell {
+        
+        switch dataSource[indexPath] {
         case .firstSection, .secondSection, .thirdSection:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StorageCollectionViewCell.id, for: indexPath) as? StorageCollectionViewCell else { return UICollectionViewCell() }
             
@@ -69,73 +118,26 @@ class StorageViewController: UIViewController {
             return cell
         }
         
+    }
+    
+    private func configureSupplementary(dataSource: colltionViewDataSource, collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {
         
-    },configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CompositionalHeaderReusableView.reuseId, for: indexPath) as? CompositionalHeaderReusableView else {
             return UICollectionReusableView()
         }
-        
         switch indexPath.section {
         case 0:
-            headerView.titleLabel.text = "인기 검색어"
+            headerView.titleLabel.text = "내가 찜한 리스트"
         case 1:
-            headerView.titleLabel.text = "봤어요"
+            headerView.titleLabel.text = "내가 본 콘텐츠"
         case 2:
-            headerView.titleLabel.text = "보는중"
+            headerView.titleLabel.text = "시청 중인 콘텐츠"
         default:
             break
         }
-        
         return headerView
         
-    })
-    
-    
-    let testView = CompositionalListView()
-    let disposeBag = DisposeBag()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        config()
-        view.backgroundColor = .baseBlack
-        
-        //레지스터 등록
-        testView.collectionView.register(StorageCollectionViewCell.self, forCellWithReuseIdentifier: StorageCollectionViewCell.id)
-        
-        testView.collectionView.register(CompositionalHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CompositionalHeaderReusableView.reuseId)
-        
-        bind()
-        
     }
     
-    func bind() {
-        
-        
-        let firstValue = Array(1...100)
-        let secondValue = Array(1...100)
-        let thirdValue = Array(1...100)
-        
-        lazy var sectiomModel: Observable<[CollectionViewSectionModel]> = Observable.just([
-            .first(firstValue.map { .firstSection([$0]) }),
-            .second(secondValue.map { .secondSection([$0]) }),
-            .third(thirdValue.map { .thirdSection([$0]) }),
-        ])
-        
-        
-        sectiomModel.bind(to: testView.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
-    }
-    
-    func config() {
-        view.addSubview(testView)
-        
-        testView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
-            make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-    }
 }
-    
-    
 

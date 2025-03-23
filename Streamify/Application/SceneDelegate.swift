@@ -10,7 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var coordinator: OnboardingCoordinator?
+    var onboardingCoordinator: OnboardingCoordinator?
+    var mainCoordinator: MainCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
@@ -22,17 +23,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
 
         let isOnboardingCompleted = UserDefaults.standard.bool(forKey: "isOnboardingCompleted")
-        print("isOnboardingCompleted", UserDefaults.standard.bool(forKey: "isOnboardingCompleted"))
+        print("isOnboardingCompleted", isOnboardingCompleted)
 
         if isOnboardingCompleted {
-            // 온보딩 완료 → 메인 화면 바로 진입
-//            let mainVC = ViewController() // MARK: 작업하시는 테스트 화면 첫 화면으로 두고 사용!
-            let mainVC = MainViewController() // TODO: 실제 MainCoordinator 연동 시 변경
-            navigationController.setViewControllers([mainVC], animated: false)
+            // 온보딩 완료 → MainCoordinator를 통해 홈 화면 진입
+            mainCoordinator = MainCoordinator(navigationController: navigationController)
+            mainCoordinator?.start()
         } else {
-            // 온보딩 미완료 → OnboardingCoordinator로 온보딩 플로우 시작
-            coordinator = OnboardingCoordinator(navigationController: navigationController)
-            coordinator?.start()
+            // 온보딩 미완료 → OnboardingCoordinator 시작
+            onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
+            onboardingCoordinator?.start()
         }
     }
 
