@@ -159,11 +159,8 @@ extension StorageViewController {
         
         
         let sectionModel = dataSource.sectionModels[indexPath.section]
-        
-        print(sectionModel.items.isEmpty)
-          
-          // 해당 섹션이 비어있으면 헤더 안 보이게 처리
-        
+
+          // 해당 섹션이 비어있으면 헤더 안 보이게 처리        
         if sectionModel.items.isEmpty {
             // 섹션이 비어있을 경우, 기본 헤더를 반환
             let headerView = collectionView.dequeueReusableSupplementaryView(
