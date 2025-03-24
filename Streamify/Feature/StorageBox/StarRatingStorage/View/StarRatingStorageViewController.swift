@@ -16,6 +16,8 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
     
     lazy var rateDatas = Observable.just(data)
     
+    private let filterView = FilterButton()
+    
     init(vm: StarRatingStorageViewModel, data: [Rate]) {
         self.data = data
         super.init(viewModel: vm)
@@ -47,7 +49,10 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
             
         }.disposed(by: disposeBag)
         
-        
+        filterView.filterButton.rx.tap
+            .map { [self] in !filterView.filterButton.isSelected } // isSelected 상태를 반전
+            .bind(to: filterView.filterButton.rx.isSelected) // isSelected에 바인딩
+            .disposed(by: disposeBag)
         
         
         
@@ -86,5 +91,8 @@ extension StarRatingStorageViewController {
     private func setupNavigation() {
         let title = "별점"
         navigationItem.title = title
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterView)
+        
     }
 }

@@ -89,6 +89,7 @@
 		D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E0EF72D8C45A1004EEC6C /* ViewModelType.swift */; };
 		D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E18302D8D79FF004EEC6C /* StarRatingView.swift */; };
 		D09E18342D8D7A1D004EEC6C /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = D09E18332D8D7A1D004EEC6C /* Cosmos */; };
+		D0F5152A2D9142150049F494 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F515292D9142150049F494 /* FilterButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -182,6 +183,7 @@
 		D09E0EF52D8C4561004EEC6C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		D09E0EF72D8C45A1004EEC6C /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		D09E18302D8D79FF004EEC6C /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
+		D0F515292D9142150049F494 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,6 +416,7 @@
 				D00926F82D8E99CE00A10742 /* StarRatingStorageViewController.swift */,
 				D00926FA2D8E99EC00A10742 /* StarRatingStorageView.swift */,
 				D00926FE2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift */,
+				D0F515292D9142150049F494 /* FilterButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -740,6 +743,7 @@
 				AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */,
 				D09E0DBF2D8C3748004EEC6C /* BaseView.swift in Sources */,
 				3EE1E83E2D8E9BB200681B6B /* Genre.swift in Sources */,
+				D0F5152A2D9142150049F494 /* FilterButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
