@@ -40,7 +40,13 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
     override func bindViewModel() {
         
         
-        let input = StarRatingStorageViewModel.Input(setInitialData: rateDatas)
+        let filterButton = filterView.filterButton.rx.tap.map { [weak self] in
+            guard let self = self else { return false }
+            return self.filterView.filterButton.isSelected
+        }
+        
+        
+        let input = StarRatingStorageViewModel.Input(setInitialData: rateDatas, filterButtonStatus: filterButton)
         let output = viewModel.transform(input: input)
         
         output.setRates.bind(to: mainView.verticalList.collectionView.rx.items(cellIdentifier: StarRatingStorageCollectionViewCell.id, cellType: StarRatingStorageCollectionViewCell.self)) { item, element, cell in
@@ -49,12 +55,10 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
             
         }.disposed(by: disposeBag)
         
-        filterView.filterButton.rx.tap
-            .map { [self] in !filterView.filterButton.isSelected } // isSelected 상태를 반전
-            .bind(to: filterView.filterButton.rx.isSelected) // isSelected에 바인딩
-            .disposed(by: disposeBag)
-        
-        
+        output.filterButtonToggle.bind(with: self) { owner, _ in
+            owner.filterView.filterButton.isSelected.toggle()
+        }.disposed(by: disposeBag)
+    
         
     }
 
