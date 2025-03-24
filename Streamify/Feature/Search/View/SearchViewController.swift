@@ -2,11 +2,13 @@
 //  SearchViewController.swift
 //  Streamify
 //
-//  Created by 조다은 on 3/24/25.
+//  Created by 조다은 on 2025/03/23.
 //
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class SearchViewController: UIViewController {
 
@@ -44,6 +46,7 @@ class SearchViewController: UIViewController {
     }()
 
     private let verticalListView = VerticalListView()
+    private let disposeBag = DisposeBag()
 
     // MARK: - Lifecycle
 
@@ -51,6 +54,8 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupLayout()
+        setupCollectionView()
+        bindDummyData()
     }
 
     // MARK: - Layout
@@ -91,5 +96,31 @@ class SearchViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
+
+    // MARK: - CollectionView Setup
+
+    private func setupCollectionView() {
+        verticalListView.collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.id)
+        verticalListView.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+    }
+
+    private func bindDummyData() {
+        let dummyItems = Array(0..<20)
+        Observable.just(dummyItems)
+            .bind(to: verticalListView.collectionView.rx.items(cellIdentifier: SearchCollectionViewCell.id, cellType: SearchCollectionViewCell.self)) { row, item, cell in
+                cell.configure(imageURL: nil) // 더미 이미지 사용 중
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let deviceWidth = view.frame.width
+        let spacing: CGFloat = 10
+        let inset: CGFloat = 8
+        let itemWidth = (deviceWidth - ((spacing * 2) + (inset * 2))) / 3
+        return CGSize(width: itemWidth, height: itemWidth * 1.5)
+    }
+}
