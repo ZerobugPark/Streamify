@@ -142,7 +142,7 @@ extension StorageViewController {
             
             switch dataSource[indexPath] {
             case .firstSection(let data):
-                cell.setupUI(data, isProgressBar: true)
+                cell.setupUI(data)
             case .secondSection(let data):
                 cell.setupUI(data)
             case .thirdSection(let data):

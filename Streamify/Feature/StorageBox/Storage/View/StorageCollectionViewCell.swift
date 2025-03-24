@@ -51,16 +51,17 @@ class StorageCollectionViewCell: BaseCollectionViewCell {
         contentView.clipsToBounds = true
     }
     
-    func setupUI(_ data: Drama, isProgressBar: Bool = false) {
+    func setupUI(_ data: Drama) {
         
         titleLabel.text = data.title
         genreLabel.text = data.genre
         
-        if isProgressBar {
+        if data.watchingProgress == 0.0 {
             progressBar.alpha = 0
+        } else {
+            progressBar.alpha = 1
+            progressBar.progress = data.watchingProgress
         }
-        
-        progressBar.progress = data.watchingProgress
         
         let urlString = data.imagePath
         guard let url = URL(string: urlString) else { return }
