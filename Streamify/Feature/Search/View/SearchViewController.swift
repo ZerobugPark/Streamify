@@ -57,6 +57,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         //view.backgroundColor = .black
         setupLayout()
+        setupNavigation()
         setupCollectionView()
         bind()
     }
@@ -98,6 +99,12 @@ class SearchViewController: UIViewController {
             make.top.equalTo(searchBarContainerView.snp.bottom).offset(12)
             make.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    private func setupNavigation() {
+        let title = "검색"
+        navigationItem.title = title
+        navigationItem.backButtonTitle = ""
     }
     
     // MARK: - Setup & Binding

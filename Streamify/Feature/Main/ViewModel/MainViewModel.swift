@@ -10,42 +10,30 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 
-enum SectionItem { //셀의 종류
-    case firstSection([Int])
-    case secondSection([Int])
-    case thirdSection([Int])
+enum MainSectionModel {
+    case topRated([MediaItem])
+    case horizontal(title: String, items: [MediaItem])
 }
 
-enum CollectionViewSectionModel { //섹션 정의
-    case first([SectionItem])
-    case second([SectionItem])
-    case third([SectionItem])
-    
-}
+extension MainSectionModel: SectionModelType {
+    typealias Item = MediaItem
 
-extension CollectionViewSectionModel: SectionModelType {
-    
-    typealias Item = SectionItem
-    
-    var items: [SectionItem] {
+    var items: [MediaItem] {
         switch self {
-        case .first(let items):
-            return items
-        case .second(let items):
-            return items
-        case .third(let items):
-            return items
+        case .topRated(let items): return items
+        case .horizontal(_, let items): return items
         }
     }
-    
-    
 
-    init(original: CollectionViewSectionModel, items: [Self.Item]) {
-        self = original
-        
+    init(original: MainSectionModel, items: [MediaItem]) {
+        switch original {
+        case .topRated:
+            self = .topRated(items)
+        case .horizontal(let title, _):
+            self = .horizontal(title: title, items: items)
+        }
     }
 }
-
 
 final class MainViewModel {
 
@@ -57,7 +45,7 @@ final class MainViewModel {
     let trendingItems = BehaviorRelay<[TrendingResult]>(value: [])
     let similarItems = BehaviorRelay<[SimilarResult]>(value: [])
     let popularItems = BehaviorRelay<[PopularResult]>(value: [])
-    let sectionModels = BehaviorRelay<[CollectionViewSectionModel]>(value: [])
+    let sectionModels = BehaviorRelay<[MainSectionModel]>(value: [])
     let isLoading = BehaviorRelay<Bool>(value: false)
     let error = PublishRelay<String>()
 
@@ -86,28 +74,34 @@ final class MainViewModel {
                 self.trendingItems.accept(trending)
                 self.popularItems.accept(popular)
 
-                let similarRequest = self.fetchSimilar(from: topRated.first?.id ?? 0)
-                similarRequest
+                // topRated에서 유사 콘텐츠 기준 ID 추출
+                // TODO: 실제 사용자 관심 항목으로 변경 필요
+                let topId = topRated.first?.id ?? 0
+
+                self.fetchSimilar(from: topId)
                     .observe(on: MainScheduler.instance)
                     .subscribe(onNext: { similar in
                         self.similarItems.accept(similar)
 
-                        let models: [CollectionViewSectionModel] = [
-                            .first(trending.map { .firstSection([$0.id]) }),
-                            .second(similar.map { .secondSection([$0.id]) }),
-                            .third(popular.map { .thirdSection([$0.id]) })
+                        let sections: [MainSectionModel] = [
+                            .topRated(topRated),
+                            .horizontal(title: "실시간 인기 드라마", items: trending),
+                            // TODO: 실제 항목의 이름으로 변경 필요
+                            .horizontal(title: "내 관심사와 비슷한 콘텐츠", items: similar),
+                            .horizontal(title: "지금 뜨는 콘텐츠", items: popular)
                         ]
-                        self.sectionModels.accept(models)
+                        self.sectionModels.accept(sections)
+
                     })
                     .disposed(by: self.disposeBag)
 
-            }, onError: { [weak self] err in
+            }, onError: { [weak self] error in
                 self?.isLoading.accept(false)
-                self?.error.accept("네트워크 오류: \(err.localizedDescription)")
+                self?.error.accept("네트워크 오류: \(error.localizedDescription)")
             })
             .disposed(by: disposeBag)
     }
-
+    
     private func fetchTopRated() -> Observable<[TopRatedResult]> {
         return NetworkManager.shared.request(api: .topRated, type: TMDBResponse.self)
             .map { result in
