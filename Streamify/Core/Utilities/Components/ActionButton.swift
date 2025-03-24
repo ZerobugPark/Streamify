@@ -45,7 +45,7 @@ class ActionButton: UIButton {
           // Subtitle Setting
           if let subTitle = subTitle {
               var subtitleContainer = AttributeContainer()
-              subtitleContainer.font = .setStreamifyFont(.body_bold_14)
+              subtitleContainer.font = .setStreamifyFont(.body_regular_13)
               config.attributedSubtitle = AttributedString(subTitle, attributes: subtitleContainer)
               config.titleAlignment = .center
               config.titlePadding = 8
@@ -71,7 +71,7 @@ class ActionButton: UIButton {
         guard var config = self.configuration else { return }
 
         var subtitleContainer = AttributeContainer()
-        subtitleContainer.font = .setStreamifyFont(.body_regular_14)
+        subtitleContainer.font = .setStreamifyFont(.body_regular_13)
         config.attributedSubtitle = AttributedString(newSubtitle, attributes: subtitleContainer)
 
         self.configuration = config
