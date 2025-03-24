@@ -55,8 +55,6 @@ class StorageCollectionViewCell: BaseCollectionViewCell {
     
     func setupUI(_ data: Drama) {
         
-        
-        
         titleLabel.text = data.title
         genreLabel.text = data.genre
         progressBar.progress = data.watchingProgress

@@ -71,6 +71,8 @@
 		D00928772D8FF30C00A10742 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00928762D8FF30C00A10742 /* CommentView.swift */; };
 		D00928792D8FF31C00A10742 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00928782D8FF31C00A10742 /* CommentViewController.swift */; };
 		D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009287A2D8FF32D00A10742 /* CommentViewModel.swift */; };
+		D00929192D9050D900A10742 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00929182D9050D900A10742 /* CommentTableViewCell.swift */; };
+		D00929AD2D90744900A10742 /* StroageStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00929AC2D90744900A10742 /* StroageStruct.swift */; };
 		D037370A2D8C2AD9006CED4A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D03737092D8C2AD9006CED4A /* .gitignore */; };
 		D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737B92D8C33CD006CED4A /* AppDelegate.swift */; };
 		D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */; };
@@ -92,6 +94,7 @@
 		D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E0EF72D8C45A1004EEC6C /* ViewModelType.swift */; };
 		D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E18302D8D79FF004EEC6C /* StarRatingView.swift */; };
 		D09E18342D8D7A1D004EEC6C /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = D09E18332D8D7A1D004EEC6C /* Cosmos */; };
+		D0F5152A2D9142150049F494 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F515292D9142150049F494 /* FilterButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -171,6 +174,8 @@
 		D00928762D8FF30C00A10742 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		D00928782D8FF31C00A10742 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		D009287A2D8FF32D00A10742 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		D00929182D9050D900A10742 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		D00929AC2D90744900A10742 /* StroageStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StroageStruct.swift; sourceTree = "<group>"; };
 		D03736F12D8C2AC9006CED4A /* Streamify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03737092D8C2AD9006CED4A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D03737B92D8C33CD006CED4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +193,7 @@
 		D09E0EF52D8C4561004EEC6C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		D09E0EF72D8C45A1004EEC6C /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		D09E18302D8D79FF004EEC6C /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
+		D0F515292D9142150049F494 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				D009283B2D8FB20F00A10742 /* StorageViewModel.swift */,
+				D00929AC2D90744900A10742 /* StroageStruct.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -428,6 +435,7 @@
 			children = (
 				D00928762D8FF30C00A10742 /* CommentView.swift */,
 				D00928782D8FF31C00A10742 /* CommentViewController.swift */,
+				D00929182D9050D900A10742 /* CommentTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -446,6 +454,7 @@
 				D00926F82D8E99CE00A10742 /* StarRatingStorageViewController.swift */,
 				D00926FA2D8E99EC00A10742 /* StarRatingStorageView.swift */,
 				D00926FE2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift */,
+				D0F515292D9142150049F494 /* FilterButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -707,6 +716,7 @@
 				D09E0DC12D8C3763004EEC6C /* BaseCollectionViewCell.swift in Sources */,
 				D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */,
 				AEF04DA82D9002FC001D3274 /* EpisodeViewModel.swift in Sources */,
+				D00929AD2D90744900A10742 /* StroageStruct.swift in Sources */,
 				D009270B2D8EEBCD00A10742 /* StorageView.swift in Sources */,
 				D00926F72D8E998A00A10742 /* VerticalListView.swift in Sources */,
 				D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */,
@@ -755,6 +765,7 @@
 				AEF04DA42D9002DD001D3274 /* EpisodeViewController.swift in Sources */,
 				AEF04E262D912224001D3274 /* EpisodeCellViewModel.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
+				D00929192D9050D900A10742 /* CommentTableViewCell.swift in Sources */,
 				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
 				D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */,
 				D00927A12D8EF41C00A10742 /* StorageCollectionViewCell.swift in Sources */,
@@ -776,6 +787,7 @@
 				AEF04B842D8EF0E0001D3274 /* ProgressBar.swift in Sources */,
 				D09E0DBF2D8C3748004EEC6C /* BaseView.swift in Sources */,
 				3EE1E83E2D8E9BB200681B6B /* Genre.swift in Sources */,
+				D0F5152A2D9142150049F494 /* FilterButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

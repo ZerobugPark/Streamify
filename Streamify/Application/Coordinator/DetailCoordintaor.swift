@@ -31,8 +31,8 @@ final class DetailCoordinator: Coordinator {
         navigationController.pushViewController(episodeVC, animated: true)
     }
 
-    func showStarRating() {
-        let starRatingVC = StarRatingStorageViewController(viewModel: StarRatingStorageViewModel())
-        navigationController.pushViewController(starRatingVC, animated: true)
-    }
+//    func showStarRating() {
+//        let starRatingVC = StarRatingStorageViewController(viewModel: StarRatingStorageViewModel())
+//        navigationController.pushViewController(starRatingVC, animated: true)
+//    }
 }

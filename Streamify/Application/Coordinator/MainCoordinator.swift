@@ -44,9 +44,9 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(storageVC, animated: true)
     }
     
-    func starRatingScreen() {
+    func starRatingScreen(data: [Rate]) {
         let viewModel = StarRatingStorageViewModel()
-        let starRatingVC = StarRatingStorageViewController(viewModel: viewModel)
+        let starRatingVC = StarRatingStorageViewController(vm: viewModel, data: data)
         navigationController.pushViewController(starRatingVC, animated: true)
     }
 }

@@ -70,21 +70,21 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         
         output.setSetcion.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         
-        output.goToStarRating.asDriver(onErrorJustReturn: ())
-            .drive(with: self) { owner, _ in
+        output.goToStarRating.asDriver(onErrorJustReturn: [])
+            .drive(with: self) { owner, data in
                 
                 let viewModel = StarRatingStorageViewModel()
-                let starRatingVC = StarRatingStorageViewController(viewModel: viewModel)
+                let starRatingVC = StarRatingStorageViewController(vm: viewModel, data: data)
                 owner.navigationController?.pushViewController(starRatingVC, animated: true)
                 
                 //owner.coordinator?.starRatingScreen()
             }.disposed(by: disposeBag)
         
-        output.goToComment.asDriver(onErrorJustReturn: ())
-            .drive(with: self) { owner, _ in
+        output.goToComment.asDriver(onErrorJustReturn: [])
+            .drive(with: self) { owner, data in
                 
                 let viewModel = CommentViewModel()
-                let starRatingVC = CommentViewController(viewModel: viewModel)
+                let starRatingVC = CommentViewController(vm: viewModel, data: data)
                 owner.navigationController?.pushViewController(starRatingVC, animated: true)
                 
                 //owner.coordinator?.starRatingScreeCommentViewModeln()
@@ -159,11 +159,8 @@ extension StorageViewController {
         
         
         let sectionModel = dataSource.sectionModels[indexPath.section]
-        
-        print(sectionModel.items.isEmpty)
-          
-          // 해당 섹션이 비어있으면 헤더 안 보이게 처리
-        
+
+          // 해당 섹션이 비어있으면 헤더 안 보이게 처리        
         if sectionModel.items.isEmpty {
             // 섹션이 비어있을 경우, 기본 헤더를 반환
             let headerView = collectionView.dequeueReusableSupplementaryView(
@@ -172,8 +169,6 @@ extension StorageViewController {
                 for: indexPath)
             return headerView
         }
-        
-   
         
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CompositionalHeaderReusableView.reuseId, for: indexPath) as? CompositionalHeaderReusableView else {
             return UICollectionReusableView()

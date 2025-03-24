@@ -12,33 +12,53 @@ import RxCocoa
 
 class StarRatingStorageViewController: BaseViewController<StarRatingStorageView, StarRatingStorageViewModel> {
 
+    var data: [Rate]
+    
+    lazy var rateDatas = Observable.just(data)
+    
+    private let filterView = FilterButton()
+    
+    init(vm: StarRatingStorageViewModel, data: [Rate]) {
+        self.data = data
+        super.init(viewModel: vm)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         registerStorageList()
         setupNavigation()
         view.backgroundColor = .baseBlack
-        
-   
     }
     
 
     override func bindViewModel() {
         
         
-        let input = StarRatingStorageViewModel.Input(setInitialData: Observable.just(()))
+        let filterButton = filterView.filterButton.rx.tap.map { [weak self] in
+            guard let self = self else { return false }
+            return self.filterView.filterButton.isSelected
+        }
+        
+        
+        let input = StarRatingStorageViewModel.Input(setInitialData: rateDatas, filterButtonStatus: filterButton)
         let output = viewModel.transform(input: input)
         
-        output.setInitialData.bind(to: mainView.verticalList.collectionView.rx.items(cellIdentifier: StarRatingStorageCollectionViewCell.id, cellType: StarRatingStorageCollectionViewCell.self)) { item, element, cell in
+        output.setRates.bind(to: mainView.verticalList.collectionView.rx.items(cellIdentifier: StarRatingStorageCollectionViewCell.id, cellType: StarRatingStorageCollectionViewCell.self)) { item, element, cell in
             
             cell.setupUI(element)
             
         }.disposed(by: disposeBag)
         
-        
-        
-        
+        output.filterButtonToggle.bind(with: self) { owner, _ in
+            owner.filterView.filterButton.isSelected.toggle()
+        }.disposed(by: disposeBag)
+    
         
     }
 
@@ -75,5 +95,8 @@ extension StarRatingStorageViewController {
     private func setupNavigation() {
         let title = "별점"
         navigationItem.title = title
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterView)
+        
     }
 }
