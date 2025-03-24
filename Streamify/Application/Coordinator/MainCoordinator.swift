@@ -9,6 +9,7 @@ import UIKit
 
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
+    var detailCoordinator: DetailCoordinator?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -34,6 +35,7 @@ class MainCoordinator: Coordinator {
     
     func showDetail(for item: MediaItem) {
         let coordinator = DetailCoordinator(navigationController: navigationController, mediaItem: item)
+        self.detailCoordinator = coordinator
         coordinator.start()
     }
     

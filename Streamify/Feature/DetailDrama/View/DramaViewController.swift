@@ -58,9 +58,6 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
                 switch value {
                 case .episode(let episode):
                     owner.coordinator?.showEpisodeList(episode)
-//                    let vm = EpisodeViewModel()
-//                    let vc = EpisodeViewController(viewModel: vm)
-//                    owner.navigationController?.pushViewController(vc, animated: true)
                 default: break
                 }
             }
