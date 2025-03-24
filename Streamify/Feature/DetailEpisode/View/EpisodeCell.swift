@@ -20,9 +20,17 @@ class EpisodeCell: BaseCollectionViewCell {
     
     override func configureHierarchy() {
         addSubviews(imageView, titleLabel, timeLabel, dateLabel, overviewLabel, checkButton)
+        imageView.backgroundColor = .darkGray
     }
     
     override func configureLayout() {
+        imageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().inset(10)
+            make.height.equalToSuperview().inset(10)
+            make.width.equalToSuperview().multipliedBy(0.3)
+        }
+        
         checkButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(10)
