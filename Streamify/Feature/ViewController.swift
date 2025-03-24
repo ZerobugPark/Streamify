@@ -13,9 +13,13 @@ class ViewController: UIViewController {
 
     let disposeBag = DisposeBag()
     
+    let collectionViewTestBtn = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
         
         NetworkManager.shared.request(api: .trending, type: TMDBResponse.self)
             .subscribe(onSuccess: { result in
@@ -27,6 +31,28 @@ class ViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+        configure()
+    }
+    
+    func configure() {
+        
+        view.addSubview(collectionViewTestBtn)
+        collectionViewTestBtn.snp.makeConstraints { make in
+            make.height.equalTo(100)
+            make.width.equalTo(200)
+            make.center.equalToSuperview()
+        }
+        
+        collectionViewTestBtn.setTitle("CollectionView Test", for: .normal)
+        
+        collectionViewTestBtn.addAction(UIAction { [weak self] _ in
+            
+            let viewModel = StorageViewModel()//StarRatingStorageViewModel()
+            let vc = StorageViewController(viewModel: viewModel)//StarRatingStorageViewController(viewModel: viewModel)
+            
+            self?.navigationController?.pushViewController(vc,animated: true)
+            
+        }, for: .touchUpInside)
     }
 
 

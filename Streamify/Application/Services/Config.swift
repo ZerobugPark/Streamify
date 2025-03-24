@@ -14,7 +14,7 @@ struct Config {
     let secureURL = "https://image.tmdb.org/t/p/"
     
     private init() { }
-
+    
     // enum은 인스턴스나, 메서스가 아니기 때문에, 구조체에서 바로 접근 가능 (구조체명.enum)
     enum BackdropSizes: String {
         case w300 = "w300"
@@ -59,51 +59,43 @@ struct Config {
     
     
     // 장르 검색 방법: https://api.themoviedb.org/3/genre/movie/list?language=ko
-    enum Genres: Int {
-        
-        case adventure = 12
-        case fantasy = 14
+    enum Genres: Int, CaseIterable {
+        case actionAdventure = 10759
         case animation = 16
-        case drama = 18
-        case horror = 27
-        case action = 28
         case comedy = 35
-        case history = 36
-        case western = 37
-        case thriller = 53
         case crime = 80
         case documentary = 99
-        case scienceFiction = 878
-        case mystery = 9648
-        case music = 10402
-        case romance = 10749
+        case drama = 18
         case family = 10751
-        case war = 10752
-        case tVMovie = 10770
+        case kids = 10762
+        case mystery = 9648
+        case news = 10763
+        case reality = 10764
+        case sciFiFantasy = 10765
+        case soap = 10766
+        case talk = 10767
+        case warPolitics = 10768
+        case western = 37
         
         var genre: String {
             switch self {
-            case .adventure: return "모험"
-            case .fantasy: return "판타지"
+            case .actionAdventure: return "액션 & 모험"
             case .animation: return "애니메이션"
-            case .drama: return "드라마"
-            case .horror: return "공포"
-            case .action: return "액션"
             case .comedy: return "코미디"
-            case .history: return "역사"
-            case .western: return "서부"
-            case .thriller: return "스릴러"
             case .crime: return "범죄"
             case .documentary: return "다큐멘터리"
-            case .scienceFiction: return "SF"
-            case .mystery: return "미스터리"
-            case .music: return "음악"
-            case .romance: return "로맨스"
+            case .drama: return "드라마"
             case .family: return "가족"
-            case .war: return "전쟁"
-            case .tVMovie: return "TV 영화"
+            case .kids: return "어린이"
+            case .mystery: return "미스터리"
+            case .news: return "뉴스"
+            case .reality: return "리얼리티"
+            case .sciFiFantasy: return "SF & 판타지"
+            case .soap: return "연속극"
+            case .talk: return "토크쇼"
+            case .warPolitics: return "전쟁 & 정치"
+            case .western: return "서부극"
             }
-            
         }
     }
     
@@ -111,6 +103,15 @@ struct Config {
         case korean = "ko-KR"
         case english = "en-US"
     }
-
+    
 }
 
+extension Config.Genres {
+    var toGenre: Genre {
+        return Genre(id: self.rawValue, name: self.genre)
+    }
+
+    static var genreList: [Genre] {
+        return Config.Genres.allCases.map { $0.toGenre }
+    }
+}

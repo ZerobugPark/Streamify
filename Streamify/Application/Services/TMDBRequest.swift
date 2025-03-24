@@ -8,16 +8,20 @@
 import Foundation
 
 enum TMDBRequest {
-    case trending
     case topRated
+    case trending
+    case similar(id: Int) // TODO: 임시 아이디 사용 중, 어떤 항목의 id를 넘겨줄지 정의 필요
+    case popular
     case search(query: String)
     case series(id: Int)
     case season(seriesID: Int, seasonNumber: Int)
 
     var endpoint: TMDBEndpoint {
         switch self {
-        case .trending: return .trending
         case .topRated: return .topRated
+        case .trending: return .trending
+        case .similar(let id): return .similar(id: id)
+        case .popular: return .popular
         case .search: return .search
         case .series(let id): return .series(id: id)
         case .season(let id, let season): return .season(seriesID: id, seasonNumber: season)
