@@ -73,21 +73,14 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         output.goToStarRating.asDriver(onErrorJustReturn: [])
             .drive(with: self) { owner, data in
                 
-                let viewModel = StarRatingStorageViewModel()
-                let starRatingVC = StarRatingStorageViewController(vm: viewModel, data: data)
-                owner.navigationController?.pushViewController(starRatingVC, animated: true)
-                
-                //owner.coordinator?.starRatingScreen()
+                owner.coordinator?.showStarRatingScreen(data: data)
             }.disposed(by: disposeBag)
         
         output.goToComment.asDriver(onErrorJustReturn: [])
             .drive(with: self) { owner, data in
+
                 
-                let viewModel = CommentViewModel()
-                let starRatingVC = CommentViewController(vm: viewModel, data: data)
-                owner.navigationController?.pushViewController(starRatingVC, animated: true)
-                
-                //owner.coordinator?.starRatingScreeCommentViewModeln()
+                owner.coordinator?.showCommentScreen(data: data)
             }.disposed(by: disposeBag)
         
         
