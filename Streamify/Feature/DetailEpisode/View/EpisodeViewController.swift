@@ -19,17 +19,13 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
         case .header(let header):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeHeaderCell.id, for: indexPath) as! EpisodeHeaderCell
             cell.configure(header)
-//            cell.backgroundColor = .gray
             return cell
         case .button(let button):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeButtonCell.id, for: indexPath) as! EpisodeButtonCell
-//            cell.configure(header)
-            cell.backgroundColor = .gray
             return cell
         case .episode(let episodes):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeCell.id, for: indexPath) as! EpisodeCell
-//            cell.configure(episodes)
-            cell.backgroundColor = .gray
+            cell.configure(episodes)
             return cell
         }
     }, configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
@@ -74,13 +70,14 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
         ]
 
         let episodes: [EpisodeData] = [
-            EpisodeData(image: nil, title: "에피소드 1", episodeCount: 1),
-            EpisodeData(image: nil, title: "에피소드 2", episodeCount: 2),
-            EpisodeData(image: nil, title: "에피소드 3", episodeCount: 3),
-            EpisodeData(image: nil, title: "에피소드 4", episodeCount: 4),
-            EpisodeData(image: nil, title: "에피소드 4", episodeCount: 4),
-            EpisodeData(image: nil, title: "에피소드 4", episodeCount: 4),
-            EpisodeData(image: nil, title: "에피소드 4", episodeCount: 4)
+            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다.")
         ]
 
         let episodeSections = [
