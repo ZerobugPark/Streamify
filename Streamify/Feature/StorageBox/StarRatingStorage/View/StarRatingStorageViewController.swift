@@ -34,7 +34,6 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
         super.viewDidLoad()
         registerStorageList()
         setupNavigation()
-        //view.backgroundColor = .baseBlack
     }
     
 
@@ -101,6 +100,7 @@ extension StarRatingStorageViewController {
     private func setupNavigation() {
         let title = "별점"
         navigationItem.title = title
+        navigationItem.backButtonTitle = ""
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterView)
         

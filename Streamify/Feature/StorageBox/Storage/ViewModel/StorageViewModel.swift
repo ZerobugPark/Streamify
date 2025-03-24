@@ -72,7 +72,7 @@ final class StorageViewModel: BaseViewModel {
         
         let title = ["내가 찜한 리스트", "내가 본 콘텐츠", "시청 중인 콘텐츠", ""]
         
-        let sectiomModel = BehaviorRelay<[ListViewSectionModel]>(value: [.first(header: title[0], watchedDramas), .second(header: title[1], wantedWatchDramas), .third(header: title[2], watchingDramas)])
+        let sectiomModel = BehaviorRelay<[ListViewSectionModel]>(value: [.first(header: title[0], wantedWatchDramas), .second(header: title[1], watchedDramas), .third(header: title[2], watchingDramas)])
         
         let buttonToggle = PublishRelay<ActionButtonStatus>()
         let goToStarRating = PublishRelay<[Rate]>()
@@ -82,7 +82,7 @@ final class StorageViewModel: BaseViewModel {
             
             if owner.previousStatus == tag {
                 
-                sectiomModel.accept([.first(header: title[0], owner.watchedDramas), .second(header: title[1], owner.wantedWatchDramas), .third(header: title[2], owner.watchingDramas)])
+                sectiomModel.accept([.first(header: title[0], owner.wantedWatchDramas), .second(header: title[1], owner.watchedDramas), .third(header: title[2], owner.watchingDramas)])
                 buttonToggle.accept(.all)
                 
                 owner.previousStatus = .all
@@ -91,10 +91,10 @@ final class StorageViewModel: BaseViewModel {
             
             switch tag {
             case .wantToWatchButton:
-                sectiomModel.accept([.first(header: title[0], owner.watchedDramas), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
+                sectiomModel.accept([.first(header: title[0], owner.wantedWatchDramas), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
                 buttonToggle.accept(.wantToWatchButton)
             case .watchedButton:
-                sectiomModel.accept([.first(header: title[1], owner.wantedWatchDramas), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
+                sectiomModel.accept([.first(header: title[1], owner.watchedDramas), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
                 buttonToggle.accept(.watchedButton)
             case .watchingButton:
                 sectiomModel.accept([.first(header: title[2], owner.watchingDramas), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
@@ -132,7 +132,7 @@ extension StorageViewModel {
         for item in commnetsArray {
             dispatchGroup.enter()
             fetchImageData(imagePath: item.imagePath) {
-                let commnet = Comments(id: item.id, titleID: item.titleID, title: item.title, imagePath: $0, comment: item.imagePath)
+                let commnet = Comments(id: item.id, titleID: item.titleID, title: item.title, imagePath: $0, comment: item.comment)
                 commentData.append(commnet)
                 dispatchGroup.leave()
             }

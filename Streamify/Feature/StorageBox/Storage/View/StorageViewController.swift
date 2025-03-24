@@ -44,7 +44,7 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
     override func viewDidLoad() {
         super.viewDidLoad()
         registerStorageList()
-        //view.backgroundColor = .setStreamifyColor(.baseBlack)
+        setupNavigation()
         
     }
     
@@ -124,6 +124,13 @@ extension StorageViewController {
         mainView.storageList.collectionView.register(CompositionalHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CompositionalHeaderReusableView.reuseId)
         
         mainView.storageList.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "basicHeader")
+    }
+    
+    // MARK: - Navigation Setup
+    private func setupNavigation() {
+        let title = "보관함"
+        navigationItem.title = title
+        navigationItem.backButtonTitle = ""
     }
     
     // MARK: - RxDataSource Function Definition

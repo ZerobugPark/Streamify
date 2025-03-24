@@ -29,9 +29,8 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         registerTableView()
-        view.backgroundColor = .setStreamifyColor(.baseBlack)
+        setupNavigation()
     }
     
     
@@ -72,5 +71,6 @@ extension CommentViewController {
     private func setupNavigation() {
         let title = "코멘트"
         navigationItem.title = title
+        navigationItem.backButtonTitle = ""
     }
 }
