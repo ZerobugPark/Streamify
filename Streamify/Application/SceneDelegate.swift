@@ -17,23 +17,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let scene = (scene as? UIWindowScene) else { return }
 
-        let navigationController = UINavigationController(rootViewController: DramaViewController(viewModel: DramaViewModel()))
+        let navigationController = UINavigationController()
         window = UIWindow(windowScene: scene)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
-//        let isOnboardingCompleted = UserDefaults.standard.bool(forKey: "isOnboardingCompleted")
-//        print("isOnboardingCompleted", isOnboardingCompleted)
-//
-//        if isOnboardingCompleted {
-//            // 온보딩 완료 → MainCoordinator를 통해 홈 화면 진입
-//            mainCoordinator = MainCoordinator(navigationController: navigationController)
-//            mainCoordinator?.start()
-//        } else {
-//            // 온보딩 미완료 → OnboardingCoordinator 시작
-//            onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
-//            onboardingCoordinator?.start()
-//        }
+        let isOnboardingCompleted = UserDefaults.standard.bool(forKey: "isOnboardingCompleted")
+        print("isOnboardingCompleted", isOnboardingCompleted)
+
+        if isOnboardingCompleted {
+            // 온보딩 완료 → MainCoordinator를 통해 홈 화면 진입
+            mainCoordinator = MainCoordinator(navigationController: navigationController)
+            mainCoordinator?.start()
+        } else {
+            // 온보딩 미완료 → OnboardingCoordinator 시작
+            onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
+            onboardingCoordinator?.start()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
