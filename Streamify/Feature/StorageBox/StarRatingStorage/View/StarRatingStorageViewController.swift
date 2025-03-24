@@ -15,6 +15,7 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
     var data: [Rate]
     
     lazy var rateDatas = Observable.just(data)
+    weak var coordinator: DetailCoordinator?
     
     private let filterView = FilterButton()
     
@@ -59,7 +60,12 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
             owner.filterView.filterButton.isSelected.toggle()
         }.disposed(by: disposeBag)
     
-        
+        mainView.verticalList.collectionView.rx.modelSelected(Rate.self).bind(with: self) { owner, element in
+            
+            print(element)
+            //coordinator?.showEpisodeList()
+            
+        }.disposed(by: disposeBag)
     }
 
 
