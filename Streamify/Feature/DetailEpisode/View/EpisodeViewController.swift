@@ -24,7 +24,7 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
         case .button(let button):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeButtonCell.id, for: indexPath) as! EpisodeButtonCell
 //            cell.configure(header)
-            cell.backgroundColor = .primaryYellow
+            cell.backgroundColor = .gray
             return cell
         case .episode(let episodes):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeCell.id, for: indexPath) as! EpisodeCell

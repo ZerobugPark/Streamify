@@ -33,7 +33,7 @@ class EpisodeHeaderCell: BaseCollectionViewCell {
         imageView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.trailing.equalToSuperview().inset(10)
-            make.height.equalToSuperview().multipliedBy(0.7)
+            make.height.equalToSuperview().multipliedBy(0.6)
             make.width.equalToSuperview().multipliedBy(0.3)
         }
         
