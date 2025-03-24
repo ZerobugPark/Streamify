@@ -132,7 +132,7 @@ extension StorageViewModel {
         for item in commnetsArray {
             dispatchGroup.enter()
             fetchImageData(imagePath: item.imagePath) {
-                let commnet = Comments(id: item.id, titleID: item.titleID, title: item.title, imagePath: $0, comment: item.imagePath)
+                let commnet = Comments(id: item.id, titleID: item.titleID, title: item.title, imagePath: $0, comment: item.comment)
                 commentData.append(commnet)
                 dispatchGroup.leave()
             }
