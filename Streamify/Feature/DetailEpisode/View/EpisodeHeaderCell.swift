@@ -19,27 +19,31 @@ class EpisodeHeaderCell: BaseCollectionViewCell {
     }
     
     override func configureLayout() {
-        imageView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalToSuperview().multipliedBy(0.5)
-        }
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(20)
-            make.horizontalEdges.equalToSuperview().inset(10)
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.leading.equalToSuperview().inset(10)
+            make.trailing.equalTo(imageView.snp.leading).inset(10)
         }
         
         countLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(15)
-            make.horizontalEdges.equalToSuperview().inset(10)
+            make.leading.equalToSuperview().inset(10)
+        }
+        
+        imageView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.trailing.equalToSuperview().inset(10)
+            make.height.equalToSuperview().multipliedBy(0.6)
+            make.width.equalToSuperview().multipliedBy(0.3)
         }
         
         overviewLabel.snp.makeConstraints { make in
-            make.top.equalTo(countLabel.snp.bottom).offset(15)
+            make.top.equalTo(imageView.snp.bottom).offset(15)
             make.horizontalEdges.equalToSuperview().inset(10)
         }
     }
     
-    func configure(_ item: DramaHeader) {
+    func configure(_ item: EpisodeHeader) {
         titleLabel.text = item.title
         countLabel.text = item.info
         overviewLabel.text = item.overview
