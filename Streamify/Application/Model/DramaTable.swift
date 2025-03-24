@@ -33,14 +33,14 @@ final class DramaTable: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var titleID: Int
     @Persisted var title: String
-    @Persisted var vote_average: Double
+    @Persisted var vote_average: Double?
     @Persisted var genre: String
     @Persisted var imagePath: String
     @Persisted var comment: String
     @Persisted var wantToWatch: Bool
     @Persisted var episodes: List<Episodes>
     
-    convenience init(titleID: Int, title: String, vote_average: Double, genre: String, imagePath: String, comment: String, wantToWatch: Bool, episodes: List<Episodes>) {
+    convenience init(titleID: Int, title: String, vote_average: Double?, genre: String, imagePath: String, comment: String, wantToWatch: Bool, episodes: List<Episodes>) {
         self.init()
         self.titleID = titleID
         self.title = title
