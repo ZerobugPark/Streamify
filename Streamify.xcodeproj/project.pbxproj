@@ -45,6 +45,8 @@
 		AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */; };
 		AEF04DAC2D901329001D3274 /* EpisodeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */; };
 		AEF04DAE2D901334001D3274 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAD2D901334001D3274 /* EpisodeCell.swift */; };
+		AEF04E262D912224001D3274 /* EpisodeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */; };
+		AEF04E282D91443E001D3274 /* EpisodeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04E272D91443E001D3274 /* EpisodeModalViewController.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -145,6 +147,8 @@
 		AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeHeaderCell.swift; sourceTree = "<group>"; };
 		AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeButtonCell.swift; sourceTree = "<group>"; };
 		AEF04DAD2D901334001D3274 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellViewModel.swift; sourceTree = "<group>"; };
+		AEF04E272D91443E001D3274 /* EpisodeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModalViewController.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -276,6 +280,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3EE1E85C2D8F01C700681B6B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		AEF04C302D8FCD61001D3274 /* DetailDrama */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +333,7 @@
 				AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */,
 				AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */,
 				AEF04DAD2D901334001D3274 /* EpisodeCell.swift */,
+				AEF04E272D91443E001D3274 /* EpisodeModalViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -329,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				AEF04DA72D9002FC001D3274 /* EpisodeViewModel.swift */,
+				AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -739,6 +753,7 @@
 				3EE1E87D2D91344A00681B6B /* DetailCoordintaor.swift in Sources */,
 				AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */,
 				AEF04DA42D9002DD001D3274 /* EpisodeViewController.swift in Sources */,
+				AEF04E262D912224001D3274 /* EpisodeCellViewModel.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
 				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
 				D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */,
@@ -753,6 +768,7 @@
 				3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */,
 				AEF04CD92D8FD982001D3274 /* DramaEpisodeCell.swift in Sources */,
 				D09E0E552D8C3805004EEC6C /* BaseTableViewCell.swift in Sources */,
+				AEF04E282D91443E001D3274 /* EpisodeModalViewController.swift in Sources */,
 				D00927052D8EE65000A10742 /* BaseLabel.swift in Sources */,
 				D09E0EF22D8C445F004EEC6C /* BaseViewController.swift in Sources */,
 				D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */,
