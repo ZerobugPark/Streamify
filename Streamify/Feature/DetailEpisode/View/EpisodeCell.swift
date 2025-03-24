@@ -7,8 +7,18 @@
 
 import UIKit
 import SnapKit
+import RxCocoa
+import RxSwift
 
 class EpisodeCell: BaseCollectionViewCell {
+    
+    let viewModel = EpisodeCellViewModel()
+    var disposeBag = DisposeBag()
+    let dramaRepository: any DramaRepository = RealmDramaRepository()
+//    init(viewModel: EpisodeCellViewModel) {
+//        self.viewModel = viewModel
+//        super.init()
+//    }
     
     let imageView = BaseImageView()
     let titleLabel = BaseLabel(fontSize: .body_bold_24, color: .baseWhite)
@@ -35,6 +45,22 @@ class EpisodeCell: BaseCollectionViewCell {
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(10)
         }
+        bind()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+        bind()
+    }
+    
+    private func bind() {
+        checkButton.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.checkButton.isSelected.toggle()
+//                dramaRepository.toggleEpisodeWatched(drama: <#T##DramaTable#>, episode: <#T##Episodes#>)
+            }
+            .disposed(by: disposeBag)
     }
     
 }

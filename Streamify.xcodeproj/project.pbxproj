@@ -26,7 +26,6 @@
 		3EE1E85B2D8EF1BE00681B6B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */; };
 		3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */; };
 		3EE1E8602D903B5700681B6B /* HorizontalMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */; };
-		AEF04AC62D8E94C8001D3274 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04AC52D8E94C8001D3274 /* APIKey.swift */; };
 		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
 		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
 		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
@@ -43,6 +42,7 @@
 		AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */; };
 		AEF04DAC2D901329001D3274 /* EpisodeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */; };
 		AEF04DAE2D901334001D3274 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAD2D901334001D3274 /* EpisodeCell.swift */; };
+		AEF04E262D912224001D3274 /* EpisodeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -124,7 +124,6 @@
 		3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMediaCell.swift; sourceTree = "<group>"; };
-		AEF04AC52D8E94C8001D3274 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
 		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
@@ -141,6 +140,7 @@
 		AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeHeaderCell.swift; sourceTree = "<group>"; };
 		AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeButtonCell.swift; sourceTree = "<group>"; };
 		AEF04DAD2D901334001D3274 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellViewModel.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -243,8 +243,16 @@
 				3EE1E8562D8EEFE400681B6B /* TopRatedCell.swift */,
 				3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */,
 				3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */,
-				);
+			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3EE1E85C2D8F01C700681B6B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AEF04C302D8FCD61001D3274 /* DetailDrama */ = {
@@ -265,14 +273,6 @@
 				AEF04CDA2D8FE9B9001D3274 /* DramaHeaderCell.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3EE1E85C2D8F01C700681B6B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */,
-				);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AEF04C322D8FCD72001D3274 /* ViewModel */ = {
@@ -308,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				AEF04DA72D9002FC001D3274 /* EpisodeViewModel.swift */,
+				AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -698,6 +699,7 @@
 				D00928772D8FF30C00A10742 /* CommentView.swift in Sources */,
 				AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */,
 				AEF04DA42D9002DD001D3274 /* EpisodeViewController.swift in Sources */,
+				AEF04E262D912224001D3274 /* EpisodeCellViewModel.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
 				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
 				D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */,
