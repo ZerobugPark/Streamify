@@ -42,15 +42,29 @@ class DramaEpisodeCell: BaseCollectionViewCell {
     }
     
     override func configureView() {
-        imageView.backgroundColor = .darkGray
         containerView.layer.cornerRadius = 5
         containerView.clipsToBounds = true
     }
     
     func configure(_ item: DramaEpisode) {
-        imageView.image = item.image
         titleLabel.text = item.title
         countLabel.text = "\(item.episodeCount)개 에피소드"
+        imageView.image = UIImage(systemName: "photo")
+        let baseURL = Config.shared.secureURL + Config.PosterSizes.w154.rawValue
+        let urlString = baseURL + item.image
+
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  error == nil,
+                  let image = UIImage(data: data) else { return }
+
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }.resume()
     }
     
 }

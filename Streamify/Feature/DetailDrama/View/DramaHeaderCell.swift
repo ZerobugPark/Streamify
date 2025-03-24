@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import SnapKit
 
 class DramaHeaderCell: BaseCollectionViewCell {
@@ -16,12 +17,13 @@ class DramaHeaderCell: BaseCollectionViewCell {
     
     override func configureHierarchy() {
         addSubviews(backdropImage, titleLabel, infoLabel, overviewLabel)
+        backdropImage.contentMode = .scaleAspectFill
     }
     
     override func configureLayout() {
         backdropImage.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalToSuperview().multipliedBy(0.5)
+            make.height.equalTo(250)
         }
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(backdropImage.snp.bottom).offset(20)
@@ -43,6 +45,23 @@ class DramaHeaderCell: BaseCollectionViewCell {
         titleLabel.text = item.title
         infoLabel.text = item.info
         overviewLabel.text = item.overview
+        backdropImage.image = UIImage(systemName: "photo")
+
+        let baseURL = Config.shared.secureURL + Config.BackdropSizes.w780.rawValue
+        let urlString = baseURL + item.backdropImage
+
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  error == nil,
+                  let image = UIImage(data: data) else { return }
+
+            DispatchQueue.main.async {
+                self.backdropImage.image = image
+            }
+        }.resume()
     }
     
     override func configureView() {
