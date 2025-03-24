@@ -75,6 +75,7 @@ final class MainViewModel {
                 self.popularItems.accept(popular)
 
                 // topRated에서 유사 콘텐츠 기준 ID 추출
+                // TODO: 실제 사용자 관심 항목으로 변경 필요
                 let topId = topRated.first?.id ?? 0
 
                 self.fetchSimilar(from: topId)
@@ -85,7 +86,8 @@ final class MainViewModel {
                         let sections: [MainSectionModel] = [
                             .topRated(topRated),
                             .horizontal(title: "실시간 인기 드라마", items: trending),
-                            .horizontal(title: "비슷한 콘텐츠", items: similar),
+                            // TODO: 실제 항목의 이름으로 변경 필요
+                            .horizontal(title: "내 관심사와 비슷한 콘텐츠", items: similar),
                             .horizontal(title: "지금 뜨는 콘텐츠", items: popular)
                         ]
                         self.sectionModels.accept(sections)

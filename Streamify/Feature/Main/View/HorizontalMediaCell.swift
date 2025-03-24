@@ -25,7 +25,7 @@ class HorizontalMediaCell: BaseCollectionViewCell {
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
 //            make.height.equalToSuperview().multipliedBy(1.0 / 1.3)
-            make.height.equalTo(100)
+            make.height.equalTo(92)
         }
 
         titleLabel.snp.makeConstraints { make in
