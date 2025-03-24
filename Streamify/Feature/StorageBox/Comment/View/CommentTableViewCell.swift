@@ -56,8 +56,8 @@ final class CommentTableViewCell: BaseTableViewCell {
         titleLabel.text = data.title
         commnetLabel.text = data.comment
         
-        if let img = UIImage(data: data.imagePath) {
-            image.image = img
+        if let imgPath = data.imagePath {
+            image.image = UIImage(data: imgPath)
         } else {
             image.image = UIImage(systemName: "star.fill")
         }

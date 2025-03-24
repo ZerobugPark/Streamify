@@ -8,15 +8,21 @@
 import Foundation
 import RxDataSources
 
-
 struct Comments {
     var id: String
     var titleID: Int
     var title: String
-    var imagePath: Data
+    var imagePath: Data?
     var comment: String
 }
 
+struct Rate {
+    var id: String
+    var titleID: Int
+    var title: String
+    var imagePath: Data?
+    var voteAverage: Double
+}
 
 enum StorageSectionItem { //셀의 종류
     case firstSection(Drama)

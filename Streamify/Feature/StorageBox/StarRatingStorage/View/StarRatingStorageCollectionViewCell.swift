@@ -53,31 +53,15 @@ final class StarRatingStorageCollectionViewCell: BaseCollectionViewCell {
         
     }
     
-    func setupUI(_ data: Drama) {
+    func setupUI(_ data: Rate) {
         
         ratingLabel.text = "\(data.voteAverage)"
         
-        let urlString = data.imagePath
-        guard let url = URL(string: urlString) else { return }
-        
-        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-              guard let self = self else { return } // 셀이 사라졌으면 이미지 설정 안 함
-              
-              if let error = error {
-                  print("Error loading image: \(error.localizedDescription)")
-                  return
-              }
-              
-              guard let data = data, let image = UIImage(data: data) else {
-                  print("Invalid image data")
-                  return
-              }
-              
-              DispatchQueue.main.async {
-                  self.image.image = image
-              }
-          }.resume()
-        
+        if let imgPath = data.imagePath {
+            image.image = UIImage(data: imgPath)
+        } else {
+            image.image = UIImage(systemName: "star.fill")
+        }
         
     }
 }

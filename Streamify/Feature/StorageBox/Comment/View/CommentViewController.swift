@@ -14,13 +14,10 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
 
     var data: [Comments]
     
-    lazy var testData = BehaviorRelay(value: data)
+    lazy var commetnsDatas = Observable.just(data)
     
     init(vm: CommentViewModel, data: [Comments]) {
         self.data = data
-        print("Custom parameter: \(data)")
-        
-        // BaseViewController의 생성자 호출
         super.init(viewModel: vm)
     }
     
@@ -39,9 +36,12 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
     
     override func bindViewModel() {
         
+        let input = CommentViewModel.Input(setInitialData: commetnsDatas)
         
-        testData.asDriver(onErrorJustReturn: []).drive(mainView.tableView.rx.items(cellIdentifier: CommentTableViewCell.id, cellType: CommentTableViewCell.self)) { row, element, cell in
-        
+        let output = viewModel.transform(input: input)
+     
+        output.setComments.asDriver(onErrorJustReturn: []).drive(mainView.tableView.rx.items(cellIdentifier: CommentTableViewCell.id, cellType: CommentTableViewCell.self)) { row, element, cell in
+            
             cell.setupUI(element)
             
         }.disposed(by: disposeBag)

@@ -12,25 +12,36 @@ import RxCocoa
 
 class StarRatingStorageViewController: BaseViewController<StarRatingStorageView, StarRatingStorageViewModel> {
 
+    var data: [Rate]
+    
+    lazy var rateDatas = Observable.just(data)
+    
+    init(vm: StarRatingStorageViewModel, data: [Rate]) {
+        self.data = data
+        super.init(viewModel: vm)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         registerStorageList()
         setupNavigation()
         view.backgroundColor = .baseBlack
-        
-   
     }
     
 
     override func bindViewModel() {
         
         
-        let input = StarRatingStorageViewModel.Input(setInitialData: Observable.just(()))
+        let input = StarRatingStorageViewModel.Input(setInitialData: rateDatas)
         let output = viewModel.transform(input: input)
         
-        output.setInitialData.bind(to: mainView.verticalList.collectionView.rx.items(cellIdentifier: StarRatingStorageCollectionViewCell.id, cellType: StarRatingStorageCollectionViewCell.self)) { item, element, cell in
+        output.setRates.bind(to: mainView.verticalList.collectionView.rx.items(cellIdentifier: StarRatingStorageCollectionViewCell.id, cellType: StarRatingStorageCollectionViewCell.self)) { item, element, cell in
             
             cell.setupUI(element)
             

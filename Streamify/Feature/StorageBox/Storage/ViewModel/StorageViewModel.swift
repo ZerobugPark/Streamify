@@ -20,7 +20,7 @@ final class StorageViewModel: BaseViewModel {
     struct Output {
         let setSetcion: BehaviorRelay<[ListViewSectionModel]>
         let buttonTogle: PublishRelay<ActionButtonStatus>
-        let goToStarRating: PublishRelay<Void>
+        let goToStarRating: PublishRelay<[Rate]>
         let goToComment: PublishRelay<[Comments]>
     }
     
@@ -29,20 +29,22 @@ final class StorageViewModel: BaseViewModel {
     private var watchedDramas: [StorageSectionItem] = []
     private var watchingDramas: [StorageSectionItem] = []
     private let emptySection: [StorageSectionItem] = []
-
+    
     private var previousStatus: ActionButtonStatus = .all
     
+    private var ratingData: [Rate] = []
     private var commentsData: [Comments] = []
     
     override init() {
         super.init()
         
         let data = generateMockData()
-        geteData(origin: data) { [weak self]  in
-            guard let self = self else { return }
-            self.commentsData = $0
-        }
         
+        categorizeDramaByType(origin: data) { [weak self] rate, comment in
+            guard let self = self else { return }
+            self.ratingData = rate
+            self.commentsData = comment
+        }
         
         let wantedWatchList = data.filter { $0.dramaType == .none }
         let watchedList = data.filter { $0.dramaType == .watched }
@@ -60,8 +62,8 @@ final class StorageViewModel: BaseViewModel {
         for item in watchingList {
             watchingDramas.append(.thirdSection(item))
         }
-
-
+        
+        
     }
     
     
@@ -73,9 +75,9 @@ final class StorageViewModel: BaseViewModel {
         let sectiomModel = BehaviorRelay<[ListViewSectionModel]>(value: [.first(header: title[0], watchedDramas), .second(header: title[1], wantedWatchDramas), .third(header: title[2], watchingDramas)])
         
         let buttonToggle = PublishRelay<ActionButtonStatus>()
-        let goToStarRating = PublishRelay<Void>()
+        let goToStarRating = PublishRelay<[Rate]>()
         let goToComment = PublishRelay<[Comments]>()
-                
+        
         input.actionButtonTapped.bind(with: self) { owner, tag in
             
             if owner.previousStatus == tag {
@@ -98,10 +100,10 @@ final class StorageViewModel: BaseViewModel {
                 sectiomModel.accept([.first(header: title[2], owner.watchingDramas), .second(header: title[3], owner.emptySection), .third(header: title[3], owner.emptySection)])
                 buttonToggle.accept(.watchingButton)
             case .commentButton:
-                goToComment.accept((owner.commentsData))
+                goToComment.accept(owner.commentsData)
                 return
             case .ratingButton:
-                goToStarRating.accept(())
+                goToStarRating.accept(owner.ratingData)
                 return
             case .all:
                 break
@@ -119,45 +121,67 @@ final class StorageViewModel: BaseViewModel {
 
 
 extension StorageViewModel {
-    func geteData(origin: [Drama], completionHandler: @escaping ([Comments]) -> Void)  {
+    
+    private func categorizeDramaByType(origin:[Drama], completionHandler: @escaping ([Rate], [Comments]) -> Void) {
         
-        var commentArray: [Comments] = []
         let dispatchGroup = DispatchGroup()
+        var rateData: [Rate] = []
+        var commentData: [Comments] = []
         
-        for i in 0..<origin.count {
-            
-            let urlString = origin[i].imagePath
-            guard let url = URL(string: urlString) else { return }
-            
+        let commnetsArray = origin.filter { !$0.comment.isEmpty }
+        for item in commnetsArray {
             dispatchGroup.enter()
-            
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                defer { dispatchGroup.leave() }
-                
-                  
-                  if let error = error {
-                      print("Error loading image: \(error.localizedDescription)")
-                      return
-                  }
-                  
-                  guard let data = data else {
-                      print("Invalid image data")
-                      return
-                  }
-                  
-                var comment = Comments(id: origin[i].id, titleID: origin[i].titleID, title: origin[i].title, imagePath: data, comment: origin[i].comment)
-                commentArray.append(comment)
-               
-              }.resume()
+            fetchImageData(imagePath: item.imagePath) {
+                let commnet = Comments(id: item.id, titleID: item.titleID, title: item.title, imagePath: $0, comment: item.imagePath)
+                commentData.append(commnet)
+                dispatchGroup.leave()
+            }
         }
         
-        dispatchGroup.notify(queue: .main) {
-            print("Completed")
-            completionHandler(commentArray)
-         }
         
+        let rateArray = origin.filter { $0.voteAverage != 0.0 }
+        for item in rateArray {
+            dispatchGroup.enter()
+            fetchImageData(imagePath: item.imagePath) {
+                let rate = Rate(id: item.id, titleID: item.titleID, title: item.title, imagePath: $0, voteAverage: item.voteAverage )
+                rateData.append(rate)
+                dispatchGroup.leave()
+            }
+        }
+        
+        
+        dispatchGroup.notify(queue: .main) {
+            completionHandler(rateData, commentData)
+        }
+       
+    }
+    
+    private func fetchImageData(imagePath: String, completionHandler: @escaping (Data?) -> ()) {
+        
+        
+        let urlString = imagePath
+        guard let url = URL(string: urlString) else { completionHandler(nil); return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let _ = error {
+                completionHandler(nil)
+                return
+            }
+            
+            guard let data = data else {
+                completionHandler(nil)
+                return
+            }
+            completionHandler(data)
+            
+            
+        }.resume()
+   
     }
 }
+    
+
 
 
 struct Drama {
@@ -241,7 +265,7 @@ func generateMockData() -> [Drama] {
             episodes: [episode1, episode2, episode3]
         )
     }
-
+    
     // 전체 드라마 목록 반환 (봤어요, 시청 중, 시청 예정)
     return watchedDramas + watchingDramas + noneDramas
 }

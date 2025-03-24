@@ -70,11 +70,11 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         
         output.setSetcion.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         
-        output.goToStarRating.asDriver(onErrorJustReturn: ())
-            .drive(with: self) { owner, _ in
+        output.goToStarRating.asDriver(onErrorJustReturn: [])
+            .drive(with: self) { owner, data in
                 
                 let viewModel = StarRatingStorageViewModel()
-                let starRatingVC = StarRatingStorageViewController(viewModel: viewModel)
+                let starRatingVC = StarRatingStorageViewController(vm: viewModel, data: data)
                 owner.navigationController?.pushViewController(starRatingVC, animated: true)
                 
                 //owner.coordinator?.starRatingScreen()
@@ -169,8 +169,6 @@ extension StorageViewController {
                 for: indexPath)
             return headerView
         }
-        
-   
         
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CompositionalHeaderReusableView.reuseId, for: indexPath) as? CompositionalHeaderReusableView else {
             return UICollectionReusableView()

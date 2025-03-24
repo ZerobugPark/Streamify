@@ -14,31 +14,33 @@ import RxSwift
 final class StarRatingStorageViewModel: BaseViewModel {
     
     struct Input {
-        let setInitialData: Observable<()>
+        let setInitialData: Observable<[Rate]>
         
     }
     
     struct Output {
-        let setInitialData: BehaviorRelay<[Drama]>
+        let setRates: BehaviorRelay<[Rate]>
         
     }
     
     
-    private var drams: [Drama] = []
-    
+    private var rates: [Rate] = []
 
-    
-    override init() {
-        drams = generateMockData()
-    }
-    
-    
     
     func transform(input: Input) -> Output {
       
-        let setInitialData = BehaviorRelay(value: drams)
+        let setRates = BehaviorRelay(value: rates)
         
-        return Output(setInitialData: setInitialData)
+        input.setInitialData.bind(with: self) { owner, data in
+            
+            owner.rates = data
+            setRates.accept(owner.rates)
+            
+        }.disposed(by: disposeBag)
+        
+        
+        
+        return Output(setRates: setRates)
     }
     
     
