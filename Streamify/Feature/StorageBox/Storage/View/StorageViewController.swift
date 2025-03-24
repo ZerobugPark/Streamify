@@ -40,6 +40,8 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         }
     )
     
+    let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.fill"), style: .plain, target: nil, action: nil)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +80,11 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
             
         }.disposed(by: disposeBag)
         
+        rightBarButton.rx.tap.bind(with: self) { owner, _ in
+            
+            owner.coordinator?.showModifyScreen()
+            
+        }.disposed(by: disposeBag)
         
         output.setSetcion.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
 
@@ -142,6 +149,7 @@ extension StorageViewController {
     private func setupNavigation() {
         let title = "보관함"
         navigationItem.title = title
+        navigationItem.rightBarButtonItem = rightBarButton
         navigationItem.backButtonTitle = ""
     }
     

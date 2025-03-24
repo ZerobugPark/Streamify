@@ -57,4 +57,15 @@ class MainCoordinator: Coordinator {
         commnetVC.coordinator = self
         navigationController.pushViewController(commnetVC, animated: true)
     }
+    
+    func showModifyScreen() {
+        let modifyVC = ModifyViewController()
+        modifyVC.coordinator = self
+        navigationController.pushViewController(modifyVC, animated: true)
+    }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: true)
+    }
+    
 }
