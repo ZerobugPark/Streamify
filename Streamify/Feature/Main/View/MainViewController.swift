@@ -105,6 +105,7 @@ class MainViewController: UIViewController {
 
     @objc private func didTapSearch() {
         print("검색 버튼 탭")
+        coordinator?.showSearchScreen()
     }
 
     private func setupUI() {

@@ -26,6 +26,9 @@
 		3EE1E85B2D8EF1BE00681B6B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */; };
 		3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */; };
 		3EE1E8602D903B5700681B6B /* HorizontalMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */; };
+		3EE1E8652D9059EA00681B6B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8642D9059EA00681B6B /* SearchViewController.swift */; };
+		3EE1E8672D90D1AF00681B6B /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */; };
+		3EE1E87D2D91344A00681B6B /* DetailCoordintaor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E87C2D91344A00681B6B /* DetailCoordintaor.swift */; };
 		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
 		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
 		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
@@ -42,6 +45,8 @@
 		AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */; };
 		AEF04DAC2D901329001D3274 /* EpisodeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */; };
 		AEF04DAE2D901334001D3274 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAD2D901334001D3274 /* EpisodeCell.swift */; };
+		AEF04E262D912224001D3274 /* EpisodeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */; };
+		AEF04E282D91443E001D3274 /* EpisodeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04E272D91443E001D3274 /* EpisodeModalViewController.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -126,6 +131,9 @@
 		3EE1E85A2D8EF1BE00681B6B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		3EE1E85F2D903B5700681B6B /* HorizontalMediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMediaCell.swift; sourceTree = "<group>"; };
+		3EE1E8642D9059EA00681B6B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		3EE1E87C2D91344A00681B6B /* DetailCoordintaor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordintaor.swift; sourceTree = "<group>"; };
 		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
 		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
@@ -142,6 +150,8 @@
 		AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeHeaderCell.swift; sourceTree = "<group>"; };
 		AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeButtonCell.swift; sourceTree = "<group>"; };
 		AEF04DAD2D901334001D3274 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellViewModel.swift; sourceTree = "<group>"; };
+		AEF04E272D91443E001D3274 /* EpisodeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModalViewController.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -259,6 +269,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		3EE1E8622D90599100681B6B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E8632D9059E300681B6B /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		3EE1E8632D9059E300681B6B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E8642D9059EA00681B6B /* SearchViewController.swift */,
+				3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3EE1E85C2D8F01C700681B6B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		AEF04C302D8FCD61001D3274 /* DetailDrama */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +339,7 @@
 				AEF04DA92D90130C001D3274 /* EpisodeHeaderCell.swift */,
 				AEF04DAB2D901329001D3274 /* EpisodeButtonCell.swift */,
 				AEF04DAD2D901334001D3274 /* EpisodeCell.swift */,
+				AEF04E272D91443E001D3274 /* EpisodeModalViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				AEF04DA72D9002FC001D3274 /* EpisodeViewModel.swift */,
+				AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -332,6 +369,7 @@
 				3EE1E8312D8E8ECE00681B6B /* Coordinator.swift */,
 				3EE1E83F2D8E9D7C00681B6B /* OnboardingCoordinator.swift */,
 				3EE1E8512D8EEB7B00681B6B /* MainCoordinator.swift */,
+				3EE1E87C2D91344A00681B6B /* DetailCoordintaor.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -485,6 +523,7 @@
 		D03737C92D8C33F1006CED4A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				3EE1E8622D90599100681B6B /* Search */,
 				AEF04DA02D9002B2001D3274 /* DetailEpisode */,
 				AEF04C302D8FCD61001D3274 /* DetailDrama */,
 				3EE1E8412D8E9DF200681B6B /* Onboarding */,
@@ -710,6 +749,7 @@
 				3EE1E84B2D8E9E8100681B6B /* GenreSelectionViewModel.swift in Sources */,
 				D00926FB2D8E99EC00A10742 /* StarRatingStorageView.swift in Sources */,
 				3EE1E85B2D8EF1BE00681B6B /* MainViewController.swift in Sources */,
+				3EE1E8652D9059EA00681B6B /* SearchViewController.swift in Sources */,
 				D00926FD2D8E9A0400A10742 /* StarRatingStorageViewModel.swift in Sources */,
 				D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */,
 				AEF04C342D8FCD7F001D3274 /* DramaView.swift in Sources */,
@@ -720,14 +760,17 @@
 				3EE1E8402D8E9D7C00681B6B /* OnboardingCoordinator.swift in Sources */,
 				D09E0EF62D8C4561004EEC6C /* BaseViewModel.swift in Sources */,
 				D00928772D8FF30C00A10742 /* CommentView.swift in Sources */,
+				3EE1E87D2D91344A00681B6B /* DetailCoordintaor.swift in Sources */,
 				AEF04DAA2D90130C001D3274 /* EpisodeHeaderCell.swift in Sources */,
 				AEF04DA42D9002DD001D3274 /* EpisodeViewController.swift in Sources */,
+				AEF04E262D912224001D3274 /* EpisodeCellViewModel.swift in Sources */,
 				3EE1E82E2D8E846000681B6B /* NetworkManager.swift in Sources */,
 				D00929192D9050D900A10742 /* CommentTableViewCell.swift in Sources */,
 				3EE1E82A2D8E82AF00681B6B /* Config.swift in Sources */,
 				D009287B2D8FF32D00A10742 /* CommentViewModel.swift in Sources */,
 				D00927A12D8EF41C00A10742 /* StorageCollectionViewCell.swift in Sources */,
 				D00927072D8EE72C00A10742 /* StorageViewController.swift in Sources */,
+				3EE1E8672D90D1AF00681B6B /* SearchCollectionViewCell.swift in Sources */,
 				AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */,
 				AEF04C2F2D8F0E63001D3274 /* APIKey.swift in Sources */,
 				D00926FF2D8E9B8100A10742 /* StarRatingStorageCollectionViewCell.swift in Sources */,
@@ -736,6 +779,7 @@
 				3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */,
 				AEF04CD92D8FD982001D3274 /* DramaEpisodeCell.swift in Sources */,
 				D09E0E552D8C3805004EEC6C /* BaseTableViewCell.swift in Sources */,
+				AEF04E282D91443E001D3274 /* EpisodeModalViewController.swift in Sources */,
 				D00927052D8EE65000A10742 /* BaseLabel.swift in Sources */,
 				D09E0EF22D8C445F004EEC6C /* BaseViewController.swift in Sources */,
 				D09E0EF82D8C45A1004EEC6C /* ViewModelType.swift in Sources */,

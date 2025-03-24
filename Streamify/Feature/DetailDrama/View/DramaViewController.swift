@@ -12,6 +12,8 @@ import RxDataSources
 
 class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
     
+    weak var coordinator: DetailCoordinator?
+    
     typealias collectionViewDataSource = RxCollectionViewSectionedReloadDataSource<DramaSectionModel>
     
     let dataSource = collectionViewDataSource(configureCell: { dataSource, collectionView, indexPath, item in
