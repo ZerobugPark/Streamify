@@ -22,7 +22,8 @@ class HorizontalMediaCell: BaseCollectionViewCell {
         thumbnailImageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(1.0 / 1.3)
+//            make.height.equalToSuperview().multipliedBy(1.0 / 1.3)
+            make.height.equalTo(100)
         }
 
         titleLabel.snp.makeConstraints { make in
@@ -38,12 +39,12 @@ class HorizontalMediaCell: BaseCollectionViewCell {
 
     override func configureView() {
         thumbnailImageView.image = .setSymbol(.starCircle)
-        contentView.layer.cornerRadius = 10
+//        contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
-        contentView.backgroundColor = .systemGray
-        titleLabel.textAlignment = .center
+        
+        titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 1
-        genreLabel.textAlignment = .center
+        genreLabel.textAlignment = .left
     }
 
     func configure(title: String, genre: String?, imagePath: String?) {
