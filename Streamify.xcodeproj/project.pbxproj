@@ -80,6 +80,7 @@
 		D03737C42D8C33CD006CED4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03737BA2D8C33CD006CED4A /* Assets.xcassets */; };
 		D03737C62D8C33CD006CED4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03737BD2D8C33CD006CED4A /* LaunchScreen.storyboard */; };
 		D03737DE2D8C34ED006CED4A /* empty3 in Resources */ = {isa = PBXBuildFile; fileRef = D03737DD2D8C34ED006CED4A /* empty3 */; };
+		D09726392D918B5E00E92726 /* ModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09726382D918B5E00E92726 /* ModifyViewController.swift */; };
 		D09E0DBF2D8C3748004EEC6C /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E0DBE2D8C3748004EEC6C /* BaseView.swift */; };
 		D09E0DC12D8C3763004EEC6C /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E0DC02D8C3763004EEC6C /* BaseCollectionViewCell.swift */; };
 		D09E0E552D8C3805004EEC6C /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E0E542D8C3805004EEC6C /* BaseTableViewCell.swift */; };
@@ -185,6 +186,7 @@
 		D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D03737BF2D8C33CD006CED4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D03737DD2D8C34ED006CED4A /* empty3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty3; sourceTree = "<group>"; };
+		D09726382D918B5E00E92726 /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
 		D09E0DBE2D8C3748004EEC6C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		D09E0DC02D8C3763004EEC6C /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		D09E0E542D8C3805004EEC6C /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -284,14 +286,6 @@
 				3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3EE1E85C2D8F01C700681B6B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				3EE1E85D2D8F01DF00681B6B /* MainViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AEF04C302D8FCD61001D3274 /* DetailDrama */ = {
@@ -396,6 +390,7 @@
 		D00927012D8EE49100A10742 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				D09726352D918B2C00E92726 /* ModifyUserName */,
 				D00927032D8EE49E00A10742 /* ViewModel */,
 				D00927022D8EE49800A10742 /* View */,
 			);
@@ -607,6 +602,30 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		D09726352D918B2C00E92726 /* ModifyUserName */ = {
+			isa = PBXGroup;
+			children = (
+				D09726372D918B4F00E92726 /* View */,
+				D09726362D918B4700E92726 /* ViewModel */,
+			);
+			path = ModifyUserName;
+			sourceTree = "<group>";
+		};
+		D09726362D918B4700E92726 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D09726372D918B4F00E92726 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D09726382D918B5E00E92726 /* ModifyViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D09E182F2D8D79D9004EEC6C /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -754,6 +773,7 @@
 				D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */,
 				AEF04C342D8FCD7F001D3274 /* DramaView.swift in Sources */,
 				AEF04C362D8FCD8A001D3274 /* DramaViewController.swift in Sources */,
+				D09726392D918B5E00E92726 /* ModifyViewController.swift in Sources */,
 				3EE1E84F2D8E9F4600681B6B /* NameInputViewModel.swift in Sources */,
 				3EE1E8602D903B5700681B6B /* HorizontalMediaCell.swift in Sources */,
 				D00927AA2D8F072600A10742 /* UIView+Extension.swift in Sources */,

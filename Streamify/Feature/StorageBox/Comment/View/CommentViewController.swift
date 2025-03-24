@@ -15,7 +15,7 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
     var data: [Comments]
     
     lazy var commetnsDatas = Observable.just(data)
-    weak var coordinator: DetailCoordinator?
+    weak var coordinator: MainCoordinator?
     
     init(vm: CommentViewModel, data: [Comments]) {
         self.data = data
@@ -47,10 +47,7 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
         }.disposed(by: disposeBag)
         
         mainView.tableView.rx.modelSelected(Comments.self).bind(with: self) { owner, element in
-            
-            //print(element)
-            //coordinator?.showEpisodeList()
-            
+            owner.coordinator?.showDetail(for: element.titleID)
         }.disposed(by: disposeBag)
         
         

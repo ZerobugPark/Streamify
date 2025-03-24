@@ -32,8 +32,8 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(searchVC, animated: true)
     }
     
-    func showDetail(for item: MediaItem) {
-        let coordinator = DetailCoordinator(navigationController: navigationController, mediaItem: item)
+    func showDetail(for item: Int) {
+        let coordinator = DetailCoordinator(navigationController: navigationController, id: item)
         coordinator.start()
     }
     
@@ -47,12 +47,25 @@ class MainCoordinator: Coordinator {
     func showStarRatingScreen(data: [Rate]) {
         let viewModel = StarRatingStorageViewModel()
         let starRatingVC = StarRatingStorageViewController(vm: viewModel, data: data)
+        starRatingVC.coordinator = self
         navigationController.pushViewController(starRatingVC, animated: true)
     }
     
     func showCommentScreen(data: [Comments]) {
         let viewModel = CommentViewModel()
         let commnetVC = CommentViewController(vm: viewModel, data: data)
+        commnetVC.coordinator = self
         navigationController.pushViewController(commnetVC, animated: true)
     }
+    
+    func showModifyScreen() {
+        let modifyVC = ModifyViewController()
+        modifyVC.coordinator = self
+        navigationController.pushViewController(modifyVC, animated: true)
+    }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: true)
+    }
+    
 }
