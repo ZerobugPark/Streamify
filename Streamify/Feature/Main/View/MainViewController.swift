@@ -128,9 +128,17 @@ class MainViewController: UIViewController {
                 print("Error: \(error)")
             }
             .disposed(by: disposeBag)
-        
+
         viewModel.sectionModels
             .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+
+        collectionView.rx.itemSelected
+            .bind(with: self) { owner, indexPath in
+                let section = owner.dataSource.sectionModels[indexPath.section]
+                let item = section.items[indexPath.item]
+                owner.coordinator?.showDetail(for: item)
+            }
             .disposed(by: disposeBag)
     }
     

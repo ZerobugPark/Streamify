@@ -17,6 +17,8 @@ class HorizontalMediaCell: BaseCollectionViewCell {
     override func configureHierarchy() {
         contentView.addSubviews(thumbnailImageView, titleLabel, genreLabel)
     }
+    
+    // TODO: PrepareForReuse로 이미지 유지 필요!!
 
     override func configureLayout() {
         thumbnailImageView.snp.makeConstraints { make in
