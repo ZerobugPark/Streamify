@@ -20,7 +20,7 @@ class EpisodeCell: BaseCollectionViewCell {
 //        super.init()
 //    }
     
-    let imageView = BaseImageView()
+    let imageView = BaseImageView(radius: 5)
     let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
     let timeLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
     let dateLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
@@ -47,6 +47,23 @@ class EpisodeCell: BaseCollectionViewCell {
         timeLabel.text = item.time
         dateLabel.text = item.date
         overviewLabel.text = item.overview
+        imageView.image = UIImage(systemName: "photo")
+
+        let baseURL = Config.shared.secureURL + Config.PosterSizes.w154.rawValue
+        let urlString = baseURL + item.image
+
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  error == nil,
+                  let image = UIImage(data: data) else { return }
+
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }.resume()
     }
     
     override func configureHierarchy() {
@@ -58,27 +75,27 @@ class EpisodeCell: BaseCollectionViewCell {
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().inset(10)
-            make.height.equalToSuperview().multipliedBy(0.5)
-            make.width.equalToSuperview().multipliedBy(0.3)
+            make.height.equalTo(100)
+            make.width.equalTo(160)
         }
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).offset(5)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
             make.top.equalTo(imageView)
             make.trailing.equalTo(checkButton).offset(-5)
         }
         timeLabel.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).offset(5)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
             make.top.equalTo(titleLabel.snp.bottom).offset(2)
             make.trailing.equalTo(checkButton).offset(-5)
         }
         dateLabel.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).offset(5)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
             make.bottom.equalTo(imageView)
             make.trailing.equalTo(checkButton).offset(-5)
         }
         overviewLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(10)
-            make.top.equalTo(imageView.snp.bottom).offset(5)
+            make.top.equalTo(imageView.snp.bottom).offset(10)
         }
         checkButton.snp.makeConstraints { make in
             make.top.equalToSuperview()

@@ -11,6 +11,8 @@ import RxCocoa
 import RxDataSources
 
 class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
+    
+    weak var coordinator: DetailCoordinator?
 
     typealias collectionViewDataSource = RxCollectionViewSectionedReloadDataSource<EpisodeSectionModel>
     
@@ -20,7 +22,7 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeHeaderCell.id, for: indexPath) as! EpisodeHeaderCell
             cell.configure(header)
             return cell
-        case .button(let button):
+        case .button:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeButtonCell.id, for: indexPath) as! EpisodeButtonCell
             
             cell.commentButton.rx.tap
@@ -54,7 +56,7 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mockData()
+//        mockData()
     }
     
     override func bindViewModel() {
@@ -63,46 +65,46 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
         
         
         
-        sectionModel
-            .bind(to: mainView.collectionView.rx.items(dataSource: dataSource))
+        output.sectionModel
+            .drive(mainView.collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
         
     }
     
-    private func mockData() {
-        
-        
-        let header = EpisodeHeader(
-            backdropImage: nil,
-            title: "슬기로운 의사생활 시즌 1",
-            info: "2020 · 드라마 · 코미디",
-            overview: "병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."
-        )
-
-        let buttons: [EpisodeButton] = [
-            EpisodeButton(image: .setSymbol(.plus))
-        ]
-
-        let episodes: [EpisodeData] = [
-            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
-            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
-            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
-            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
-            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
-            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
-            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
-            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다.")
-        ]
-
-        let episodeSections = [
-            EpisodeSectionModel(model: "", items: [.header(header)]),
-            EpisodeSectionModel(model: "", items: buttons.map { .button($0) }),
-            EpisodeSectionModel(model: "에피소드", items: episodes.map { .episode($0) })
-        ]
-        
-        sectionModel.accept(episodeSections)
-    }
+//    private func mockData() {
+//        
+//        
+//        let header = EpisodeHeader(
+//            backdropImage: nil,
+//            title: "슬기로운 의사생활 시즌 1",
+//            info: "2020 · 드라마 · 코미디",
+//            overview: "병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."
+//        )
+//
+//        let buttons: [EpisodeButton] = [
+//            EpisodeButton(image: .setSymbol(.plus))
+//        ]
+//
+//        let episodes: [EpisodeData] = [
+//            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+//            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다. 병원에서 일어나는 다양한 이야기를 다룬 드라마입니다. 의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+//            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+//            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+//            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+//            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+//            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다."),
+//            EpisodeData(image: nil, title: "에피소드 1", time: "2시간", date: "1월 22일", overview: "의사들의 일상과 환자들과의 관계를 따뜻하게 그려냅니다.")
+//        ]
+//
+//        let episodeSections = [
+//            EpisodeSectionModel(model: "", items: [.header(header)]),
+//            EpisodeSectionModel(model: "", items: buttons.map { .button($0) }),
+//            EpisodeSectionModel(model: "에피소드", items: episodes.map { .episode($0) })
+//        ]
+//        
+//        sectionModel.accept(episodeSections)
+//    }
     
 
 }

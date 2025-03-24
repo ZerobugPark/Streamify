@@ -47,6 +47,7 @@ struct DramaEpisode {
     let image: String
     let title: String
     let episodeCount: Int
+    let dramaTitle: String
 }
 
 final class DramaViewModel: BaseViewModel {
@@ -110,7 +111,7 @@ final class DramaViewModel: BaseViewModel {
         
         var episode = [DramaItem]()
         data.seasons.forEach {
-            episode.append(.episode(.init(id: $0.id, seasonNumber: $0.season_number, image: $0.poster_path ?? "", title: $0.name, episodeCount: $0.episode_count)))
+            episode.append(.episode(.init(id: data.id, seasonNumber: $0.season_number, image: $0.poster_path ?? "", title: $0.name, episodeCount: $0.episode_count, dramaTitle: data.name)))
         }
         
         return [DramaSectionModel(model: "", items: [header]),

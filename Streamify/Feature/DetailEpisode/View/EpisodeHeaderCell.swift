@@ -45,8 +45,26 @@ class EpisodeHeaderCell: BaseCollectionViewCell {
     
     func configure(_ item: EpisodeHeader) {
         titleLabel.text = item.title
-        countLabel.text = item.info
+        countLabel.text = item.episodeCount
         overviewLabel.text = item.overview
+        imageView.image = UIImage(systemName: "photo")
+
+        let baseURL = Config.shared.secureURL + Config.PosterSizes.w154.rawValue
+        let urlString = baseURL + item.posterImage
+
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  error == nil,
+                  let image = UIImage(data: data) else { return }
+
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }.resume()
+        
     }
     
     override func configureView() {
