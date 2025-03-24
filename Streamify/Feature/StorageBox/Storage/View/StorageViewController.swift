@@ -67,8 +67,20 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         let output = viewModel.transform(input: input)
         
         
+        mainView.storageList.collectionView.rx.modelSelected(StorageSectionItem.self).bind(with: self) { owner, element in
+            
+            switch element {
+            case .firstSection(let data), .secondSection(let data), .thirdSection(let data):
+                owner.coordinator?.showDetail(for: data.titleID)
+            }
+            
+            
+            
+        }.disposed(by: disposeBag)
+        
         
         output.setSetcion.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+
         
         output.goToStarRating.asDriver(onErrorJustReturn: [])
             .drive(with: self) { owner, data in

@@ -136,7 +136,7 @@ class MainViewController: UIViewController {
             .bind(with: self) { owner, indexPath in
                 let section = owner.dataSource.sectionModels[indexPath.section]
                 let item = section.items[indexPath.item]
-                owner.coordinator?.showDetail(for: item)
+                owner.coordinator?.showDetail(for: item.id)
             }
             .disposed(by: disposeBag)
     }
