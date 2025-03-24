@@ -29,12 +29,12 @@ class HorizontalMediaCell: BaseCollectionViewCell {
         }
 
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(thumbnailImageView.snp.bottom).offset(4)
+            make.top.equalTo(thumbnailImageView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(2)
         }
 
         genreLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(2)
+            make.top.equalTo(titleLabel.snp.bottom).offset(4)
             make.leading.trailing.equalToSuperview().inset(2)
         }
     }

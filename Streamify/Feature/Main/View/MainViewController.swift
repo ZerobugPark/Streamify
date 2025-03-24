@@ -105,14 +105,12 @@ class MainViewController: UIViewController {
     
     private func setupUI() {
         view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
+
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+
         collectionView.register(TopRatedCell.self, forCellWithReuseIdentifier: TopRatedCell.id)
         collectionView.register(HorizontalMediaCell.self, forCellWithReuseIdentifier: HorizontalMediaCell.id)
         collectionView.register(
@@ -142,18 +140,19 @@ class MainViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    // TODO: 맨 처음 셀, 마지막 셀 연결 필요
     static func createTopRatedSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85),
-                                               heightDimension: .absolute(400))
+                                               heightDimension: .absolute(420))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 24, trailing: 16)
+        section.orthogonalScrollingBehavior = .groupPagingCentered
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16)
         section.interGroupSpacing = 12
         
         return section
@@ -171,14 +170,14 @@ class MainViewController: UIViewController {
         // 2. 그룹: 셀 하나만 포함, 그룹 자체가 40% 너비
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.4),
-            heightDimension: .absolute(136)
+            heightDimension: .absolute(160)
         )
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         // 3. 섹션: 연속 스크롤 설정
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 8, trailing: 16)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 4, trailing: 16)
 
         // 4. 헤더 추가
         let headerSize = NSCollectionLayoutSize(
