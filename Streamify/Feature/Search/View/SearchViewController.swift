@@ -48,6 +48,9 @@ class SearchViewController: UIViewController {
     private let verticalListView = VerticalListView()
     private let disposeBag = DisposeBag()
 
+    private let searchQuery = PublishRelay<String>()
+    private let searchResults = BehaviorRelay<[SearchResult]>(value: [])
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -55,7 +58,7 @@ class SearchViewController: UIViewController {
         view.backgroundColor = .black
         setupLayout()
         setupCollectionView()
-        bindDummyData()
+        bind()
     }
 
     // MARK: - Layout
@@ -97,18 +100,43 @@ class SearchViewController: UIViewController {
         }
     }
 
-    // MARK: - CollectionView Setup
+    // MARK: - Setup & Binding
 
     private func setupCollectionView() {
         verticalListView.collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.id)
         verticalListView.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 
-    private func bindDummyData() {
-        let dummyItems = Array(0..<20)
-        Observable.just(dummyItems)
+    private func bind() {
+        // 텍스트 입력 이벤트
+        searchTextField.rx.controlEvent(.editingDidEndOnExit)
+            .withLatestFrom(searchTextField.rx.text.orEmpty)
+            .bind(to: searchQuery)
+            .disposed(by: disposeBag)
+
+        // 검색 실행
+        searchQuery
+            .distinctUntilChanged()
+            .flatMapLatest { query -> Observable<[SearchResult]> in
+                guard !query.isEmpty else { return .just([]) }
+
+                return NetworkManager.shared.request(api: .search(query: query), type: TMDBResponse.self)
+                    .map { result in
+                        switch result {
+                        case .success(let data): return data.results
+                        case .failure: return []
+                        }
+                    }
+                    .asObservable()
+                    .catch { _ in .just([]) }
+            }
+            .bind(to: searchResults)
+            .disposed(by: disposeBag)
+
+        // 결과 바인딩
+        searchResults
             .bind(to: verticalListView.collectionView.rx.items(cellIdentifier: SearchCollectionViewCell.id, cellType: SearchCollectionViewCell.self)) { row, item, cell in
-                cell.configure(imageURL: nil) // 더미 이미지 사용 중
+                cell.configure(with: item.posterPath)
             }
             .disposed(by: disposeBag)
     }

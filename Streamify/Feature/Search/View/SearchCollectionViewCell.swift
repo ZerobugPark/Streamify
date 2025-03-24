@@ -35,9 +35,24 @@ final class SearchCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    func configure(imageURL: URL?) {
-        // 나중에 Kingfisher 등 이미지 로딩 라이브러리 적용 가능
-        // 현재는 system image 대체
+    func configure(with posterPath: String?) {
+        guard let posterURL = posterPath else { return }
         posterImageView.image = UIImage(systemName: "photo")
+
+        let baseURL = "https://image.tmdb.org/t/p/w780"
+        let urlString = baseURL + posterURL
+
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  error == nil,
+                  let image = UIImage(data: data) else { return }
+
+            DispatchQueue.main.async {
+                self.posterImageView.image = image
+            }
+        }.resume()
     }
 }
