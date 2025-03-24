@@ -41,12 +41,16 @@ final class StorageView: BaseView {
             make.horizontalEdges.bottom.equalTo(self)
         }
         
+        wantToWatchButton.snp.makeConstraints { make in
+            make.width.equalTo(105)
+        }
+        
     }
     
     override func configureView() {
         
-        stackView.distribution = .fillEqually
-        stackView.spacing = 4
+        stackView.distribution = .fillProportionally
+        //stackView.spacing = 4
         stackView.axis = .horizontal
         
         [wantToWatchButton, watchedButton, watchingButton, commentButton, ratingButton].enumerated().forEach { index, button in

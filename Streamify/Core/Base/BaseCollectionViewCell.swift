@@ -15,7 +15,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         configureHierarchy()
         configureLayout()
         configureView()
-        
+        self.backgroundColor = .setStreamifyColor(.baseBlack)
     }
     
     func configureHierarchy() { }

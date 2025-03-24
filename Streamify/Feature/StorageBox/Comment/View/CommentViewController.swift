@@ -15,6 +15,7 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
     var data: [Comments]
     
     lazy var commetnsDatas = Observable.just(data)
+    weak var coordinator: DetailCoordinator?
     
     init(vm: CommentViewModel, data: [Comments]) {
         self.data = data
@@ -43,6 +44,13 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
         output.setComments.asDriver(onErrorJustReturn: []).drive(mainView.tableView.rx.items(cellIdentifier: CommentTableViewCell.id, cellType: CommentTableViewCell.self)) { row, element, cell in
             
             cell.setupUI(element)
+            
+        }.disposed(by: disposeBag)
+        
+        mainView.tableView.rx.modelSelected(Comments.self).bind(with: self) { owner, element in
+            
+            //print(element)
+            //coordinator?.showEpisodeList()
             
         }.disposed(by: disposeBag)
         
