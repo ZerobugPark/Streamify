@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class EpisodeHeaderCell: BaseCollectionViewCell {
-    let imageView = BaseImageView()
+    let imageView = BaseImageView(radius: 5)
     let titleLabel = BaseLabel(fontSize: .body_bold_24, color: .baseWhite)
     let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
     let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
@@ -33,8 +33,8 @@ class EpisodeHeaderCell: BaseCollectionViewCell {
         imageView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.trailing.equalToSuperview().inset(10)
-            make.height.equalToSuperview().multipliedBy(0.6)
-            make.width.equalToSuperview().multipliedBy(0.3)
+            make.height.equalTo(180)
+            make.width.equalTo(130)
         }
         
         overviewLabel.snp.makeConstraints { make in
