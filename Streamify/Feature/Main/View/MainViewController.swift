@@ -93,6 +93,7 @@ class MainViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = storageButton
         navigationItem.rightBarButtonItem = searchButton
+        navigationItem.backButtonTitle = ""
     }
     
     @objc private func didTapStorage() {
