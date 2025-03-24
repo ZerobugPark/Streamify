@@ -7,13 +7,15 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class EpisodeButtonCell: BaseCollectionViewCell {
     
     private let stackView = {
         let view = UIStackView()
         view.axis = .horizontal
-        view.distribution = .fillProportionally
+        view.distribution = .fillEqually
         view.alignment = .center
         return view
     }()
@@ -24,6 +26,7 @@ final class EpisodeButtonCell: BaseCollectionViewCell {
     let commentButton = ActionButton(title: "코멘트", image: .pencil)
     let starButton = ActionButton(title: "별점", image: .starCircle)
     
+    let disposeBag = DisposeBag()
     
     override func configureHierarchy() {
         addSubviews(stackView)

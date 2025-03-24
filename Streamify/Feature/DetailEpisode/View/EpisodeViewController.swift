@@ -14,7 +14,7 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
 
     typealias collectionViewDataSource = RxCollectionViewSectionedReloadDataSource<EpisodeSectionModel>
     
-    let dataSource = collectionViewDataSource(configureCell: { dataSource, collectionView, indexPath, item in
+    lazy var dataSource = collectionViewDataSource(configureCell: { dataSource, collectionView, indexPath, item in
         switch item {
         case .header(let header):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeHeaderCell.id, for: indexPath) as! EpisodeHeaderCell
@@ -22,6 +22,21 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
             return cell
         case .button(let button):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeButtonCell.id, for: indexPath) as! EpisodeButtonCell
+            
+            cell.commentButton.rx.tap
+                .bind(with: self) { owner, _ in
+                    let vc = UINavigationController(rootViewController: EpisodeModalViewController(type: .comment))
+                    owner.present(vc, animated: true)
+                }
+                .disposed(by: cell.disposeBag)
+            
+            cell.starButton.rx.tap
+                .bind(with: self) { owner, _ in
+                    let vc = UINavigationController(rootViewController: EpisodeModalViewController(type: .star))
+                    owner.present(vc, animated: true)
+                }
+                .disposed(by: cell.disposeBag)
+            
             return cell
         case .episode(let episodes):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeCell.id, for: indexPath) as! EpisodeCell
