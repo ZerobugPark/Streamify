@@ -26,8 +26,9 @@ final class DetailCoordinator: Coordinator {
         navigationController.pushViewController(detailVC, animated: true)
     }
 
-    func showEpisodeList() {
-        let episodeVC = EpisodeViewController(viewModel: EpisodeViewModel())
+    func showEpisodeList(_ episode: DramaEpisode) {
+        let episodeVC = EpisodeViewController(viewModel: EpisodeViewModel(id: episode.id, number: episode.seasonNumber))
+        episodeVC.coordinator = self
         navigationController.pushViewController(episodeVC, animated: true)
     }
 

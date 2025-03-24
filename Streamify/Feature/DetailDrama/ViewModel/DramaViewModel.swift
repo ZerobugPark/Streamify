@@ -42,6 +42,8 @@ struct DramaPlatform {
 }
 
 struct DramaEpisode {
+    let id: Int
+    let seasonNumber: Int
     let image: String
     let title: String
     let episodeCount: Int
@@ -108,7 +110,7 @@ final class DramaViewModel: BaseViewModel {
         
         var episode = [DramaItem]()
         data.seasons.forEach {
-            episode.append(.episode(.init(image: $0.poster_path ?? "", title: $0.name, episodeCount: $0.episode_count)))
+            episode.append(.episode(.init(id: $0.id, seasonNumber: $0.season_number, image: $0.poster_path ?? "", title: $0.name, episodeCount: $0.episode_count)))
         }
         
         return [DramaSectionModel(model: "", items: [header]),
@@ -127,35 +129,4 @@ final class DramaViewModel: BaseViewModel {
         }
     }
     
-}
-
-
-
-
-struct DetailDrama: Decodable {
-    let id: Int
-    let name: String
-    let backdrop_path: String?
-    let genres: [GenreData]
-    let overview: String
-    let seasons: [SeasonData]
-    let networks: [Platform]
-    let status: String
-}
-
-struct GenreData: Decodable {
-    let id: Int
-    let name: String
-}
-
-struct SeasonData: Decodable {
-    let episode_count: Int
-    let id: Int
-    let poster_path: String?
-    let name: String
-}
-
-struct Platform: Decodable {
-    let logo_path: String?
-    let name: String
 }

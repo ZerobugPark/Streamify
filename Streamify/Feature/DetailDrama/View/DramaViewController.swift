@@ -57,9 +57,10 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
             .bind(with: self) { owner, value in
                 switch value {
                 case .episode(let episode):
-                    let vm = EpisodeViewModel()
-                    let vc = EpisodeViewController(viewModel: vm)
-                    owner.navigationController?.pushViewController(vc, animated: true)
+                    owner.coordinator?.showEpisodeList(episode)
+//                    let vm = EpisodeViewModel()
+//                    let vc = EpisodeViewController(viewModel: vm)
+//                    owner.navigationController?.pushViewController(vc, animated: true)
                 default: break
                 }
             }
