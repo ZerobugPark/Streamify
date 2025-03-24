@@ -21,7 +21,7 @@ class BaseImageView: UIImageView {
         layer.cornerRadius = radius
         layer.borderWidth = 0
         clipsToBounds = true
-        contentMode = .scaleToFill
+        contentMode = .scaleAspectFill
         
     }
     

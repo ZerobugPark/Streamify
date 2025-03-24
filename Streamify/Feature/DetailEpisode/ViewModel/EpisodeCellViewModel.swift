@@ -1,15 +1,15 @@
 //
-//  EpisodeViewModel.swift
+//  EpisodeCellViewModel.swift
 //  Streamify
 //
-//  Created by Sebin Kwon on 3/23/25.
+//  Created by Sebin Kwon on 3/24/25.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-final class EpisodeViewModel: BaseViewModel {
+final class EpisodeCellViewModel: BaseViewModel {
     struct Input {
         
     }
@@ -18,7 +18,7 @@ final class EpisodeViewModel: BaseViewModel {
         let sectionModel: Driver<[EpisodeSectionModel]>
     }
     
-    func transform(input: EpisodeViewModel.Input) -> Output {
+    func transform(input: EpisodeCellViewModel.Input) -> Output {
         let sectionModel = BehaviorRelay<[EpisodeSectionModel]>(value: [])
         
         
