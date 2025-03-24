@@ -34,7 +34,7 @@ class EpisodeModalViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
-        view.backgroundColor = .baseBlack
+        //view.backgroundColor = .baseBlack
         navigationItem.title = type == .comment ? "코멘트" : "별점"
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = saveButton

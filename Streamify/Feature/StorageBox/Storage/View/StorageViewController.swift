@@ -44,7 +44,7 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
     override func viewDidLoad() {
         super.viewDidLoad()
         registerStorageList()
-        view.backgroundColor = .setStreamifyColor(.baseBlack)
+        //view.backgroundColor = .setStreamifyColor(.baseBlack)
         
     }
     

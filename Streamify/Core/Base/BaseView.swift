@@ -14,7 +14,7 @@ class BaseView: UIView {
         configureHierarchy()
         configureLayout()
         configureView()
-        
+        self.backgroundColor = .setStreamifyColor(.baseBlack)
         
     }
     

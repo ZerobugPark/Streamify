@@ -34,7 +34,7 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
         super.viewDidLoad()
         registerStorageList()
         setupNavigation()
-        view.backgroundColor = .baseBlack
+        //view.backgroundColor = .baseBlack
     }
     
 
