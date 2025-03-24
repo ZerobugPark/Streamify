@@ -6,7 +6,24 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 final class EpisodeViewModel: BaseViewModel {
+    struct Input {
+        
+    }
+    
+    struct Output {
+        let sectionModel: Driver<[EpisodeSectionModel]>
+    }
+    
+    func transform(input: EpisodeViewModel.Input) -> Output {
+        let sectionModel = BehaviorRelay<[EpisodeSectionModel]>(value: [])
+        
+        
+        
+        return Output(sectionModel: sectionModel.asDriver())
+    }
     
 }
