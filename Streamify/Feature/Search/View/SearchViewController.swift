@@ -154,12 +154,15 @@ class SearchViewController: UIViewController {
             }
             .disposed(by: disposeBag)
 
-        Observable.combineLatest(searchQuery, searchResults)
+        Observable.combineLatest(searchQuery, searchResults.skip(1))
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, result in
                 let (query, items) = result
-                owner.emptyLabel.isHidden = !items.isEmpty || query.isEmpty
-                owner.emptyLabel.text = "\(query)에 해당하는 검색 결과가 없습니다."
+                let isEmptyResult = items.isEmpty && !query.isEmpty
+                owner.emptyLabel.isHidden = !isEmptyResult
+                if isEmptyResult {
+                    owner.emptyLabel.text = "\(query)에 해당하는 검색 결과가 없습니다."
+                }
             }
             .disposed(by: disposeBag)
     }
