@@ -17,9 +17,15 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
     typealias collectionViewDataSource = RxCollectionViewSectionedReloadDataSource<EpisodeSectionModel>
     private let repository: any Repository = RealmRepository()
     private let episode: DramaEpisode
+    private let seasonIndex: Int
     
-    init(item: DramaEpisode) {
+//    private var number: Int = 0
+//    private var isTrue: Bool = false
+    
+    
+    init(item: DramaEpisode, seasonIndex: Int) {
         self.episode = item
+        self.seasonIndex = seasonIndex
         super.init(viewModel: EpisodeViewModel(item: item))
     }
     
@@ -54,8 +60,28 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
         case .episode(let item):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeCell.id, for: indexPath) as! EpisodeCell
             
-            cell.configure(item, self.episode.dramaTable.seasons[self.episode.seasonNumber].episodes[indexPath.item])
-            return cell
+            //print(self.episode.dramaTable.seasons.count)
+//            print(self.episode.dramaTable.seasons[count-1].episodes.first.se)
+            
+
+            
+                
+//                        var index = 0
+//                        if self.episode.dramaTable.seasons.count == self.episode.seasonNumber {
+//                            index = self.episode.seasonNumber - 1
+//                        } else {
+//                            index = self.number
+//                            if !self.isTrue {
+//                                self.number += 1
+//                                self.isTrue =  true
+//                            }
+//                            
+//                        }
+            
+           // print(index, indexPath.item)
+             //   print("test",self.episode.dramaTable.seasons[index].episodes[indexPath.item])
+            cell.configure(item,  self.episode.dramaTable.seasons[self.seasonIndex].episodes[indexPath.item])
+                        return cell
         }
     }, configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CompositionalHeaderReusableView", for: indexPath) as! CompositionalHeaderReusableView

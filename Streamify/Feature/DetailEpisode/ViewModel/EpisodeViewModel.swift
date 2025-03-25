@@ -103,6 +103,7 @@ final class EpisodeViewModel: BaseViewModel {
             let date = $0.air_date.replacingOccurrences(of: "-", with: ". ")
             
             episode.append(.episode(.init(image: $0.still_path ?? "", title: "\($0.episode_number)화", time: hour != 0 ? "\(hour)시간 \(minutes)분" : "\(minutes)분", date: "\(date) 방영", overview: $0.overview ?? "")))
+        
         }
         
         episodeSections.append(.init(model: "에피소드", items: episode))

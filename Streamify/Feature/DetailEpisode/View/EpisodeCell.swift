@@ -39,6 +39,7 @@ class EpisodeCell: BaseCollectionViewCell {
         
         output.checkButtonTap
             .drive(with: self) { owner, value in
+                print(value)
                 owner.checkButton.isSelected = value
             }
             .disposed(by: disposeBag)
