@@ -24,11 +24,14 @@ extension NotificationCenterHandler {
 
 enum NotificationCenterManager: NotificationCenterHandler {
     case progress
-
+    case isChanged
     var name: Notification.Name {
         switch self {
         case .progress:
             return Notification.Name("NotificationCenterManager.progress")
+        case .isChanged:
+            return Notification.Name("isChanged")
         }
     }
+    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterButton: BaseView {
+final class FilterButton: BaseView {
 
     let filterButton = ActionButton()
 
