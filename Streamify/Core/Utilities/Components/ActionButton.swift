@@ -32,12 +32,12 @@ class ActionButton: UIButton {
 
           // Title Setting
           var titleContainer = AttributeContainer()
-          titleContainer.font = .setStreamifyFont(.body_bold_16)
+        titleContainer.font = .setStreamifyFont(.body_regular_13)
           config.attributedTitle = AttributedString(title, attributes: titleContainer)
           
           // Image Setting
           if let image = image {
-              config.image = .setSymbolConfiguration(image, .size_bold_24)
+              config.image = .setSymbolConfiguration(image, .size_bold_18)
               config.imagePlacement = .top
               config.imagePadding = 8
           }

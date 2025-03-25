@@ -132,18 +132,16 @@ final class DramaViewModel: BaseViewModel {
             } else {
                 let seasons = List<Seasons>()
                 
-                
-                data.seasons.forEach {
+                for i in 0..<data.seasons.count {
                     let episodesTable = List<Episodes>()
                     
-                    guard $0.episode_count > 0 else {
-                        episodesTable.append(Episodes(isWatched: false))
+                    if data.seasons[i].episode_count == 0 {
+                        episodesTable.append(Episodes(isWatched: false, seasonIndex: i))
                         seasons.append(Seasons(episodes:  episodesTable))
-                        return
                     }
                     
-                    for _ in 1...$0.episode_count {
-                        episodesTable.append(Episodes(isWatched: false))
+                    for _ in 0..<data.seasons[i].episode_count {
+                        episodesTable.append(Episodes(isWatched: false, seasonIndex: i))
                     }
                     seasons.append(Seasons(episodes:  episodesTable))
                 }

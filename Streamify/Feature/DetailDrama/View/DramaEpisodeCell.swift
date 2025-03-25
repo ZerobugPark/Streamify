@@ -18,6 +18,7 @@ class DramaEpisodeCell: BaseCollectionViewCell {
     private let containerView = UIView()
     
     private let disposeBag = DisposeBag()
+    private var seasonIndex: Int?
     
     override func configureHierarchy() {
         addSubviews(titleLabel, countLabel, containerView)
@@ -69,18 +70,18 @@ class DramaEpisodeCell: BaseCollectionViewCell {
                 self.imageView.image = image
             }
         }.resume()
-        
+        seasonIndex = index
         print(item.seasonNumber)
-        
-//        if item.seasonNumber < item.dramaTable.seasons.count {
-//            progressBar.progress = item.dramaTable.episodeProgress(for: item.dramaTable.seasons[item.seasonNumber])
-//        }
-        
+
         progressBar.progress = item.dramaTable.episodeProgress(for: item.dramaTable.seasons[index])
         
         NotificationCenterManager.progress.addObserver()
-            .bind(with: self) { owner, _ in
-                owner.progressBar.progress = item.dramaTable.episodeProgress(for: item.dramaTable.seasons[item.seasonNumber])
+            .bind(with: self) { owner, value in
+                guard let seasonIndex = owner.seasonIndex,
+                      let notiIndex = value as? Int,
+                      seasonIndex == notiIndex else { return }
+                
+                owner.progressBar.progress = item.dramaTable.episodeProgress(for: item.dramaTable.seasons[seasonIndex])
             }
             .disposed(by: disposeBag)
     }
