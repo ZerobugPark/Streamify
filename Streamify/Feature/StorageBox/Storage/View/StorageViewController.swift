@@ -29,7 +29,7 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
     typealias listDataSource = RxCollectionViewSectionedReloadDataSource<ListViewSectionModel>
     typealias colltionViewDataSource = CollectionViewSectionedDataSource<ListViewSectionModel>
     
-    lazy var dataSource = listDataSource (
+    private lazy var dataSource = listDataSource (
         configureCell: { [weak self] dataSource, collectionView, indexPath, item in
             
             self?.configureCell(dataSource: dataSource, collectionView: collectionView, indexPath: indexPath, item: item) ?? UICollectionViewCell()
@@ -40,7 +40,7 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         }
     )
     
-    let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.fill"), style: .plain, target: nil, action: nil)
+    private let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.fill"), style: .plain, target: nil, action: nil)
     
     
     override func viewDidLoad() {

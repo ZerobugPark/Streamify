@@ -80,7 +80,6 @@
 		D037370A2D8C2AD9006CED4A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D03737092D8C2AD9006CED4A /* .gitignore */; };
 		D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737B92D8C33CD006CED4A /* AppDelegate.swift */; };
 		D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */; };
-		D03737C32D8C33CD006CED4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03737BF2D8C33CD006CED4A /* ViewController.swift */; };
 		D03737C42D8C33CD006CED4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03737BA2D8C33CD006CED4A /* Assets.xcassets */; };
 		D03737C62D8C33CD006CED4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03737BD2D8C33CD006CED4A /* LaunchScreen.storyboard */; };
 		D03737DE2D8C34ED006CED4A /* empty3 in Resources */ = {isa = PBXBuildFile; fileRef = D03737DD2D8C34ED006CED4A /* empty3 */; };
@@ -100,6 +99,7 @@
 		D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09E18302D8D79FF004EEC6C /* StarRatingView.swift */; };
 		D09E18342D8D7A1D004EEC6C /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = D09E18332D8D7A1D004EEC6C /* Cosmos */; };
 		D0F5152A2D9142150049F494 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F515292D9142150049F494 /* FilterButton.swift */; };
+		D0FACD342D92D107006B116E /* ModifyGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FACD332D92D107006B116E /* ModifyGenreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -192,7 +192,6 @@
 		D03737BB2D8C33CD006CED4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D03737BC2D8C33CD006CED4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D03737BE2D8C33CD006CED4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D03737BF2D8C33CD006CED4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D03737DD2D8C34ED006CED4A /* empty3 */ = {isa = PBXFileReference; lastKnownFileType = text; path = empty3; sourceTree = "<group>"; };
 		D09726382D918B5E00E92726 /* ModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyViewController.swift; sourceTree = "<group>"; };
 		D09E0DBE2D8C3748004EEC6C /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -204,6 +203,7 @@
 		D09E0EF72D8C45A1004EEC6C /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		D09E18302D8D79FF004EEC6C /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		D0F515292D9142150049F494 /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		D0FACD332D92D107006B116E /* ModifyGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyGenreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -534,7 +534,6 @@
 				3EE1E8412D8E9DF200681B6B /* Onboarding */,
 				3EE1E8542D8EEFAA00681B6B /* Main */,
 				D00926F42D8E98DA00A10742 /* StorageBox */,
-				D03737BF2D8C33CD006CED4A /* ViewController.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -634,6 +633,7 @@
 			isa = PBXGroup;
 			children = (
 				D09726382D918B5E00E92726 /* ModifyViewController.swift */,
+				D0FACD332D92D107006B116E /* ModifyGenreViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -773,10 +773,10 @@
 				3EE1E8302D8E852000681B6B /* Reusable.swift in Sources */,
 				D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */,
 				AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */,
-				D03737C32D8C33CD006CED4A /* ViewController.swift in Sources */,
 				D00926F92D8E99CE00A10742 /* StarRatingStorageViewController.swift in Sources */,
 				AEF04DAE2D901334001D3274 /* EpisodeCell.swift in Sources */,
 				AEF04DAC2D901329001D3274 /* EpisodeButtonCell.swift in Sources */,
+				D0FACD342D92D107006B116E /* ModifyGenreViewController.swift in Sources */,
 				AEF04C382D8FCD95001D3274 /* DramaViewModel.swift in Sources */,
 				3EE1E82C2D8E83CA00681B6B /* TMDBRequest.swift in Sources */,
 				D09E0EF42D8C44D5004EEC6C /* ViewControllerType.swift in Sources */,
