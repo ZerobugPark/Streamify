@@ -65,6 +65,8 @@ class DramaEpisodeCell: BaseCollectionViewCell {
                 self.imageView.image = image
             }
         }.resume()
+        
+        progressBar.progress = item.dramaTable.episodeProgress(for: item.dramaTable.seasons[item.seasonNumber])
     }
     
 }

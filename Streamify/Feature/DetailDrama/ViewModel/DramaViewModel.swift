@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RxDataSources
+import RealmSwift
 
 enum DramaItem {
     case header(DramaHeader)
@@ -48,11 +49,13 @@ struct DramaEpisode {
     let title: String
     let episodeCount: Int
     let dramaTitle: String
+    let dramaTable: DramaTable
 }
 
 final class DramaViewModel: BaseViewModel {
     
     private let dramaID: Int
+    private let repository: any DramaRepository = RealmDramaRepository()
     
     init(dramaID: Int) {
         self.dramaID = dramaID
@@ -73,6 +76,7 @@ final class DramaViewModel: BaseViewModel {
             .flatMap { value in
                 NetworkManager.shared.request(api: .series(id: value), type: DetailDrama.self)
             }
+            .observe(on: MainScheduler.instance)
             .map { result -> DetailDrama in
                 switch result {
                 case .success(let drama):
@@ -109,14 +113,39 @@ final class DramaViewModel: BaseViewModel {
             platform.append(.platform(.init(image: $0.logo_path ?? "star")))
         }
         
+        let dramaTable = fetchRealm(data)
+        
         var episode = [DramaItem]()
         data.seasons.forEach {
-            episode.append(.episode(.init(id: data.id, seasonNumber: $0.season_number, image: $0.poster_path ?? "", title: $0.name, episodeCount: $0.episode_count, dramaTitle: data.name)))
+            episode.append(.episode(.init(id: data.id, seasonNumber: $0.season_number, image: $0.poster_path ?? "", title: $0.name, episodeCount: $0.episode_count, dramaTitle: data.name, dramaTable: dramaTable)))
         }
         
         return [DramaSectionModel(model: "", items: [header]),
                 DramaSectionModel(model: "", items: platform),
                 DramaSectionModel(model: "작품 정보", items: episode)]
+    }
+    
+    private func fetchRealm(_ data: DetailDrama) -> DramaTable {
+        var result: DramaTable?
+            if let drama = repository.findById(data.id) {
+                result = drama
+            } else {
+                let seasons = List<Seasons>()
+                
+                
+                data.seasons.forEach {
+                    let episodesTable = List<Episodes>()
+                    for _ in 1...$0.episode_count {
+                        episodesTable.append(Episodes(isWatched: false))
+                    }
+                    seasons.append(Seasons(episodes:  episodesTable))
+                }
+                let drama = DramaTable(titleID: data.id, title: data.name, vote_average: nil, genre: data.genres.first?.name ?? "", imagePath: data.backdrop_path ?? "", comment: "", wantToWatch: false, seasons: seasons)
+                repository.create(drama)
+                result = drama
+               
+            }
+        return result!
     }
     
     enum DramaStatus: String {

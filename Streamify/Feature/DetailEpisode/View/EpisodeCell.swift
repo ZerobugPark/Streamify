@@ -12,13 +12,8 @@ import RxSwift
 
 class EpisodeCell: BaseCollectionViewCell {
     
-    let viewModel = EpisodeCellViewModel()
+    private var viewModel: EpisodeCellViewModel?
     var disposeBag = DisposeBag()
-    let dramaRepository: any DramaRepository = RealmDramaRepository()
-//    init(viewModel: EpisodeCellViewModel) {
-//        self.viewModel = viewModel
-//        super.init()
-//    }
     
     let imageView = BaseImageView(radius: 5)
     let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
@@ -30,19 +25,26 @@ class EpisodeCell: BaseCollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        checkButton.isSelected = false
         disposeBag = DisposeBag()
         bind()
     }
     
     private func bind() {
-        checkButton.rx.tap
-            .bind(with: self) { owner, _ in
-                owner.checkButton.isSelected.toggle()
+        guard let viewModel else { return }
+        let input = EpisodeCellViewModel.Input(
+            checkButtonTap: checkButton.rx.tap
+        )
+        let output = viewModel.transform(input: input)
+        
+        output.checkButtonTap
+            .drive(with: self) { owner, value in
+                owner.checkButton.isSelected = value
             }
             .disposed(by: disposeBag)
     }
     
-    func configure(_ item: EpisodeData) {
+    func configure(_ item: EpisodeData, _ episode: Episodes) {
         titleLabel.text = item.title
         timeLabel.text = item.time
         dateLabel.text = item.date
@@ -64,11 +66,14 @@ class EpisodeCell: BaseCollectionViewCell {
                 self.imageView.image = image
             }
         }.resume()
+        
+        self.viewModel = EpisodeCellViewModel(episode: episode)
+        checkButton.isSelected = episode.isWatched
+        bind()
     }
     
     override func configureHierarchy() {
         addSubviews(imageView, titleLabel, timeLabel, dateLabel, overviewLabel, checkButton)
-        imageView.backgroundColor = .darkGray
     }
     
     override func configureLayout() {
@@ -101,7 +106,6 @@ class EpisodeCell: BaseCollectionViewCell {
             make.top.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        bind()
     }
     
 }
