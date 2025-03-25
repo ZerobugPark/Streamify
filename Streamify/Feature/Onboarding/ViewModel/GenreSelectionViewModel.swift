@@ -61,6 +61,16 @@ class GenreSelectionViewModel {
     }
     
     func genreList() -> [Genre] {
-        return allGenres
+        return allGenres.map { genre in
+            var updated = genre
+            if let index = selectedGenres.value.firstIndex(where: { $0.id == genre.id }) {
+                updated.isSelected = true
+                updated.order = index + 1
+            } else {
+                updated.isSelected = false
+                updated.order = nil
+            }
+            return updated
+        }
     }
 }
