@@ -9,7 +9,6 @@ import Foundation
 import RxDataSources
 
 struct Comments {
-    var id: String
     var titleID: Int
     var title: String
     var imagePath: Data?
@@ -17,7 +16,6 @@ struct Comments {
 }
 
 struct Rate {
-    var id: String
     var titleID: Int
     var title: String
     var imagePath: Data?
@@ -25,9 +23,9 @@ struct Rate {
 }
 
 enum StorageSectionItem { //셀의 종류
-    case firstSection(Drama)
-    case secondSection(Drama)
-    case thirdSection(Drama)
+    case firstSection(DramaTable)
+    case secondSection(DramaTable)
+    case thirdSection(DramaTable)
 }
 
 enum ListViewSectionModel { //섹션 정의

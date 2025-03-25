@@ -66,13 +66,14 @@ class ActionButton: UIButton {
       }
 
     // Subtitle 수정 메서드
-    func updateSubtitle(_ newSubtitle: String) {
+    func updateTitle(_ newSubtitle: String) {
         
         guard var config = self.configuration else { return }
 
-        var subtitleContainer = AttributeContainer()
-        subtitleContainer.font = .setStreamifyFont(.body_regular_13)
-        config.attributedSubtitle = AttributedString(newSubtitle, attributes: subtitleContainer)
+        var titleContainer = AttributeContainer()
+      titleContainer.font = .setStreamifyFont(.body_regular_13)
+        config.attributedTitle = AttributedString(newSubtitle, attributes: titleContainer)
+  
 
         self.configuration = config
     }
