@@ -20,7 +20,7 @@ final class EpisodeButtonCell: BaseCollectionViewCell {
         return view
     }()
     
-    let wantButton = ActionButton(title: "보고싶어요", image: .plus)
+    let wantButton = ActionButton(title: "찜", image: .plus)
     let watchedButton = ActionButton(title: "봤어요", image: .checkmark)
     let watchingButton = ActionButton(title: "보는중", image: .eye)
     let commentButton = ActionButton(title: "코멘트", image: .pencil)

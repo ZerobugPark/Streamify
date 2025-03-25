@@ -76,12 +76,14 @@ class Seasons: Object {
 class Episodes: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var isWatched: Bool
+    @Persisted var seasonIndex: Int
 
     @Persisted(originProperty: "episodes") var seasons: LinkingObjects<Seasons>
 
-    convenience init(isWatched: Bool) {
+    convenience init(isWatched: Bool, seasonIndex: Int) {
         self.init()
         self.isWatched = isWatched
+        self.seasonIndex = seasonIndex
     }
 }
 

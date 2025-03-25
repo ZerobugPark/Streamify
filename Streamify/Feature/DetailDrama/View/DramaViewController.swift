@@ -53,15 +53,32 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
             .disposed(by: disposeBag)
         
         
-        mainView.collectionView.rx.modelSelected(DramaItem.self)
-            .bind(with: self) { owner, value in
-                switch value {
-                case .episode(let episode):
-                    owner.coordinator?.showEpisodeList(episode)
-                default: break
+        Observable.zip(
+                    mainView.collectionView.rx.itemSelected,
+                    mainView.collectionView.rx.modelSelected(DramaItem.self)
+                )
+                .bind(with: self) { owner, value in
+                    let (indexPath, item) = value
+                    switch item {
+                    case .episode(let episode):
+                        // indexPath.item을 전달
+                        owner.coordinator?.showEpisodeList(episode, indexPath.item)
+                    default:
+                        break
+                    }
                 }
-            }
-            .disposed(by: disposeBag)
+                .disposed(by: disposeBag)
+        
+        
+//        mainView.collectionView.rx.modelSelected(DramaItem.self)
+//            .bind(with: self) { owner, value in
+//                switch value {
+//                case .episode(let episode):
+//                    owner.coordinator?.showEpisodeList(episode, 0)
+//                default: break
+//                }
+//            }
+//            .disposed(by: disposeBag)
         
     }
     
