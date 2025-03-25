@@ -29,6 +29,7 @@
 		3EE1E8652D9059EA00681B6B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8642D9059EA00681B6B /* SearchViewController.swift */; };
 		3EE1E8672D90D1AF00681B6B /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */; };
 		3EE1E87D2D91344A00681B6B /* DetailCoordintaor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E87C2D91344A00681B6B /* DetailCoordintaor.swift */; };
+		AE8405C42D92687B009136BF /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8405C32D92687B009136BF /* NotificationCenterManager.swift */; };
 		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
 		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
 		AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */; };
@@ -47,6 +48,7 @@
 		AEF04DAE2D901334001D3274 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04DAD2D901334001D3274 /* EpisodeCell.swift */; };
 		AEF04E262D912224001D3274 /* EpisodeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */; };
 		AEF04E282D91443E001D3274 /* EpisodeModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04E272D91443E001D3274 /* EpisodeModalViewController.swift */; };
+		AEF04EC92D918357001D3274 /* DetailDrama.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04EC82D918357001D3274 /* DetailDrama.swift */; };
 		D00926A02D8E748100A10742 /* StreamifyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009269F2D8E748100A10742 /* StreamifyColor.swift */; };
 		D00926A22D8E74A200A10742 /* StreamifyFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A12D8E74A200A10742 /* StreamifyFont.swift */; };
 		D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00926A32D8E74E400A10742 /* StreamifySymbol.swift */; };
@@ -135,6 +137,7 @@
 		3EE1E8642D9059EA00681B6B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		3EE1E87C2D91344A00681B6B /* DetailCoordintaor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordintaor.swift; sourceTree = "<group>"; };
+		AE8405C32D92687B009136BF /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
 		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDramaRepository.swift; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		AEF04DAD2D901334001D3274 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		AEF04E252D912224001D3274 /* EpisodeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellViewModel.swift; sourceTree = "<group>"; };
 		AEF04E272D91443E001D3274 /* EpisodeModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModalViewController.swift; sourceTree = "<group>"; };
+		AEF04EC82D918357001D3274 /* DetailDrama.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDrama.swift; sourceTree = "<group>"; };
 		D009269F2D8E748100A10742 /* StreamifyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyColor.swift; sourceTree = "<group>"; };
 		D00926A12D8E74A200A10742 /* StreamifyFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifyFont.swift; sourceTree = "<group>"; };
 		D00926A32D8E74E400A10742 /* StreamifySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamifySymbol.swift; sourceTree = "<group>"; };
@@ -551,6 +555,7 @@
 			children = (
 				AEF04B192D8E9919001D3274 /* DramaTable.swift */,
 				3EE1E83D2D8E9BB200681B6B /* Genre.swift */,
+				AEF04EC82D918357001D3274 /* DetailDrama.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 				3EE1E82D2D8E846000681B6B /* NetworkManager.swift */,
 				AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */,
 				AEF04B812D8EE959001D3274 /* RealmDramaRepository.swift */,
+				AE8405C32D92687B009136BF /* NotificationCenterManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -733,6 +739,7 @@
 			files = (
 				AEF04CDB2D8FE9B9001D3274 /* DramaHeaderCell.swift in Sources */,
 				D09E0DC12D8C3763004EEC6C /* BaseCollectionViewCell.swift in Sources */,
+				AEF04EC92D918357001D3274 /* DetailDrama.swift in Sources */,
 				D03737C12D8C33CD006CED4A /* AppDelegate.swift in Sources */,
 				AEF04DA82D9002FC001D3274 /* EpisodeViewModel.swift in Sources */,
 				D00929AD2D90744900A10742 /* StroageStruct.swift in Sources */,
@@ -798,6 +805,7 @@
 				AEF04B822D8EE959001D3274 /* RealmDramaRepository.swift in Sources */,
 				3EE1E85E2D8F01DF00681B6B /* MainViewModel.swift in Sources */,
 				AEF04CD92D8FD982001D3274 /* DramaEpisodeCell.swift in Sources */,
+				AE8405C42D92687B009136BF /* NotificationCenterManager.swift in Sources */,
 				D09E0E552D8C3805004EEC6C /* BaseTableViewCell.swift in Sources */,
 				AEF04E282D91443E001D3274 /* EpisodeModalViewController.swift in Sources */,
 				D00927052D8EE65000A10742 /* BaseLabel.swift in Sources */,
