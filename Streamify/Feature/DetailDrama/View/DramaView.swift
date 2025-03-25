@@ -7,44 +7,6 @@
 
 import UIKit
 import SnapKit
-import RxDataSources
-
-enum DramaItem {
-    case header(DramaHeader)
-    case platform(DramaPlatform)
-    case episode(DramaEpisode)
-}
-
-struct DramaSectionModel {
-    var model: String
-    var items: [DramaItem]
-}
-
-extension DramaSectionModel: SectionModelType {
-    typealias Item = DramaItem
-    
-    init(original: DramaSectionModel, items: [DramaItem]) {
-        self = original
-        self.items = items
-    }
-}
-
-struct DramaHeader {
-    let backdropImage: UIImage?
-    let title: String
-    let info: String
-    let overview: String
-}
-
-struct DramaPlatform {
-    let image: UIImage?
-}
-
-struct DramaEpisode {
-    let image: UIImage?
-    let title: String
-    let episodeCount: Int
-}
 
 final class DramaView: BaseView {
     
@@ -74,7 +36,7 @@ final class DramaView: BaseView {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, environment) -> NSCollectionLayoutSection? in
             switch sectionIndex {
             case 0:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(380))
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(430))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitems: [item])
                 

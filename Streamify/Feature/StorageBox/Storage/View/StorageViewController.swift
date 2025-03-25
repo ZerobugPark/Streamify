@@ -40,6 +40,8 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         }
     )
     
+    let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.fill"), style: .plain, target: nil, action: nil)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,8 +69,25 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         let output = viewModel.transform(input: input)
         
         
+        mainView.storageList.collectionView.rx.modelSelected(StorageSectionItem.self).bind(with: self) { owner, element in
+            
+            switch element {
+            case .firstSection(let data), .secondSection(let data), .thirdSection(let data):
+                owner.coordinator?.showDetail(for: data.titleID)
+            }
+            
+            
+            
+        }.disposed(by: disposeBag)
+        
+        rightBarButton.rx.tap.bind(with: self) { owner, _ in
+            
+            owner.coordinator?.showModifyScreen()
+            
+        }.disposed(by: disposeBag)
         
         output.setSetcion.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+
         
         output.goToStarRating.asDriver(onErrorJustReturn: [])
             .drive(with: self) { owner, data in
@@ -130,6 +149,7 @@ extension StorageViewController {
     private func setupNavigation() {
         let title = "보관함"
         navigationItem.title = title
+        navigationItem.rightBarButtonItem = rightBarButton
         navigationItem.backButtonTitle = ""
     }
     

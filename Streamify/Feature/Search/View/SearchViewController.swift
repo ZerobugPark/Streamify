@@ -149,7 +149,7 @@ class SearchViewController: UIViewController {
         
         verticalListView.collectionView.rx.modelSelected(SearchResult.self)
             .bind(with: self) { owner, selectedItem in
-                owner.coordinator?.showDetail(for: selectedItem)
+                owner.coordinator?.showDetail(for: selectedItem.id)
             }
             .disposed(by: disposeBag)
     }
