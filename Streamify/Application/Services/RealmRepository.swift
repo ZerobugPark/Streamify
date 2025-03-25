@@ -10,6 +10,7 @@ import RealmSwift
 
 protocol Repository {
     associatedtype T: Object
+    func getFileURL()
     func create(_ item: T)
     func fatchAll() -> Results<T>
     func findById(_ id: Any) -> T?
@@ -19,6 +20,10 @@ protocol Repository {
 
 class RealmRepository<T: Object>: Repository {
     let realm = try! Realm()
+    
+    func getFileURL() {
+        print(realm.configuration.fileURL)
+    }
     
     func create(_ item: T) {
         do {

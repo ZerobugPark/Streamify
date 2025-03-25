@@ -16,28 +16,21 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
     
     typealias collectionViewDataSource = RxCollectionViewSectionedReloadDataSource<DramaSectionModel>
     
-    let dataSource = collectionViewDataSource(configureCell: { dataSource, collectionView, indexPath, item in
+    lazy var dataSource = collectionViewDataSource(configureCell: { [weak self] dataSource, collectionView, indexPath, item in
         switch item {
         case .header(let header):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DramaHeaderCell.id, for: indexPath) as! DramaHeaderCell
             cell.configure(header)
             return cell
+            
         case .platform(let platforms):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DramaPlatformCell", for: indexPath) as! UICollectionViewListCell
-            var content = UIListContentConfiguration.valueCell()
-            content.image = platforms.image
-            content.imageProperties.maximumSize = CGSize(width: 30, height: 30)
-            cell.contentConfiguration = content
-            var backgroundConfig = UIBackgroundConfiguration.listGroupedCell()
-            backgroundConfig.backgroundColor = .darkGray
-            backgroundConfig.cornerRadius = 10
-            backgroundConfig.backgroundInsets = NSDirectionalEdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10)
-            cell.backgroundConfiguration = backgroundConfig
-            cell.accessories = [.disclosureIndicator(options: .init(tintColor: .baseWhite))]
+            var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DramaPlatformCell", for: indexPath) as! UICollectionViewListCell
+            cell = (self?.configureListCell(cell, platforms))!
             return cell
+            
         case .episode(let episodes):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DramaEpisodeCell.id, for: indexPath) as! DramaEpisodeCell
-            cell.configure(episodes)
+            cell.configure(episodes, indexPath.item)
             return cell
         }
     }, configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
@@ -47,21 +40,16 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
     }
     )
     
-    let sectionModel = BehaviorRelay<[DramaSectionModel]>(value: [])
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        mockData()
     }
     
     override func bindViewModel() {
         let input = DramaViewModel.Input()
         let output = viewModel.transform(input: input)
         
-        
-        
-        sectionModel
-            .bind(to: mainView.collectionView.rx.items(dataSource: dataSource))
+        output.sectionModel
+            .drive(mainView.collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
         
@@ -69,9 +57,7 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
             .bind(with: self) { owner, value in
                 switch value {
                 case .episode(let episode):
-                    let vm = EpisodeViewModel()
-                    let vc = EpisodeViewController(viewModel: vm)
-                    owner.navigationController?.pushViewController(vc, animated: true)
+                    owner.coordinator?.showEpisodeList(episode)
                 default: break
                 }
             }
@@ -79,34 +65,38 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
         
     }
     
-    private func mockData() {
+    private func configureListCell(_ item: UICollectionViewListCell, _ platforms: DramaPlatform) -> UICollectionViewListCell {
+        let cell = item
+        var content = UIListContentConfiguration.valueCell()
+        content.imageProperties.maximumSize = CGSize(width: 50, height: 30)
+        content.image = UIImage(systemName: "photo")
         
-        let header = DramaHeader(
-            backdropImage: nil,
-            title: "슬기로운 의사생활",
-            info: "시즌 2개 · 방영종료 · 드라마 · 코미디",
-            overview: "누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는 누군가는 태어나고 누군가는 삶을 끝내는"
-        )
+        let baseURL = Config.shared.secureURL + Config.LogoSizes.w92.rawValue
+        let urlString = baseURL + platforms.image
         
-        let platforms: [DramaPlatform] = [
-            DramaPlatform(image: .setSymbol(.eye)),
-            DramaPlatform(image: .setSymbol(.pencil))
-        ]
+        guard let url = URL(string: urlString) else { return UICollectionViewListCell() }
         
-        let episodes: [DramaEpisode] = [
-            DramaEpisode(image: nil, title: "스페셜", episodeCount: 4),
-            DramaEpisode(image: nil, title: "시즌 1", episodeCount: 12),
-            DramaEpisode(image: nil, title: "시즌 2", episodeCount: 12),
-            DramaEpisode(image: nil, title: "시즌 3", episodeCount: 12)
-        ]
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  error == nil,
+                  let image = UIImage(data: data) else { return }
+            
+            DispatchQueue.main.async {
+                var updatedContent = cell.contentConfiguration as? UIListContentConfiguration
+                updatedContent?.image = image
+                cell.contentConfiguration = updatedContent
+            }
+        }.resume()
         
-        sectionModel.accept([
-            DramaSectionModel(model: "", items: [.header(header)]),
-            DramaSectionModel(model: "", items: platforms.map { .platform($0) }),
-            DramaSectionModel(model: "작품 정보", items: episodes.map { .episode($0) })
-        ])
+        cell.contentConfiguration = content
+        var backgroundConfig = UIBackgroundConfiguration.listGroupedCell()
+        backgroundConfig.backgroundColor = .darkGray
+        backgroundConfig.cornerRadius = 10
+        backgroundConfig.backgroundInsets = NSDirectionalEdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10)
+        cell.backgroundConfiguration = backgroundConfig
+        cell.accessories = [.disclosureIndicator(options: .init(tintColor: .baseWhite))]
+        return cell
     }
     
-    
 }
-
