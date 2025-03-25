@@ -34,7 +34,7 @@ final class ModifyViewController: UIViewController {
     
     private let nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("확인", for: .normal)
+        button.setTitle("다음", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .lightGray
         button.layer.cornerRadius = 10
@@ -95,7 +95,7 @@ final class ModifyViewController: UIViewController {
         output.navigateToNext
             .emit(onNext: { [weak self] name in
                 UserDefaults.standard.set(name, forKey: "userName")
-                self?.coordinator?.popViewController()
+                self?.coordinator?.showModifyGenreScreen()
             })
             .disposed(by: disposeBag)
     }

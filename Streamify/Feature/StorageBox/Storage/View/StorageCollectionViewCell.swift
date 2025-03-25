@@ -7,12 +7,12 @@
 
 import UIKit
 
-class StorageCollectionViewCell: BaseCollectionViewCell {
+final class StorageCollectionViewCell: BaseCollectionViewCell {
    
-    let image = BaseImageView(radius: 10)
-    let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
-    let genreLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
-    let progressBar = ProgressBar()
+    private let image = BaseImageView(radius: 10)
+    private let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
+    private let genreLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    private let progressBar = ProgressBar()
     
     override func configureHierarchy() {
         contentView.addSubviews(image,progressBar,titleLabel,genreLabel)

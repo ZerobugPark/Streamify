@@ -67,6 +67,13 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(modifyVC, animated: true)
     }
     
+    func showModifyGenreScreen() {
+        let viewModel = GenreSelectionViewModel()
+        let modifyGenreVC = ModifyGenreViewController(viewModel: viewModel)
+        modifyGenreVC.coordinator = self
+        navigationController.pushViewController(modifyGenreVC, animated: true)
+    }
+    
     func popViewController() {
         navigationController.popViewController(animated: true)
     }

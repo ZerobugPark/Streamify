@@ -94,6 +94,10 @@ final class MainViewModel {
                 self?.error.accept("네트워크 오류: \(error.localizedDescription)")
             })
             .disposed(by: disposeBag)
+        
+        NotificationCenterManager.isChanged.addObserver().bind(with: self) { owner, _ in
+            print("프로필 이름과 장르 변경은 앱이 다시 실행되고 적용됩니다.")
+        }.disposed(by: disposeBag)
     }
 
     private func fetchTopRated() -> Observable<[TopRatedResult]> {

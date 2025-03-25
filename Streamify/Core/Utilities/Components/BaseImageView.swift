@@ -8,7 +8,7 @@
 import UIKit
 
 
-class BaseImageView: UIImageView {
+final class BaseImageView: UIImageView {
     
     
     init() {

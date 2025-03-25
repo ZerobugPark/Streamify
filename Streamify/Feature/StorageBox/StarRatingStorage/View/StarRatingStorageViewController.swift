@@ -10,11 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class StarRatingStorageViewController: BaseViewController<StarRatingStorageView, StarRatingStorageViewModel> {
+final class StarRatingStorageViewController: BaseViewController<StarRatingStorageView, StarRatingStorageViewModel> {
 
     var data: [Rate]
     
-    lazy var rateDatas = Observable.just(data)
+    private lazy var rateDatas = Observable.just(data)
     weak var coordinator: MainCoordinator?
     
     private let filterView = FilterButton()
