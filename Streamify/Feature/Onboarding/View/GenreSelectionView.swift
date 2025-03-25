@@ -11,7 +11,7 @@ final class GenreSelectionView: BaseView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "내 피드에서 보고싶은 관심 장르\n3가지를 골라주세요."
+        label.text = "내 피드에서 추천받고 싶은\n관심 장르 3가지를 골라주세요."
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
         label.textAlignment = .center
