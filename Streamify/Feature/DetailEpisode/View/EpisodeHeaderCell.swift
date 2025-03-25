@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-class EpisodeHeaderCell: BaseCollectionViewCell {
-    let imageView = BaseImageView(radius: 5)
-    let titleLabel = BaseLabel(fontSize: .body_bold_24, color: .baseWhite)
-    let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
-    let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
+final class EpisodeHeaderCell: BaseCollectionViewCell {
+    private let imageView = BaseImageView(radius: 5)
+    private let titleLabel = BaseLabel(fontSize: .body_bold_24, color: .baseWhite)
+    private let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
+    private let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
     
     override func configureHierarchy() {
         addSubviews(imageView, titleLabel, countLabel, overviewLabel)

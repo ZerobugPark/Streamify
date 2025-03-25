@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProgressBar: UIProgressView {
+final class ProgressBar: UIProgressView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         trackTintColor = .lightGray
