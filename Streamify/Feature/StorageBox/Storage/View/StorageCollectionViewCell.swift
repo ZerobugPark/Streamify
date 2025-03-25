@@ -51,7 +51,7 @@ class StorageCollectionViewCell: BaseCollectionViewCell {
         contentView.clipsToBounds = true
     }
     
-    func setupUI(_ data: Drama) {
+    func setupUI(_ data: DramaTable) {
         
         titleLabel.text = data.title
         genreLabel.text = data.genre
@@ -63,7 +63,7 @@ class StorageCollectionViewCell: BaseCollectionViewCell {
             progressBar.progress = data.watchingProgress
         }
         
-        let urlString = data.imagePath
+        let urlString = Config.shared.secureURL + Config.BackdropSizes.w300.rawValue + data.imagePath
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in

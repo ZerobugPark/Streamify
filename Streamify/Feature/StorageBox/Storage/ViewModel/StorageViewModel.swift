@@ -9,6 +9,7 @@ import Foundation
 
 import RxCocoa
 import RxSwift
+import RealmSwift
 
 final class StorageViewModel: BaseViewModel {
     
@@ -22,8 +23,11 @@ final class StorageViewModel: BaseViewModel {
         let buttonTogle: PublishRelay<ActionButtonStatus>
         let goToStarRating: PublishRelay<[Rate]>
         let goToComment: PublishRelay<[Comments]>
+        let setCount: BehaviorRelay<(Int, Int, Int, Int, Int)>
     }
     
+    private let dataUpdatedSubject = PublishRelay<Void>()
+    private let repository: any DramaRepository = RealmDramaRepository()
     
     private var wantedWatchDramas: [StorageSectionItem] = []
     private var watchedDramas: [StorageSectionItem] = []
@@ -35,35 +39,11 @@ final class StorageViewModel: BaseViewModel {
     private var ratingData: [Rate] = []
     private var commentsData: [Comments] = []
     
+    private var (wantedCount, watchedCount, watchingCount, commentCount, ratingCount) = (0,0,0,0,0)
+    
     override init() {
         super.init()
-        
-        let data = generateMockData()
-        
-        categorizeDramaByType(origin: data) { [weak self] rate, comment in
-            guard let self = self else { return }
-            self.ratingData = rate
-            self.commentsData = comment
-        }
-        
-        let wantedWatchList = data.filter { $0.dramaType == .none }
-        let watchedList = data.filter { $0.dramaType == .watched }
-        let watchingList = data.filter { $0.dramaType == .watching }
-        
-        
-        for item in wantedWatchList {
-            wantedWatchDramas.append(.firstSection(item))
-        }
-        
-        for item in watchedList {
-            watchedDramas.append(.secondSection(item))
-        }
-        
-        for item in watchingList {
-            watchingDramas.append(.thirdSection(item))
-        }
-        
-        
+        fetchRealmData()
     }
     
     
@@ -77,12 +57,14 @@ final class StorageViewModel: BaseViewModel {
         let buttonToggle = PublishRelay<ActionButtonStatus>()
         let goToStarRating = PublishRelay<[Rate]>()
         let goToComment = PublishRelay<[Comments]>()
+        let setCount = BehaviorRelay(value: (wantedCount, watchedCount, watchingCount, commentCount, ratingCount))
         
         input.actionButtonTapped.bind(with: self) { owner, tag in
             
             if owner.previousStatus == tag {
                 
                 sectiomModel.accept([.first(header: title[0], owner.wantedWatchDramas), .second(header: title[1], owner.watchedDramas), .third(header: title[2], owner.watchingDramas)])
+                
                 buttonToggle.accept(.all)
                 
                 owner.previousStatus = .all
@@ -113,7 +95,26 @@ final class StorageViewModel: BaseViewModel {
             
         }.disposed(by: disposeBag)
         
-        return Output(setSetcion: sectiomModel, buttonTogle: buttonToggle, goToStarRating: goToStarRating, goToComment: goToComment)
+        
+        dataUpdatedSubject.asDriver(onErrorJustReturn: ()).drive(with: self) { owner, _ in
+            setCount.accept((owner.wantedCount, owner.watchedCount, owner.watchingCount, owner.commentCount, owner.ratingCount))
+        }.disposed(by: disposeBag)
+        
+        NotificationCenterManager.progress.addObserver()
+            .bind(with: self) { owner, _ in
+                
+                owner.wantedWatchDramas = []
+                owner.watchedDramas = []
+                owner.watchingDramas = []
+                owner.fetchRealmData()
+                
+                sectiomModel.accept([.first(header: title[0], owner.wantedWatchDramas), .second(header: title[1], owner.watchedDramas), .third(header: title[2], owner.watchingDramas)])
+   
+            }
+            .disposed(by: disposeBag)
+        
+        
+        return Output(setSetcion: sectiomModel, buttonTogle: buttonToggle, goToStarRating: goToStarRating, goToComment: goToComment, setCount: setCount)
     }
     
     
@@ -122,7 +123,47 @@ final class StorageViewModel: BaseViewModel {
 
 extension StorageViewModel {
     
-    private func categorizeDramaByType(origin:[Drama], completionHandler: @escaping ([Rate], [Comments]) -> Void) {
+    
+    private func fetchRealmData() {
+        let getRealmData = Array(repository.fatchAll())
+          
+        let wantedWatchList = getRealmData.filter { $0.wantToWatch == true }
+        let watchedList = getRealmData.filter { $0.dramaType == .watched }
+        let watchingList = getRealmData.filter { $0.dramaType == .watching }
+        
+        
+
+        
+        categorizeDramaByType(origin: getRealmData) { [weak self] rate, comment in
+            guard let self = self else { return }
+            self.ratingData = rate
+            self.commentsData = comment
+            
+            self.wantedCount = wantedWatchList.count
+            self.watchedCount = watchedList.count
+            self.watchingCount = watchingList.count
+            self.commentCount = ratingData.count
+            self.ratingCount = commentsData.count
+            
+            self.dataUpdatedSubject.accept(())
+                        
+        }
+    
+        for item in wantedWatchList {
+            wantedWatchDramas.append(.firstSection(item))
+        }
+        
+        
+        for item in watchedList {
+            watchedDramas.append(.secondSection(item))
+        }
+        
+        for item in watchingList {
+            watchingDramas.append(.thirdSection(item))
+        }
+    }
+   
+    private func categorizeDramaByType(origin:[DramaTable], completionHandler: @escaping ([Rate], [Comments]) -> Void) {
         
         let dispatchGroup = DispatchGroup()
         var rateData: [Rate] = []
@@ -132,18 +173,18 @@ extension StorageViewModel {
         for item in commnetsArray {
             dispatchGroup.enter()
             fetchImageData(imagePath: item.imagePath) {
-                let commnet = Comments(id: item.id, titleID: item.titleID, title: item.title, imagePath: $0, comment: item.comment)
+                let commnet = Comments(titleID: item.titleID, title: item.title, imagePath: $0, comment: item.comment)
                 commentData.append(commnet)
                 dispatchGroup.leave()
             }
         }
         
         
-        let rateArray = origin.filter { $0.voteAverage != 0.0 }
+        let rateArray = origin.filter { $0.vote_average != nil }
         for item in rateArray {
             dispatchGroup.enter()
             fetchImageData(imagePath: item.imagePath) {
-                let rate = Rate(id: item.id, titleID: item.titleID, title: item.title, imagePath: $0, voteAverage: item.voteAverage )
+                let rate = Rate(titleID: item.titleID, title: item.title, imagePath: $0, voteAverage: item.vote_average!)
                 rateData.append(rate)
                 dispatchGroup.leave()
             }
@@ -153,13 +194,14 @@ extension StorageViewModel {
         dispatchGroup.notify(queue: .main) {
             completionHandler(rateData, commentData)
         }
-       
+        
     }
     
     private func fetchImageData(imagePath: String, completionHandler: @escaping (Data?) -> ()) {
         
         
-        let urlString = imagePath
+        let urlString = Config.shared.secureURL + Config.BackdropSizes.w300.rawValue + imagePath
+        print(urlString)
         guard let url = URL(string: urlString) else { completionHandler(nil); return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -177,95 +219,6 @@ extension StorageViewModel {
             
             
         }.resume()
-   
-    }
-}
-    
-
-
-
-struct Drama {
-    var id: String
-    var titleID: Int
-    var title: String
-    var voteAverage: Double
-    var genre: String
-    var imagePath: String
-    var comment: String
-    var episodes: [Episode]
-    var watchingProgress: Float {
-        let watchedCount = episodes.filter { $0.isWatched }.count
-        return episodes.isEmpty ? 0.0 : Float(watchedCount) / Float(episodes.count)
-    }
-    var dramaType: DramaType {
-        switch watchingProgress {
-        case 0.0: return .none
-        case 1.0: return .watched
-        default: return .watching
-        }
-    }
-}
-
-struct Episode {
-    var isWatched: Bool
-    var title: String
-}
-
-func generateMockData() -> [Drama] {
-    // "봤어요" 드라마들 (watched)
-    let watchedDramas: [Drama] = (1...10).map { index in
-        let episode1 = Episode(isWatched: true, title: "Episode 1")
-        let episode2 = Episode(isWatched: true, title: "Episode 2")
-        let episode3 = Episode(isWatched: true, title: "Episode 3")
         
-        return Drama(
-            id: "\(index)",
-            titleID: 100 + index,
-            title: "Watched Drama \(index)",
-            voteAverage: Double.random(in: 6.0...9.0),
-            genre: ["Action", "Drama", "Comedy", "Sci-Fi"].randomElement()!,
-            imagePath: Config.shared.secureURL + Config.BackdropSizes.w300.rawValue + "/8MtMFngDWvIdRo34rz3ao0BGBAe.jpg",
-            comment: "This is a comment for Watched Drama \(index).",
-            episodes: [episode1, episode2, episode3]
-        )
     }
-    
-    // "시청 중" 드라마들 (watching)
-    let watchingDramas: [Drama] = (11...20).map { index in
-        let episode1 = Episode(isWatched: true, title: "Episode 1")
-        let episode2 = Episode(isWatched: false, title: "Episode 2")
-        let episode3 = Episode(isWatched: false, title: "Episode 3")
-        
-        return Drama(
-            id: "\(index)",
-            titleID: 100 + index,
-            title: "Watching Drama \(index)",
-            voteAverage: Double.random(in: 6.0...9.0),
-            genre: ["Action", "Drama", "Comedy", "Sci-Fi"].randomElement()!,
-            imagePath: Config.shared.secureURL + Config.BackdropSizes.w300.rawValue + "/8MtMFngDWvIdRo34rz3ao0BGBAe.jpg",
-            comment: "This is a comment for Watching Drama \(index).",
-            episodes: [episode1, episode2, episode3]
-        )
-    }
-    
-    // "시청 예정" 드라마들 (not yet watched, for none category)
-    let noneDramas: [Drama] = (21...30).map { index in
-        let episode1 = Episode(isWatched: false, title: "Episode 1")
-        let episode2 = Episode(isWatched: false, title: "Episode 2")
-        let episode3 = Episode(isWatched: false, title: "Episode 3")
-        
-        return Drama(
-            id: "\(index)",
-            titleID: 100 + index,
-            title: "Not Watched Drama \(index)",
-            voteAverage: Double.random(in: 6.0...9.0),
-            genre: ["Action", "Drama", "Comedy", "Sci-Fi"].randomElement()!,
-            imagePath: Config.shared.secureURL + Config.BackdropSizes.w300.rawValue + "/8MtMFngDWvIdRo34rz3ao0BGBAe.jpg",
-            comment: "This is a comment for Not Watched Drama \(index).",
-            episodes: [episode1, episode2, episode3]
-        )
-    }
-    
-    // 전체 드라마 목록 반환 (봤어요, 시청 중, 시청 예정)
-    return watchedDramas + watchingDramas + noneDramas
 }

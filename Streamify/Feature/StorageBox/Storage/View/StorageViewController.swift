@@ -102,6 +102,15 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
                 owner.coordinator?.showCommentScreen(data: data)
             }.disposed(by: disposeBag)
         
+        output.setCount.bind(with: self) { owenr, value in
+            owenr.mainView.wantToWatchButton.updateTitle(String(value.0))
+            owenr.mainView.watchedButton.updateTitle(String(value.1))
+            owenr.mainView.watchingButton.updateTitle(String(value.2))
+            owenr.mainView.commentButton.updateTitle(String(value.3))
+            owenr.mainView.ratingButton.updateTitle(String(value.4))
+            
+            
+        }.disposed(by: disposeBag)
         
         output.buttonTogle.asDriver(onErrorJustReturn: .all).drive(with: self) { owner, status in
             
