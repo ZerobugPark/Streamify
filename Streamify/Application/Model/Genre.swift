@@ -11,4 +11,5 @@ struct Genre: Codable, Equatable {
     let id: Int
     let name: String
     var isSelected: Bool = false
+    var order: Int? = nil
 }

@@ -26,12 +26,6 @@ class GenreCell: UICollectionViewCell {
         return view
     }()
 
-    override var isSelected: Bool {
-        didSet {
-            updateSelectionStyle()
-        }
-    }
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -55,12 +49,13 @@ class GenreCell: UICollectionViewCell {
     }
 
     func configure(with genre: Genre) {
-        titleLabel.text = genre.name
-        isSelected = genre.isSelected
-    }
+        if let order = genre.order {
+            titleLabel.text = "\(order). \(genre.name)"
+        } else {
+            titleLabel.text = genre.name
+        }
 
-    private func updateSelectionStyle() {
-        if isSelected {
+        if genre.isSelected {
             containerView.backgroundColor = UIColor.systemBlue
             titleLabel.textColor = .white
             containerView.layer.borderColor = UIColor.systemBlue.cgColor
