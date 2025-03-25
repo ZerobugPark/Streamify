@@ -9,16 +9,37 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class NameInputViewModel {
-    let inputName = BehaviorRelay<String>(value: "")
+final class NameInputViewModel: BaseViewModel {
     
-    var isValidName: Driver<Bool> {
-        return inputName
+    struct Input {
+        let nameInput: Observable<String>
+        let nextTap: Observable<Void>
+    }
+
+    struct Output {
+        let isValidName: Driver<Bool>
+        let navigateToNext: Signal<String>
+    }
+
+    private let currentName = BehaviorRelay<String>(value: "")
+    
+    func transform(input: Input) -> Output {
+        input.nameInput
+            .bind(to: currentName)
+            .disposed(by: disposeBag)
+        
+        let isValidName = currentName
             .map { name in
                 let regex = "^[a-zA-Z가-힣]{2,10}$"
                 let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
                 return predicate.evaluate(with: name)
             }
             .asDriver(onErrorJustReturn: false)
+        
+        let navigateToNext = input.nextTap
+            .withLatestFrom(currentName)
+            .asSignal(onErrorJustReturn: "")
+        
+        return Output(isValidName: isValidName, navigateToNext: navigateToNext)
     }
 }

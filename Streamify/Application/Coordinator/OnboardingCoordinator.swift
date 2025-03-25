@@ -21,13 +21,13 @@ class OnboardingCoordinator: Coordinator {
     }
     
     private func showNameInputScreen() {
-        let nameInputVC = NameInputViewController()
+        let nameInputVC = NameInputViewController(viewModel: NameInputViewModel())
         nameInputVC.coordinator = self
         navigationController.pushViewController(nameInputVC, animated: true)
     }
     
     func showGenreSelectionScreen(userName: String) {
-        let genreSelectionVC = GenreSelectionViewController()
+        let genreSelectionVC = GenreSelectionViewController(viewModel: GenreSelectionViewModel())
         genreSelectionVC.coordinator = self
         genreSelectionVC.userName = userName
         navigationController.pushViewController(genreSelectionVC, animated: true)
