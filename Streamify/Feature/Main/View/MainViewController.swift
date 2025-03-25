@@ -9,6 +9,9 @@ class MainViewController: UIViewController {
     private let viewModel = MainViewModel()
     private let disposeBag = DisposeBag()
     
+    let repository: RealmRepository = RealmDramaRepository()
+    
+    // TODO: 선언부 수정
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
             switch sectionIndex {
@@ -67,7 +70,12 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = .black
+        
+        print("viewDidLoad homeVC instance:", Unmanaged.passUnretained(self).toOpaque())
+        print("viewDidLoad self.coordinator:", self.coordinator as Any)
+
+        repository.getFileURL()
+        
         setupNavigationBar()
         setupUI()
         bindViewModel()
@@ -97,10 +105,12 @@ class MainViewController: UIViewController {
     }
     
     @objc private func didTapStorage() {
+        print(#function, coordinator as Any)
         coordinator?.showStorageScreen()
     }
     
     @objc private func didTapSearch() {
+        print(#function, coordinator as Any)
         coordinator?.showSearchScreen()
     }
     

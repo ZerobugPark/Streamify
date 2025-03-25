@@ -20,7 +20,7 @@ protocol Repository {
 
 class RealmRepository<T: Object>: Repository {
     let realm = try! Realm()
-    
+
     func getFileURL() {
         print(realm.configuration.fileURL)
     }

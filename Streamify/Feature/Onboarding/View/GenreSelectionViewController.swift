@@ -121,19 +121,10 @@ class GenreSelectionViewController: UIViewController {
         collectionView.dataSource = self
 
         collectionView.rx.itemSelected
-            .subscribe(onNext: { [weak self] indexPath in
-                guard let self = self else { return }
-                let genre = self.viewModel.genreList()[indexPath.item]
-                self.viewModel.didSelectGenre.accept(genre)
-            })
-            .disposed(by: disposeBag)
-
-        collectionView.rx.itemDeselected
-            .subscribe(onNext: { [weak self] indexPath in
-                guard let self = self else { return }
-                let genre = self.viewModel.genreList()[indexPath.item]
-                self.viewModel.didDeselectGenre.accept(genre)
-            })
+            .bind(with: self) { owner, indexPath in
+                let genre = owner.viewModel.genreList()[indexPath.item]
+                owner.viewModel.didSelectGenre.accept(genre)
+            }
             .disposed(by: disposeBag)
 
         viewModel.selectedGenres
@@ -174,10 +165,11 @@ extension GenreSelectionViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenreCell.id, for: indexPath) as? GenreCell else {
             return UICollectionViewCell()
         }
+
         let genre = viewModel.genreList()[indexPath.item]
-        var configuredGenre = genre
-        configuredGenre.isSelected = viewModel.isGenreSelected(genre)
-        cell.configure(with: configuredGenre)
+        var configured = genre
+        configured.isSelected = viewModel.isGenreSelected(genre)
+        cell.configure(with: configured)
         return cell
     }
 }
