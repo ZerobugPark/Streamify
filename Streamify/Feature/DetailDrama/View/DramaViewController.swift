@@ -100,4 +100,3 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
     }
     
 }
-

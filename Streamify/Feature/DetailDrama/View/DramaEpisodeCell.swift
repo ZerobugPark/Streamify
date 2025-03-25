@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class DramaEpisodeCell: BaseCollectionViewCell {
     private let imageView = BaseImageView()
@@ -14,6 +16,8 @@ class DramaEpisodeCell: BaseCollectionViewCell {
     private let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
     private let progressBar = ProgressBar()
     private let containerView = UIView()
+    
+    private let disposeBag = DisposeBag()
     
     override func configureHierarchy() {
         addSubviews(titleLabel, countLabel, containerView)
@@ -67,6 +71,12 @@ class DramaEpisodeCell: BaseCollectionViewCell {
         }.resume()
         
         progressBar.progress = item.dramaTable.episodeProgress(for: item.dramaTable.seasons[item.seasonNumber])
+        
+        NotificationCenterManager.progress.addObserver()
+            .bind(with: self) { owner, _ in
+                owner.progressBar.progress = item.dramaTable.episodeProgress(for: item.dramaTable.seasons[item.seasonNumber])
+            }
+            .disposed(by: disposeBag)
     }
     
 }

@@ -35,6 +35,7 @@ final class EpisodeCellViewModel: BaseViewModel {
             .bind(with: self) { owner, value in
                 owner.dramaRepository.toggleEpisodeWatched(episode: owner.episode)
                 checkButtonTap.accept(value)
+                NotificationCenterManager.progress.post()
             }
             .disposed(by: disposeBag)
         
