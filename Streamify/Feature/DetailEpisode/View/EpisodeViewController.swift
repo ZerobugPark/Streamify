@@ -42,44 +42,25 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
         case .button:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeButtonCell.id, for: indexPath) as! EpisodeButtonCell
             
-            cell.commentButton.rx.tap
-                .bind(with: self) { owner, _ in
-                    let vc = UINavigationController(rootViewController: EpisodeModalViewController(type: .comment))
-                    owner.present(vc, animated: true)
-                }
-                .disposed(by: cell.disposeBag)
+            cell.configure(self.episode.dramaTable.seasons[self.seasonIndex].episodes, self.seasonIndex)
             
-            cell.starButton.rx.tap
-                .bind(with: self) { owner, _ in
-                    let vc = UINavigationController(rootViewController: EpisodeModalViewController(type: .star))
-                    owner.present(vc, animated: true)
-                }
-                .disposed(by: cell.disposeBag)
+//            cell.commentButton.rx.tap
+//                .bind(with: self) { owner, _ in
+//                    let vc = UINavigationController(rootViewController: EpisodeModalViewController(type: .comment))
+//                    owner.present(vc, animated: true)
+//                }
+//                .disposed(by: cell.disposeBag)
+//            
+//            cell.starButton.rx.tap
+//                .bind(with: self) { owner, _ in
+//                    let vc = UINavigationController(rootViewController: EpisodeModalViewController(type: .star))
+//                    owner.present(vc, animated: true)
+//                }
+//                .disposed(by: cell.disposeBag)
             
             return cell
         case .episode(let item):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeCell.id, for: indexPath) as! EpisodeCell
-            
-            //print(self.episode.dramaTable.seasons.count)
-//            print(self.episode.dramaTable.seasons[count-1].episodes.first.se)
-            
-
-            
-                
-//                        var index = 0
-//                        if self.episode.dramaTable.seasons.count == self.episode.seasonNumber {
-//                            index = self.episode.seasonNumber - 1
-//                        } else {
-//                            index = self.number
-//                            if !self.isTrue {
-//                                self.number += 1
-//                                self.isTrue =  true
-//                            }
-//                            
-//                        }
-            
-           // print(index, indexPath.item)
-             //   print("test",self.episode.dramaTable.seasons[index].episodes[indexPath.item])
             cell.configure(item,  self.episode.dramaTable.seasons[self.seasonIndex].episodes[indexPath.item])
                         return cell
         }
