@@ -76,26 +76,27 @@ final class ModifyViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        nameTextField.rx.text.orEmpty
-            .bind(to: viewModel.inputName)
-            .disposed(by: disposeBag)
+        let input = NameInputViewModel.Input(
+            nameInput: nameTextField.rx.text.orEmpty.asObservable(),
+            nextTap: nextButton.rx.tap.asObservable()
+        )
         
-        viewModel.isValidName
+        let output = viewModel.transform(input: input)
+
+        output.isValidName
             .drive(nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
-        viewModel.isValidName
+
+        output.isValidName
             .map { $0 ? UIColor.systemBlue : UIColor.lightGray }
             .drive(nextButton.rx.backgroundColor)
             .disposed(by: disposeBag)
-        
-        nextButton.rx.tap
-            .bind { [weak self] in
-                guard let self = self else { return }
-                
-                UserDefaults.standard.set(nameTextField.text, forKey: "userName")
-                self.coordinator?.popViewController()
-            }
+
+        output.navigateToNext
+            .emit(onNext: { [weak self] name in
+                UserDefaults.standard.set(name, forKey: "userName")
+                self?.coordinator?.popViewController()
+            })
             .disposed(by: disposeBag)
     }
     
