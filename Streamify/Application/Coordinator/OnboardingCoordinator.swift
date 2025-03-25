@@ -27,7 +27,7 @@ class OnboardingCoordinator: Coordinator {
     }
     
     func showGenreSelectionScreen(userName: String) {
-        let genreSelectionVC = GenreSelectionViewController()
+        let genreSelectionVC = GenreSelectionViewController(viewModel: GenreSelectionViewModel())
         genreSelectionVC.coordinator = self
         genreSelectionVC.userName = userName
         navigationController.pushViewController(genreSelectionVC, animated: true)
