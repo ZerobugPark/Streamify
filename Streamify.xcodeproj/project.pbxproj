@@ -29,6 +29,7 @@
 		3EE1E8652D9059EA00681B6B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8642D9059EA00681B6B /* SearchViewController.swift */; };
 		3EE1E8672D90D1AF00681B6B /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */; };
 		3EE1E87D2D91344A00681B6B /* DetailCoordintaor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E87C2D91344A00681B6B /* DetailCoordintaor.swift */; };
+		3EE1E95A2D92A0E300681B6B /* NameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE1E9592D92A0E300681B6B /* NameInputView.swift */; };
 		AE8405C42D92687B009136BF /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8405C32D92687B009136BF /* NotificationCenterManager.swift */; };
 		AEF04B1A2D8E9919001D3274 /* DramaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B192D8E9919001D3274 /* DramaTable.swift */; };
 		AEF04B802D8EE82D001D3274 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */; };
@@ -137,6 +138,7 @@
 		3EE1E8642D9059EA00681B6B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3EE1E8662D90D1AF00681B6B /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		3EE1E87C2D91344A00681B6B /* DetailCoordintaor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordintaor.swift; sourceTree = "<group>"; };
+		3EE1E9592D92A0E300681B6B /* NameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputView.swift; sourceTree = "<group>"; };
 		AE8405C32D92687B009136BF /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		AEF04B192D8E9919001D3274 /* DramaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DramaTable.swift; sourceTree = "<group>"; };
 		AEF04B7F2D8EE82D001D3274 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				3EE1E8442D8E9E6100681B6B /* GenreCell.swift */,
 				3EE1E8452D8E9E6100681B6B /* GenreSelectionViewController.swift */,
 				3EE1E8462D8E9E6100681B6B /* NameInputViewController.swift */,
+				3EE1E9592D92A0E300681B6B /* NameInputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				D00926F72D8E998A00A10742 /* VerticalListView.swift in Sources */,
 				D09E18312D8D79FF004EEC6C /* StarRatingView.swift in Sources */,
 				3EE1E8572D8EEFE400681B6B /* TopRatedCell.swift in Sources */,
+				3EE1E95A2D92A0E300681B6B /* NameInputView.swift in Sources */,
 				D03737C22D8C33CD006CED4A /* SceneDelegate.swift in Sources */,
 				D00926A42D8E74E400A10742 /* StreamifySymbol.swift in Sources */,
 				3EE1E8242D8E80DE00681B6B /* TMDBEndpoint.swift in Sources */,

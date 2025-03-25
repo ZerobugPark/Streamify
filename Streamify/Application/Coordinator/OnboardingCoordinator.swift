@@ -21,7 +21,7 @@ class OnboardingCoordinator: Coordinator {
     }
     
     private func showNameInputScreen() {
-        let nameInputVC = NameInputViewController()
+        let nameInputVC = NameInputViewController(viewModel: NameInputViewModel())
         nameInputVC.coordinator = self
         navigationController.pushViewController(nameInputVC, animated: true)
     }
