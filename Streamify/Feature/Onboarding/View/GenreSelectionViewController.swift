@@ -13,103 +13,20 @@ import RxCocoa
 class GenreSelectionViewController: UIViewController {
 
     weak var coordinator: OnboardingCoordinator?
+    let mainView = GenreSelectionView()
     var userName: String?
-
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "내 피드에서 보고싶은 관심 장르"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
-
-    private let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "선택한 순서대로 반영돼요"
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .darkGray
-        label.textAlignment = .center
-        return label
-    }()
-
-    private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 8
-        layout.minimumLineSpacing = 12
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.allowsMultipleSelection = true
-        collectionView.register(GenreCell.self, forCellWithReuseIdentifier: GenreCell.id)
-        return collectionView
-    }()
-
-    private let infoLabel: UILabel = {
-        let label = UILabel()
-        label.text = "관심 장르는 나중에 다시 수정할 수 있어요"
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .gray
-        label.textAlignment = .center
-        return label
-    }()
-
-    private let doneButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("완료", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .lightGray
-        button.layer.cornerRadius = 8
-        button.isEnabled = false
-        return button
-    }()
 
     private let disposeBag = DisposeBag()
     private var viewModel: GenreSelectionViewModel!
 
+    override func loadView() {
+        view = mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         configureViewModel()
         bindViewModel()
-    }
-
-    private func setupUI() {
-        view.backgroundColor = .white
-
-        view.addSubview(titleLabel)
-        view.addSubview(subtitleLabel)
-        view.addSubview(collectionView)
-        view.addSubview(infoLabel)
-        view.addSubview(doneButton)
-
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(24)
-            make.leading.trailing.equalToSuperview().inset(16)
-        }
-
-        subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
-        }
-
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(subtitleLabel.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.bottom.equalTo(infoLabel.snp.top).offset(-16)
-        }
-
-        infoLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(doneButton.snp.top).offset(-12)
-            make.leading.trailing.equalToSuperview().inset(16)
-        }
-
-        doneButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(48)
-        }
     }
 
     private func configureViewModel() {
@@ -118,9 +35,9 @@ class GenreSelectionViewController: UIViewController {
     }
 
     private func bindViewModel() {
-        collectionView.dataSource = self
+        mainView.collectionView.dataSource = self
 
-        collectionView.rx.itemSelected
+        mainView.collectionView.rx.itemSelected
             .bind(with: self) { owner, indexPath in
                 let genre = owner.viewModel.genreList()[indexPath.item]
                 owner.viewModel.didSelectGenre.accept(genre)
@@ -129,20 +46,20 @@ class GenreSelectionViewController: UIViewController {
 
         viewModel.selectedGenres
             .bind(onNext: { [weak self] _ in
-                self?.collectionView.reloadData()
+                self?.mainView.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
 
         viewModel.isSelectionValid
-            .drive(doneButton.rx.isEnabled)
+            .drive(mainView.doneButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
         viewModel.isSelectionValid
             .map { $0 ? UIColor.systemBlue : UIColor.lightGray }
-            .drive(doneButton.rx.backgroundColor)
+            .drive(mainView.doneButton.rx.backgroundColor)
             .disposed(by: disposeBag)
 
-        doneButton.rx.tap
+        mainView.doneButton.rx.tap
             .bind { [weak self] in
                 guard let self = self else { return }
                 let selected = self.viewModel.selectedGenres.value

@@ -14,7 +14,7 @@ class GenreCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .baseWhite
         return label
     }()
 
@@ -22,7 +22,7 @@ class GenreCell: UICollectionViewCell {
         let view = UIView()
         view.layer.cornerRadius = 16
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderColor = UIColor.baseLightGray.cgColor
         return view
     }()
 
@@ -50,7 +50,7 @@ class GenreCell: UICollectionViewCell {
     private func setupUI() {
         contentView.addSubview(containerView)
         containerView.addSubview(titleLabel)
-        containerView.addSubview(badgeLabel) // ✅ containerView 안에!
+        containerView.addSubview(badgeLabel)
 
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -66,7 +66,7 @@ class GenreCell: UICollectionViewCell {
             make.width.height.equalTo(20)
         }
 
-        containerView.clipsToBounds = false // ✅ 혹시 모를 잘림 방지
+        containerView.clipsToBounds = false
     }
 
     func configure(with genre: Genre) {
@@ -74,18 +74,16 @@ class GenreCell: UICollectionViewCell {
         
         print("badge======", genre.order)
 
-        // ✅ 스타일 설정
         if genre.isSelected {
             containerView.backgroundColor = UIColor.systemBlue
             titleLabel.textColor = .white
             containerView.layer.borderColor = UIColor.systemBlue.cgColor
         } else {
-            containerView.backgroundColor = .white
-            titleLabel.textColor = .black
-            containerView.layer.borderColor = UIColor.lightGray.cgColor
+            containerView.backgroundColor = .baseBlack
+            titleLabel.textColor = .white
+            containerView.layer.borderColor = UIColor.baseLightGray.cgColor
         }
 
-        // ✅ 뱃지 설정
         if let order = genre.order {
             print("badge======", order)
             badgeLabel.isHidden = false
