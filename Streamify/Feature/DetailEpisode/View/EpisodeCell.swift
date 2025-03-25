@@ -10,18 +10,18 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
-class EpisodeCell: BaseCollectionViewCell {
+final class EpisodeCell: BaseCollectionViewCell {
     
     private var viewModel: EpisodeCellViewModel?
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
-    let imageView = BaseImageView(radius: 5)
-    let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
-    let timeLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
-    let dateLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
-    let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    private let imageView = BaseImageView(radius: 5)
+    private let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
+    private let timeLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    private let dateLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    private let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
     
-    let checkButton = ActionButton(title: "", image: .checkmark)
+    private let checkButton = ActionButton(title: "", image: .checkmark)
     
     override func prepareForReuse() {
         super.prepareForReuse()

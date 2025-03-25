@@ -21,17 +21,17 @@ final class EpisodeButtonCell: BaseCollectionViewCell {
         view.alignment = .center
         return view
     }()
-    var season: Seasons?
-    var episodes: List<Episodes>?
-    var drama: DramaTable?
+    private var season: Seasons?
+    private var episodes: List<Episodes>?
+    private var drama: DramaTable?
     private var seasonIndex: Int?
     private var progressDisposable: Disposable?
     
-    let wantButton = ActionButton(title: "찜", image: .plus)
-    let watchedButton = ActionButton(title: "봤어요", image: .checkmark)
-    let watchingButton = ActionButton(title: "보는중", image: .eye)
-    let commentButton = ActionButton(title: "코멘트", image: .pencil)
-    let starButton = ActionButton(title: "별점", image: .starCircle)
+    private let wantButton = ActionButton(title: "찜", image: .plus)
+    private let watchedButton = ActionButton(title: "봤어요", image: .checkmark)
+    private let watchingButton = ActionButton(title: "보는중", image: .eye)
+    private let commentButton = ActionButton(title: "코멘트", image: .pencil)
+    private let starButton = ActionButton(title: "별점", image: .starCircle)
     
     var disposeBag = DisposeBag()
     

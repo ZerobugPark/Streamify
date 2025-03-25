@@ -10,7 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class DramaEpisodeCell: BaseCollectionViewCell {
+final class DramaEpisodeCell: BaseCollectionViewCell {
     private let imageView = BaseImageView()
     private let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
     private let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)

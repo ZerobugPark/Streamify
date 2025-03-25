@@ -11,7 +11,7 @@ import RxCocoa
 import RxDataSources
 import RealmSwift
 
-class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
+final class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
     
     weak var coordinator: DetailCoordinator?
     typealias collectionViewDataSource = RxCollectionViewSectionedReloadDataSource<EpisodeSectionModel>
