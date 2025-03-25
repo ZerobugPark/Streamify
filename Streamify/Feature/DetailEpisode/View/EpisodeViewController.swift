@@ -19,10 +19,6 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
     private let episode: DramaEpisode
     private let seasonIndex: Int
     
-//    private var number: Int = 0
-//    private var isTrue: Bool = false
-    
-    
     init(item: DramaEpisode, seasonIndex: Int) {
         self.episode = item
         self.seasonIndex = seasonIndex
@@ -42,21 +38,7 @@ class EpisodeViewController: BaseViewController<EpisodeView, EpisodeViewModel> {
         case .button:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EpisodeButtonCell.id, for: indexPath) as! EpisodeButtonCell
             
-            cell.configure(self.episode.dramaTable.seasons[self.seasonIndex].episodes, self.seasonIndex)
-            
-//            cell.commentButton.rx.tap
-//                .bind(with: self) { owner, _ in
-//                    let vc = UINavigationController(rootViewController: EpisodeModalViewController(type: .comment))
-//                    owner.present(vc, animated: true)
-//                }
-//                .disposed(by: cell.disposeBag)
-//            
-//            cell.starButton.rx.tap
-//                .bind(with: self) { owner, _ in
-//                    let vc = UINavigationController(rootViewController: EpisodeModalViewController(type: .star))
-//                    owner.present(vc, animated: true)
-//                }
-//                .disposed(by: cell.disposeBag)
+            cell.configure(self.episode.dramaTable.seasons[self.seasonIndex].episodes, self.seasonIndex, self.episode.dramaTable.seasons[self.seasonIndex], self.episode.dramaTable)
             
             return cell
         case .episode(let item):
