@@ -71,6 +71,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("viewDidLoad homeVC instance:", Unmanaged.passUnretained(self).toOpaque())
+        print("viewDidLoad self.coordinator:", self.coordinator as Any)
+
         repository.getFileURL()
         
         setupNavigationBar()
@@ -102,10 +105,12 @@ class MainViewController: UIViewController {
     }
     
     @objc private func didTapStorage() {
+        print(#function, coordinator as Any)
         coordinator?.showStorageScreen()
     }
     
     @objc private func didTapSearch() {
+        print(#function, coordinator as Any)
         coordinator?.showSearchScreen()
     }
     

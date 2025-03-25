@@ -12,6 +12,7 @@ class MainCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        print(#function, navigationController)
     }
     
     func start() {
@@ -20,14 +21,14 @@ class MainCoordinator: Coordinator {
     
     private func showHome() {
         let homeVC = MainViewController()
-        // TODO: 나중에 ViewModel 주입, 탭바 연동 등이 들``어갈 수 있음
+        print("homeVC instance:", Unmanaged.passUnretained(homeVC).toOpaque())
+        print("homeVC.coordinator:", homeVC.coordinator as Any)
         homeVC.coordinator = self
-        navigationController.setViewControllers([homeVC], animated: true)
+        navigationController.setViewControllers([homeVC], animated: false)
     }
     
     func showSearchScreen() {
         let searchVC = SearchViewController()
-        //        let storageVC = StorageViewController(viewModel: viewModel)
         searchVC.coordinator = self
         navigationController.pushViewController(searchVC, animated: true)
     }
