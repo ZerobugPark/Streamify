@@ -43,7 +43,6 @@ final class MainViewModel {
     // MARK: - Output
     let topRatedItems = BehaviorRelay<[TopRatedResult]>(value: [])
     let trendingItems = BehaviorRelay<[TrendingResult]>(value: [])
-    let similarItems = BehaviorRelay<[SimilarResult]>(value: [])
     let popularItems = BehaviorRelay<[PopularResult]>(value: [])
     let sectionModels = BehaviorRelay<[MainSectionModel]>(value: [])
     let isLoading = BehaviorRelay<Bool>(value: false)
@@ -74,26 +73,21 @@ final class MainViewModel {
                 self.trendingItems.accept(trending)
                 self.popularItems.accept(popular)
 
-                // topRated에서 유사 콘텐츠 기준 ID 추출
-                // TODO: 실제 사용자 관심 항목으로 변경 필요
-                let topId = topRated.first?.id ?? 0
+                let preferredIDs = UserDefaults.standard.array(forKey: "preferredGenres") as? [Int] ?? []
+                let filteredTrending = trending.filter { item in
+                    item.genreIDS.contains(where: { preferredIDs.contains($0) })
+                }
 
-                self.fetchSimilar(from: topId)
-                    .observe(on: MainScheduler.instance)
-                    .subscribe(onNext: { similar in
-                        self.similarItems.accept(similar)
+                let username = UserDefaults.standard.string(forKey: "userName") ?? "사용자"
+                let personalizedTitle = "\(username)님이 좋아할만한 콘텐츠"
 
-                        let sections: [MainSectionModel] = [
-                            .topRated(topRated),
-                            .horizontal(title: "실시간 인기 드라마", items: trending),
-                            // TODO: 실제 항목의 이름으로 변경 필요
-                            .horizontal(title: "내 관심사와 비슷한 콘텐츠", items: similar),
-                            .horizontal(title: "지금 뜨는 콘텐츠", items: popular)
-                        ]
-                        self.sectionModels.accept(sections)
-
-                    })
-                    .disposed(by: self.disposeBag)
+                let sections: [MainSectionModel] = [
+                    .topRated(topRated),
+                    .horizontal(title: "실시간 인기 드라마", items: trending),
+                    .horizontal(title: personalizedTitle, items: filteredTrending),
+                    .horizontal(title: "지금 뜨는 콘텐츠", items: popular)
+                ]
+                self.sectionModels.accept(sections)
 
             }, onError: { [weak self] error in
                 self?.isLoading.accept(false)
@@ -101,7 +95,7 @@ final class MainViewModel {
             })
             .disposed(by: disposeBag)
     }
-    
+
     private func fetchTopRated() -> Observable<[TopRatedResult]> {
         return NetworkManager.shared.request(api: .topRated, type: TMDBResponse.self)
             .map { result in
@@ -135,19 +129,9 @@ final class MainViewModel {
             .asObservable()
     }
 
-    private func fetchSimilar(from id: Int) -> Observable<[SimilarResult]> {
-        return NetworkManager.shared.request(api: .similar(id: id), type: TMDBResponse.self)
-            .map { result in
-                switch result {
-                case .success(let data): return data.results
-                case .failure(let err): throw err
-                }
-            }
-            .asObservable()
-    }
-
     func findItem(by id: Int) -> MediaItem? {
-        let allItems: [MediaItem] = topRatedItems.value + trendingItems.value + similarItems.value + popularItems.value
+        let allItems: [MediaItem] = topRatedItems.value + trendingItems.value + popularItems.value
         return allItems.first { $0.id == id }
     }
 }
+
