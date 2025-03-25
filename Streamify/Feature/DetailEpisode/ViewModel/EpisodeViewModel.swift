@@ -100,9 +100,9 @@ final class EpisodeViewModel: BaseViewModel {
             let hour = ($0.runtime ?? 0) / 60
             let minutes = ($0.runtime ?? 0) % 60
             
-            let date = $0.air_date.replacingOccurrences(of: "-", with: ". ")
+            let date = $0.air_date?.replacingOccurrences(of: "-", with: ". ") ?? ""
             
-            episode.append(.episode(.init(image: $0.still_path ?? "", title: "\($0.episode_number)화", time: hour != 0 ? "\(hour)시간 \(minutes)분" : "\(minutes)분", date: "\(date) 방영", overview: $0.overview ?? "")))
+            episode.append(.episode(.init(image: $0.still_path ?? "", title: "\($0.episode_number ?? 0)화", time: hour != 0 ? "\(hour)시간 \(minutes)분" : "\(minutes)분", date: "\(date) 방영", overview: $0.overview ?? "")))
         
         }
         
@@ -121,8 +121,8 @@ struct DetailEpisode: Decodable {
 }
 
 struct DetailEpisodeItem: Decodable {
-    let air_date: String
-    let episode_number: Int
+    let air_date: String?
+    let episode_number: Int?
     let still_path: String?
     let runtime: Int?
     let overview: String?

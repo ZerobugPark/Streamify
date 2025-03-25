@@ -13,6 +13,12 @@ class ActionButton: UIButton {
         super.init(frame: .zero)
     }
     
+    override var isSelected: Bool {
+        didSet {
+            setNeedsUpdateConfiguration()
+        }
+    }
+    
     convenience init(title: String, image: UIImage.SFSymbol) {
         self.init()
         configureButton(title: title, image: image, subTitle: nil)

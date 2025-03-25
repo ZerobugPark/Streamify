@@ -27,16 +27,11 @@ final class EpisodeCellViewModel: BaseViewModel {
     
     func transform(input: EpisodeCellViewModel.Input) -> Output {
         let checkButtonTap = PublishRelay<Bool>()
-        let isWatched = BehaviorRelay(value: episode.isWatched)
         
         input.checkButtonTap
-            .withLatestFrom(isWatched)
-            .map { !$0 }
             .bind(with: self) { owner, value in
                 owner.dramaRepository.toggleEpisodeWatched(episode: owner.episode)
-                print("viewModel value :", owner.episode.isWatched)
-                print("viewModel value :", value)
-                checkButtonTap.accept(value)
+                checkButtonTap.accept(owner.episode.isWatched)
                 NotificationCenterManager.progress.post(object: owner.episode.seasonIndex)
             }
             .disposed(by: disposeBag)
