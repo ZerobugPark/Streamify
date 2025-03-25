@@ -18,10 +18,17 @@ enum DramaType: String, PersistableEnum {
 final class DramaTable: Object {
     
     var watchingProgress: Float {
-        let watchedCount = episodes.filter { $0.isWatched }.count
-        return episodes.isEmpty ? 0.0 : Float(watchedCount) / Float(episodes.count)
+        let totalEpisodes = seasons.reduce(0) { $0 + $1.episodes.count }
+        let watchedEpisodes = seasons.reduce(0) { $0 + $1.episodes.filter { $0.isWatched }.count }
+        
+        return totalEpisodes == 0 ? 0.0 : Float(watchedEpisodes) / Float(totalEpisodes)
     }
     
+    func episodeProgress(for season: Seasons) -> Float {
+        let watchedCount = season.episodes.filter { $0.isWatched }.count
+        return season.episodes.isEmpty ? 0.0 : Float(watchedCount) / Float(season.episodes.count)
+    }
+
     var dramaType: DramaType {
         switch watchingProgress {
         case 0.0: return .none
@@ -30,17 +37,16 @@ final class DramaTable: Object {
         }
     }
     
-    @Persisted(primaryKey: true) var id: ObjectId
-    @Persisted var titleID: Int
+    @Persisted(primaryKey: true) var titleID: Int
     @Persisted var title: String
-    @Persisted var vote_average: Double
+    @Persisted var vote_average: Double?
     @Persisted var genre: String
     @Persisted var imagePath: String
     @Persisted var comment: String
     @Persisted var wantToWatch: Bool
-    @Persisted var episodes: List<Episodes>
+    @Persisted var seasons: List<Seasons>
     
-    convenience init(titleID: Int, title: String, vote_average: Double, genre: String, imagePath: String, comment: String, wantToWatch: Bool, episodes: List<Episodes>) {
+    convenience init(titleID: Int, title: String, vote_average: Double?, genre: String, imagePath: String, comment: String, wantToWatch: Bool, seasons: List<Seasons>) {
         self.init()
         self.titleID = titleID
         self.title = title
@@ -49,22 +55,36 @@ final class DramaTable: Object {
         self.imagePath = imagePath
         self.comment = comment
         self.wantToWatch = wantToWatch
-        self.episodes = episodes
+        self.seasons = seasons
     }
     
 }
 
+class Seasons: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted var episodes: List<Episodes>
+    @Persisted var wantToWatch: Bool
+    @Persisted(originProperty: "seasons") var drama: LinkingObjects<DramaTable>
+
+    convenience init(episodes: List<Episodes>, wantToWatch: Bool) {
+        self.init()
+        self.episodes = episodes
+        self.wantToWatch = wantToWatch
+    }
+}
+
+
 class Episodes: Object {
     @Persisted(primaryKey: true) var id: ObjectId
-    @Persisted var number: Int
     @Persisted var isWatched: Bool
+    @Persisted var seasonIndex: Int
 
-    @Persisted(originProperty: "episodes") var folder: LinkingObjects<DramaTable>
+    @Persisted(originProperty: "episodes") var seasons: LinkingObjects<Seasons>
 
-    convenience init(number: Int, isWatched: Bool) {
+    convenience init(isWatched: Bool, seasonIndex: Int) {
         self.init()
-        self.number = number
         self.isWatched = isWatched
+        self.seasonIndex = seasonIndex
     }
 }
 

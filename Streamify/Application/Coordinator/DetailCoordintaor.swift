@@ -9,11 +9,11 @@ import UIKit
 
 final class DetailCoordinator: Coordinator {
     var navigationController: UINavigationController
-    private let mediaItem: MediaItem
+    private let id: Int
 
-    init(navigationController: UINavigationController, mediaItem: MediaItem) {
+    init(navigationController: UINavigationController, id: Int) {
         self.navigationController = navigationController
-        self.mediaItem = mediaItem
+        self.id = id
     }
 
     func start() {
@@ -21,13 +21,14 @@ final class DetailCoordinator: Coordinator {
     }
 
     private func showDetailScreen() {
-        let detailVC = DramaViewController(viewModel: DramaViewModel(dramaID: mediaItem.id))
+        let detailVC = DramaViewController(viewModel: DramaViewModel(dramaID: id))
         detailVC.coordinator = self
         navigationController.pushViewController(detailVC, animated: true)
     }
 
-    func showEpisodeList() {
-        let episodeVC = EpisodeViewController(viewModel: EpisodeViewModel())
+    func showEpisodeList(_ episode: DramaEpisode, _ seasonIndex: Int) {
+        let episodeVC = EpisodeViewController(item: episode, seasonIndex: seasonIndex)
+        episodeVC.coordinator = self
         navigationController.pushViewController(episodeVC, animated: true)
     }
 

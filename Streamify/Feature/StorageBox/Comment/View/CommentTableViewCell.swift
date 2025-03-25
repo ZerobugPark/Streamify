@@ -47,7 +47,7 @@ final class CommentTableViewCell: BaseTableViewCell {
         titleLabel.numberOfLines = 1
         commnetLabel.text = "ssssdadadsadsadas"
         
-        contentView.backgroundColor = .setStreamifyColor(.baseBlack)
+        //contentView.backgroundColor = .setStreamifyColor(.baseBlack)
     }
     
     

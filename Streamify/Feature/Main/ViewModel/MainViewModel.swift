@@ -10,42 +10,30 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 
-enum SectionItem { //셀의 종류
-    case firstSection([Int])
-    case secondSection([Int])
-    case thirdSection([Int])
+enum MainSectionModel {
+    case topRated([MediaItem])
+    case horizontal(title: String, items: [MediaItem])
 }
 
-enum CollectionViewSectionModel { //섹션 정의
-    case first([SectionItem])
-    case second([SectionItem])
-    case third([SectionItem])
-    
-}
+extension MainSectionModel: SectionModelType {
+    typealias Item = MediaItem
 
-extension CollectionViewSectionModel: SectionModelType {
-    
-    typealias Item = SectionItem
-    
-    var items: [SectionItem] {
+    var items: [MediaItem] {
         switch self {
-        case .first(let items):
-            return items
-        case .second(let items):
-            return items
-        case .third(let items):
-            return items
+        case .topRated(let items): return items
+        case .horizontal(_, let items): return items
         }
     }
-    
-    
 
-    init(original: CollectionViewSectionModel, items: [Self.Item]) {
-        self = original
-        
+    init(original: MainSectionModel, items: [MediaItem]) {
+        switch original {
+        case .topRated:
+            self = .topRated(items)
+        case .horizontal(let title, _):
+            self = .horizontal(title: title, items: items)
+        }
     }
 }
-
 
 final class MainViewModel {
 
@@ -55,9 +43,8 @@ final class MainViewModel {
     // MARK: - Output
     let topRatedItems = BehaviorRelay<[TopRatedResult]>(value: [])
     let trendingItems = BehaviorRelay<[TrendingResult]>(value: [])
-    let similarItems = BehaviorRelay<[SimilarResult]>(value: [])
     let popularItems = BehaviorRelay<[PopularResult]>(value: [])
-    let sectionModels = BehaviorRelay<[CollectionViewSectionModel]>(value: [])
+    let sectionModels = BehaviorRelay<[MainSectionModel]>(value: [])
     let isLoading = BehaviorRelay<Bool>(value: false)
     let error = PublishRelay<String>()
 
@@ -86,26 +73,31 @@ final class MainViewModel {
                 self.trendingItems.accept(trending)
                 self.popularItems.accept(popular)
 
-                let similarRequest = self.fetchSimilar(from: topRated.first?.id ?? 0)
-                similarRequest
-                    .observe(on: MainScheduler.instance)
-                    .subscribe(onNext: { similar in
-                        self.similarItems.accept(similar)
+                let preferredIDs = UserDefaults.standard.array(forKey: "preferredGenres") as? [Int] ?? []
+                let filteredTrending = trending.filter { item in
+                    item.genreIDS.contains(where: { preferredIDs.contains($0) })
+                }
 
-                        let models: [CollectionViewSectionModel] = [
-                            .first(trending.map { .firstSection([$0.id]) }),
-                            .second(similar.map { .secondSection([$0.id]) }),
-                            .third(popular.map { .thirdSection([$0.id]) })
-                        ]
-                        self.sectionModels.accept(models)
-                    })
-                    .disposed(by: self.disposeBag)
+                let username = UserDefaults.standard.string(forKey: "userName") ?? "사용자"
+                let personalizedTitle = "\(username)님이 좋아할만한 콘텐츠"
 
-            }, onError: { [weak self] err in
+                let sections: [MainSectionModel] = [
+                    .topRated(topRated),
+                    .horizontal(title: "실시간 인기 드라마", items: trending),
+                    .horizontal(title: personalizedTitle, items: filteredTrending),
+                    .horizontal(title: "지금 뜨는 콘텐츠", items: popular)
+                ]
+                self.sectionModels.accept(sections)
+
+            }, onError: { [weak self] error in
                 self?.isLoading.accept(false)
-                self?.error.accept("네트워크 오류: \(err.localizedDescription)")
+                self?.error.accept("네트워크 오류: \(error.localizedDescription)")
             })
             .disposed(by: disposeBag)
+        
+        NotificationCenterManager.isChanged.addObserver().bind(with: self) { owner, _ in
+            print("프로필 이름과 장르 변경은 앱이 다시 실행되고 적용됩니다.")
+        }.disposed(by: disposeBag)
     }
 
     private func fetchTopRated() -> Observable<[TopRatedResult]> {
@@ -141,19 +133,9 @@ final class MainViewModel {
             .asObservable()
     }
 
-    private func fetchSimilar(from id: Int) -> Observable<[SimilarResult]> {
-        return NetworkManager.shared.request(api: .similar(id: id), type: TMDBResponse.self)
-            .map { result in
-                switch result {
-                case .success(let data): return data.results
-                case .failure(let err): throw err
-                }
-            }
-            .asObservable()
-    }
-
     func findItem(by id: Int) -> MediaItem? {
-        let allItems: [MediaItem] = topRatedItems.value + trendingItems.value + similarItems.value + popularItems.value
+        let allItems: [MediaItem] = topRatedItems.value + trendingItems.value + popularItems.value
         return allItems.first { $0.id == id }
     }
 }
+

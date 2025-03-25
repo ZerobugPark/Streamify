@@ -10,11 +10,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class StarRatingStorageViewController: BaseViewController<StarRatingStorageView, StarRatingStorageViewModel> {
+final class StarRatingStorageViewController: BaseViewController<StarRatingStorageView, StarRatingStorageViewModel> {
 
     var data: [Rate]
     
-    lazy var rateDatas = Observable.just(data)
+    private lazy var rateDatas = Observable.just(data)
+    weak var coordinator: MainCoordinator?
     
     private let filterView = FilterButton()
     
@@ -33,7 +34,6 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
         super.viewDidLoad()
         registerStorageList()
         setupNavigation()
-        view.backgroundColor = .baseBlack
     }
     
 
@@ -59,7 +59,9 @@ class StarRatingStorageViewController: BaseViewController<StarRatingStorageView,
             owner.filterView.filterButton.isSelected.toggle()
         }.disposed(by: disposeBag)
     
-        
+        mainView.verticalList.collectionView.rx.modelSelected(Rate.self).bind(with: self) { owner, element in
+            owner.coordinator?.showDetail(for: element.titleID)
+        }.disposed(by: disposeBag)
     }
 
 
@@ -95,6 +97,7 @@ extension StarRatingStorageViewController {
     private func setupNavigation() {
         let title = "별점"
         navigationItem.title = title
+        navigationItem.backButtonTitle = ""
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterView)
         

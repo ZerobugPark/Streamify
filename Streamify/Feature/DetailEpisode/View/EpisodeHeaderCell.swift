@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-class EpisodeHeaderCell: BaseCollectionViewCell {
-    let imageView = BaseImageView()
-    let titleLabel = BaseLabel(fontSize: .body_bold_24, color: .baseWhite)
-    let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
-    let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
+final class EpisodeHeaderCell: BaseCollectionViewCell {
+    private let imageView = BaseImageView(radius: 5)
+    private let titleLabel = BaseLabel(fontSize: .body_bold_24, color: .baseWhite)
+    private let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
+    private let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
     
     override func configureHierarchy() {
         addSubviews(imageView, titleLabel, countLabel, overviewLabel)
@@ -33,8 +33,8 @@ class EpisodeHeaderCell: BaseCollectionViewCell {
         imageView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.trailing.equalToSuperview().inset(10)
-            make.height.equalToSuperview().multipliedBy(0.6)
-            make.width.equalToSuperview().multipliedBy(0.3)
+            make.height.equalTo(180)
+            make.width.equalTo(130)
         }
         
         overviewLabel.snp.makeConstraints { make in
@@ -45,8 +45,26 @@ class EpisodeHeaderCell: BaseCollectionViewCell {
     
     func configure(_ item: EpisodeHeader) {
         titleLabel.text = item.title
-        countLabel.text = item.info
+        countLabel.text = item.episodeCount
         overviewLabel.text = item.overview
+        imageView.image = UIImage(systemName: "photo")
+
+        let baseURL = Config.shared.secureURL + Config.PosterSizes.w154.rawValue
+        let urlString = baseURL + item.posterImage
+
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  error == nil,
+                  let image = UIImage(data: data) else { return }
+
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }.resume()
+        
     }
     
     override func configureView() {

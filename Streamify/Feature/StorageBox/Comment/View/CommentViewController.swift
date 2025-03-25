@@ -15,6 +15,7 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
     var data: [Comments]
     
     lazy var commetnsDatas = Observable.just(data)
+    weak var coordinator: MainCoordinator?
     
     init(vm: CommentViewModel, data: [Comments]) {
         self.data = data
@@ -28,9 +29,8 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         registerTableView()
-        view.backgroundColor = .setStreamifyColor(.baseBlack)
+        setupNavigation()
     }
     
     
@@ -44,6 +44,10 @@ final class CommentViewController: BaseViewController <CommentView, CommentViewM
             
             cell.setupUI(element)
             
+        }.disposed(by: disposeBag)
+        
+        mainView.tableView.rx.modelSelected(Comments.self).bind(with: self) { owner, element in
+            owner.coordinator?.showDetail(for: element.titleID)
         }.disposed(by: disposeBag)
         
         
@@ -64,5 +68,6 @@ extension CommentViewController {
     private func setupNavigation() {
         let title = "코멘트"
         navigationItem.title = title
+        navigationItem.backButtonTitle = ""
     }
 }

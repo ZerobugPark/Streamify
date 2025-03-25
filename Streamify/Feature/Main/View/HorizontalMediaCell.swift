@@ -17,33 +17,36 @@ class HorizontalMediaCell: BaseCollectionViewCell {
     override func configureHierarchy() {
         contentView.addSubviews(thumbnailImageView, titleLabel, genreLabel)
     }
+    
+    // TODO: PrepareForReuse로 이미지 유지 필요!!
 
     override func configureLayout() {
         thumbnailImageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(1.0 / 1.3)
+//            make.height.equalToSuperview().multipliedBy(1.0 / 1.3)
+            make.height.equalTo(92)
         }
 
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(thumbnailImageView.snp.bottom).offset(4)
+            make.top.equalTo(thumbnailImageView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(2)
         }
 
         genreLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(2)
+            make.top.equalTo(titleLabel.snp.bottom).offset(4)
             make.leading.trailing.equalToSuperview().inset(2)
         }
     }
 
     override func configureView() {
         thumbnailImageView.image = .setSymbol(.starCircle)
-        contentView.layer.cornerRadius = 10
+//        contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
-        contentView.backgroundColor = .systemGray
-        titleLabel.textAlignment = .center
+        
+        titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 1
-        genreLabel.textAlignment = .center
+        genreLabel.textAlignment = .left
     }
 
     func configure(title: String, genre: String?, imagePath: String?) {

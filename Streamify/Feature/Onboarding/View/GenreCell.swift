@@ -14,7 +14,7 @@ class GenreCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .baseWhite
         return label
     }()
 
@@ -22,15 +22,21 @@ class GenreCell: UICollectionViewCell {
         let view = UIView()
         view.layer.cornerRadius = 16
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderColor = UIColor.baseLightGray.cgColor
         return view
     }()
 
-    override var isSelected: Bool {
-        didSet {
-            updateSelectionStyle()
-        }
-    }
+    private let badgeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+        label.textAlignment = .center
+        label.textColor = .white
+        label.backgroundColor = .systemRed
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        label.isHidden = true
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,6 +50,7 @@ class GenreCell: UICollectionViewCell {
     private func setupUI() {
         contentView.addSubview(containerView)
         containerView.addSubview(titleLabel)
+        containerView.addSubview(badgeLabel)
 
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -52,22 +59,37 @@ class GenreCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(12)
         }
+
+        badgeLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(4)
+            make.trailing.equalToSuperview().inset(4)
+            make.width.height.equalTo(20)
+        }
+
+        containerView.clipsToBounds = false
     }
 
     func configure(with genre: Genre) {
         titleLabel.text = genre.name
-        isSelected = genre.isSelected
-    }
+        
+        print("badge======", genre.order)
 
-    private func updateSelectionStyle() {
-        if isSelected {
+        if genre.isSelected {
             containerView.backgroundColor = UIColor.systemBlue
             titleLabel.textColor = .white
             containerView.layer.borderColor = UIColor.systemBlue.cgColor
         } else {
-            containerView.backgroundColor = .white
-            titleLabel.textColor = .black
-            containerView.layer.borderColor = UIColor.lightGray.cgColor
+            containerView.backgroundColor = .baseBlack
+            titleLabel.textColor = .white
+            containerView.layer.borderColor = UIColor.baseLightGray.cgColor
+        }
+
+        if let order = genre.order {
+            print("badge======", order)
+            badgeLabel.isHidden = false
+            badgeLabel.text = "\(order)"
+        } else {
+            badgeLabel.isHidden = true
         }
     }
 }

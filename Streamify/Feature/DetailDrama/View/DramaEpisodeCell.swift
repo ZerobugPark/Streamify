@@ -7,13 +7,18 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
-class DramaEpisodeCell: BaseCollectionViewCell {
+final class DramaEpisodeCell: BaseCollectionViewCell {
     private let imageView = BaseImageView()
     private let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
     private let countLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
     private let progressBar = ProgressBar()
     private let containerView = UIView()
+    
+    private let disposeBag = DisposeBag()
+    private var seasonIndex: Int?
     
     override func configureHierarchy() {
         addSubviews(titleLabel, countLabel, containerView)
@@ -42,15 +47,43 @@ class DramaEpisodeCell: BaseCollectionViewCell {
     }
     
     override func configureView() {
-        imageView.backgroundColor = .darkGray
         containerView.layer.cornerRadius = 5
         containerView.clipsToBounds = true
     }
     
-    func configure(_ item: DramaEpisode) {
-        imageView.image = item.image
+    func configure(_ item: DramaEpisode, _ index: Int) {
         titleLabel.text = item.title
         countLabel.text = "\(item.episodeCount)개 에피소드"
+        imageView.image = UIImage(systemName: "photo")
+        let baseURL = Config.shared.secureURL + Config.PosterSizes.w154.rawValue
+        let urlString = baseURL + item.image
+
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  error == nil,
+                  let image = UIImage(data: data) else { return }
+
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }.resume()
+        seasonIndex = index
+        print(item.seasonNumber)
+
+        progressBar.progress = item.dramaTable.episodeProgress(for: item.dramaTable.seasons[index])
+        
+        NotificationCenterManager.progress.addObserver()
+            .bind(with: self) { owner, value in
+                guard let seasonIndex = owner.seasonIndex,
+                      let notiIndex = value as? Int,
+                      seasonIndex == notiIndex else { return }
+                
+                owner.progressBar.progress = item.dramaTable.episodeProgress(for: item.dramaTable.seasons[seasonIndex])
+            }
+            .disposed(by: disposeBag)
     }
     
 }

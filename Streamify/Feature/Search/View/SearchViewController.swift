@@ -55,8 +55,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        //view.backgroundColor = .black
         setupLayout()
+        setupNavigation()
         setupCollectionView()
         bind()
     }
@@ -98,6 +99,12 @@ class SearchViewController: UIViewController {
             make.top.equalTo(searchBarContainerView.snp.bottom).offset(12)
             make.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    private func setupNavigation() {
+        let title = "검색"
+        navigationItem.title = title
+        navigationItem.backButtonTitle = ""
     }
     
     // MARK: - Setup & Binding
@@ -142,7 +149,7 @@ class SearchViewController: UIViewController {
         
         verticalListView.collectionView.rx.modelSelected(SearchResult.self)
             .bind(with: self) { owner, selectedItem in
-                owner.coordinator?.showDetail(for: selectedItem)
+                owner.coordinator?.showDetail(for: selectedItem.id)
             }
             .disposed(by: disposeBag)
     }

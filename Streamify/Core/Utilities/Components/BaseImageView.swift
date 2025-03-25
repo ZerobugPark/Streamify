@@ -8,7 +8,7 @@
 import UIKit
 
 
-class BaseImageView: UIImageView {
+final class BaseImageView: UIImageView {
     
     
     init() {
@@ -21,7 +21,7 @@ class BaseImageView: UIImageView {
         layer.cornerRadius = radius
         layer.borderWidth = 0
         clipsToBounds = true
-        contentMode = .scaleToFill
+        contentMode = .scaleAspectFill
         
     }
     

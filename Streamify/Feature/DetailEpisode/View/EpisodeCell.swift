@@ -10,81 +10,102 @@ import SnapKit
 import RxCocoa
 import RxSwift
 
-class EpisodeCell: BaseCollectionViewCell {
+final class EpisodeCell: BaseCollectionViewCell {
     
-    let viewModel = EpisodeCellViewModel()
-    var disposeBag = DisposeBag()
-    let dramaRepository: any DramaRepository = RealmDramaRepository()
-//    init(viewModel: EpisodeCellViewModel) {
-//        self.viewModel = viewModel
-//        super.init()
-//    }
+    private var viewModel: EpisodeCellViewModel?
+    private var disposeBag = DisposeBag()
     
-    let imageView = BaseImageView()
-    let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
-    let timeLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
-    let dateLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
-    let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    private let imageView = BaseImageView(radius: 5)
+    private let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
+    private let timeLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    private let dateLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    private let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
     
-    let checkButton = ActionButton(title: "", image: .checkmark)
+    private let checkButton = ActionButton(title: "", image: .checkmark)
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        checkButton.isSelected = false
         disposeBag = DisposeBag()
         bind()
     }
     
     private func bind() {
-        checkButton.rx.tap
-            .bind(with: self) { owner, _ in
-                owner.checkButton.isSelected.toggle()
+        guard let viewModel else { return }
+        let input = EpisodeCellViewModel.Input(
+            checkButtonTap: checkButton.rx.tap
+        )
+        let output = viewModel.transform(input: input)
+        
+        output.checkButtonTap
+            .drive(with: self) { owner, value in
+                owner.checkButton.isSelected = value
             }
             .disposed(by: disposeBag)
     }
     
-    func configure(_ item: EpisodeData) {
+    func configure(_ item: EpisodeData, _ episode: Episodes) {
         titleLabel.text = item.title
         timeLabel.text = item.time
         dateLabel.text = item.date
         overviewLabel.text = item.overview
+        imageView.image = UIImage(systemName: "photo")
+
+        let baseURL = Config.shared.secureURL + Config.PosterSizes.w154.rawValue
+        let urlString = baseURL + item.image
+
+        guard let url = URL(string: urlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let self = self,
+                  let data = data,
+                  error == nil,
+                  let image = UIImage(data: data) else { return }
+
+            DispatchQueue.main.async {
+                self.imageView.image = image
+            }
+        }.resume()
+        
+        self.viewModel = EpisodeCellViewModel(episode: episode)
+        checkButton.isSelected = episode.isWatched
+        bind()
     }
     
     override func configureHierarchy() {
         addSubviews(imageView, titleLabel, timeLabel, dateLabel, overviewLabel, checkButton)
-        imageView.backgroundColor = .darkGray
     }
     
     override func configureLayout() {
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().inset(10)
-            make.height.equalToSuperview().multipliedBy(0.5)
-            make.width.equalToSuperview().multipliedBy(0.3)
+            make.height.equalTo(100)
+            make.width.equalTo(160)
         }
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).offset(5)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
             make.top.equalTo(imageView)
             make.trailing.equalTo(checkButton).offset(-5)
         }
         timeLabel.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).offset(5)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
             make.top.equalTo(titleLabel.snp.bottom).offset(2)
             make.trailing.equalTo(checkButton).offset(-5)
         }
         dateLabel.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).offset(5)
+            make.leading.equalTo(imageView.snp.trailing).offset(10)
             make.bottom.equalTo(imageView)
             make.trailing.equalTo(checkButton).offset(-5)
         }
         overviewLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(10)
-            make.top.equalTo(imageView.snp.bottom).offset(5)
+            make.top.equalTo(imageView.snp.bottom).offset(10)
         }
         checkButton.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        bind()
     }
     
 }

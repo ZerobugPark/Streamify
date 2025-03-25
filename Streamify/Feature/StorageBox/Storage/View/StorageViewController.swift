@@ -29,7 +29,7 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
     typealias listDataSource = RxCollectionViewSectionedReloadDataSource<ListViewSectionModel>
     typealias colltionViewDataSource = CollectionViewSectionedDataSource<ListViewSectionModel>
     
-    lazy var dataSource = listDataSource (
+    private lazy var dataSource = listDataSource (
         configureCell: { [weak self] dataSource, collectionView, indexPath, item in
             
             self?.configureCell(dataSource: dataSource, collectionView: collectionView, indexPath: indexPath, item: item) ?? UICollectionViewCell()
@@ -40,11 +40,13 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         }
     )
     
+    private let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.fill"), style: .plain, target: nil, action: nil)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerStorageList()
-        view.backgroundColor = .setStreamifyColor(.baseBlack)
+        setupNavigation()
         
     }
     
@@ -67,29 +69,48 @@ final class StorageViewController: BaseViewController<StorageView, StorageViewMo
         let output = viewModel.transform(input: input)
         
         
+        mainView.storageList.collectionView.rx.modelSelected(StorageSectionItem.self).bind(with: self) { owner, element in
+            
+            switch element {
+            case .firstSection(let data), .secondSection(let data), .thirdSection(let data):
+                owner.coordinator?.showDetail(for: data.titleID)
+            }
+            
+            
+            
+        }.disposed(by: disposeBag)
+        
+        rightBarButton.rx.tap.bind(with: self) { owner, _ in
+            
+            owner.coordinator?.showModifyScreen()
+            
+        }.disposed(by: disposeBag)
         
         output.setSetcion.bind(to: mainView.storageList.collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+
         
         output.goToStarRating.asDriver(onErrorJustReturn: [])
             .drive(with: self) { owner, data in
                 
-                let viewModel = StarRatingStorageViewModel()
-                let starRatingVC = StarRatingStorageViewController(vm: viewModel, data: data)
-                owner.navigationController?.pushViewController(starRatingVC, animated: true)
-                
-                //owner.coordinator?.starRatingScreen()
+                owner.coordinator?.showStarRatingScreen(data: data)
             }.disposed(by: disposeBag)
         
         output.goToComment.asDriver(onErrorJustReturn: [])
             .drive(with: self) { owner, data in
+
                 
-                let viewModel = CommentViewModel()
-                let starRatingVC = CommentViewController(vm: viewModel, data: data)
-                owner.navigationController?.pushViewController(starRatingVC, animated: true)
-                
-                //owner.coordinator?.starRatingScreeCommentViewModeln()
+                owner.coordinator?.showCommentScreen(data: data)
             }.disposed(by: disposeBag)
         
+        output.setCount.bind(with: self) { owenr, value in
+            owenr.mainView.wantToWatchButton.updateTitle(String(value.0))
+            owenr.mainView.watchedButton.updateTitle(String(value.1))
+            owenr.mainView.watchingButton.updateTitle(String(value.2))
+            owenr.mainView.commentButton.updateTitle(String(value.3))
+            owenr.mainView.ratingButton.updateTitle(String(value.4))
+            
+            
+        }.disposed(by: disposeBag)
         
         output.buttonTogle.asDriver(onErrorJustReturn: .all).drive(with: self) { owner, status in
             
@@ -131,6 +152,14 @@ extension StorageViewController {
         mainView.storageList.collectionView.register(CompositionalHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CompositionalHeaderReusableView.reuseId)
         
         mainView.storageList.collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "basicHeader")
+    }
+    
+    // MARK: - Navigation Setup
+    private func setupNavigation() {
+        let title = "보관함"
+        navigationItem.title = title
+        navigationItem.rightBarButtonItem = rightBarButton
+        navigationItem.backButtonTitle = ""
     }
     
     // MARK: - RxDataSource Function Definition

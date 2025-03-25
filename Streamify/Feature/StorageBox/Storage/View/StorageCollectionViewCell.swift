@@ -7,12 +7,12 @@
 
 import UIKit
 
-class StorageCollectionViewCell: BaseCollectionViewCell {
+final class StorageCollectionViewCell: BaseCollectionViewCell {
    
-    let image = BaseImageView(radius: 0)
-    let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
-    let genreLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
-    let progressBar = ProgressBar()
+    private let image = BaseImageView(radius: 10)
+    private let titleLabel = BaseLabel(fontSize: .body_bold_14, color: .baseWhite)
+    private let genreLabel = BaseLabel(fontSize: .body_regular_13, color: .baseLightGray)
+    private let progressBar = ProgressBar()
     
     override func configureHierarchy() {
         contentView.addSubviews(image,progressBar,titleLabel,genreLabel)
@@ -23,11 +23,11 @@ class StorageCollectionViewCell: BaseCollectionViewCell {
         image.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(1.0 / 2.0)
+            make.height.equalToSuperview().multipliedBy(1.0 / 1.5)
         }
         
         progressBar.snp.makeConstraints { make in
-            make.bottom.equalTo(image.snp.bottom)
+            make.bottom.equalTo(image.snp.bottom).offset(-4)
             make.horizontalEdges.equalToSuperview()
         }
         
@@ -49,17 +49,21 @@ class StorageCollectionViewCell: BaseCollectionViewCell {
         titleLabel.numberOfLines = 1
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
-
-        
     }
     
-    func setupUI(_ data: Drama) {
+    func setupUI(_ data: DramaTable) {
         
         titleLabel.text = data.title
         genreLabel.text = data.genre
-        progressBar.progress = data.watchingProgress
         
-        let urlString = data.imagePath
+        if data.watchingProgress == 0.0 {
+            progressBar.alpha = 0
+        } else {
+            progressBar.alpha = 1
+            progressBar.progress = data.watchingProgress
+        }
+        
+        let urlString = Config.shared.secureURL + Config.BackdropSizes.w300.rawValue + data.imagePath
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in

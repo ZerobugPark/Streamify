@@ -7,48 +7,8 @@
 
 import UIKit
 import SnapKit
-import RxDataSources
 
-enum EpisodeItem {
-    case header(EpisodeHeader)
-    case button(EpisodeButton)
-    case episode(EpisodeData)
-}
-
-struct EpisodeSectionModel {
-    var model: String
-    var items: [EpisodeItem]
-}
-
-extension EpisodeSectionModel: SectionModelType {
-    typealias Item = EpisodeItem
-    
-    init(original: EpisodeSectionModel, items: [EpisodeItem]) {
-        self = original
-        self.items = items
-    }
-}
-
-struct EpisodeHeader {
-    let backdropImage: UIImage?
-    let title: String
-    let info: String
-    let overview: String
-}
-
-struct EpisodeButton {
-    let image: UIImage?
-}
-
-struct EpisodeData {
-    let image: UIImage?
-    let title: String
-    let time: String
-    let date: String
-    let overview: String
-}
-
-class EpisodeView: BaseView {
+final class EpisodeView: BaseView {
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
@@ -76,9 +36,9 @@ class EpisodeView: BaseView {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, environment) -> NSCollectionLayoutSection? in
             switch sectionIndex {
             case 0:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(280))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1/3))
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(280))
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 return section
@@ -93,10 +53,10 @@ class EpisodeView: BaseView {
                 return section
                 
             case 2:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(150))
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(190))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(150))
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(190))
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
                 
                 let section = NSCollectionLayoutSection(group: group)

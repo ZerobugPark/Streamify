@@ -7,10 +7,16 @@
 
 import UIKit
 
-class ActionButton: UIButton {
+final class ActionButton: UIButton {
     
     init() {
         super.init(frame: .zero)
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            setNeedsUpdateConfiguration()
+        }
     }
     
     convenience init(title: String, image: UIImage.SFSymbol) {
@@ -32,12 +38,12 @@ class ActionButton: UIButton {
 
           // Title Setting
           var titleContainer = AttributeContainer()
-          titleContainer.font = .setStreamifyFont(.body_bold_16)
+        titleContainer.font = .setStreamifyFont(.body_regular_13)
           config.attributedTitle = AttributedString(title, attributes: titleContainer)
           
           // Image Setting
           if let image = image {
-              config.image = .setSymbolConfiguration(image, .size_bold_24)
+              config.image = .setSymbolConfiguration(image, .size_bold_18)
               config.imagePlacement = .top
               config.imagePadding = 8
           }
@@ -45,7 +51,7 @@ class ActionButton: UIButton {
           // Subtitle Setting
           if let subTitle = subTitle {
               var subtitleContainer = AttributeContainer()
-              subtitleContainer.font = .setStreamifyFont(.body_bold_14)
+              subtitleContainer.font = .setStreamifyFont(.body_regular_13)
               config.attributedSubtitle = AttributedString(subTitle, attributes: subtitleContainer)
               config.titleAlignment = .center
               config.titlePadding = 8
@@ -66,13 +72,14 @@ class ActionButton: UIButton {
       }
 
     // Subtitle 수정 메서드
-    func updateSubtitle(_ newSubtitle: String) {
+    func updateTitle(_ newSubtitle: String) {
         
         guard var config = self.configuration else { return }
 
-        var subtitleContainer = AttributeContainer()
-        subtitleContainer.font = .setStreamifyFont(.body_regular_14)
-        config.attributedSubtitle = AttributedString(newSubtitle, attributes: subtitleContainer)
+        var titleContainer = AttributeContainer()
+      titleContainer.font = .setStreamifyFont(.body_regular_13)
+        config.attributedTitle = AttributedString(newSubtitle, attributes: titleContainer)
+  
 
         self.configuration = config
     }

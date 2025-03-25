@@ -13,27 +13,48 @@ class OnboardingCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
+    deinit { print("OnboardingCoordinator deinit")}
+    
     func start() {
         showNameInputScreen()
     }
-
+    
     private func showNameInputScreen() {
-        let nameInputVC = NameInputViewController()
+        let nameInputVC = NameInputViewController(viewModel: NameInputViewModel())
         nameInputVC.coordinator = self
         navigationController.pushViewController(nameInputVC, animated: true)
     }
-
+    
     func showGenreSelectionScreen(userName: String) {
-        let genreSelectionVC = GenreSelectionViewController()
+        let genreSelectionVC = GenreSelectionViewController(viewModel: GenreSelectionViewModel())
         genreSelectionVC.coordinator = self
         genreSelectionVC.userName = userName
         navigationController.pushViewController(genreSelectionVC, animated: true)
     }
-
+    
     func finishOnboarding() {
-        UserDefaults.standard.set(true, forKey: "isOnboardingCompleted")
-        let mainVC = ViewController() // TODO: MainView로 변경 필요
-        navigationController.setViewControllers([mainVC], animated: true)
+        print(UserDefaults.standard.object(forKey: "userName"))
+        print(UserDefaults.standard.object(forKey: "preferredGenres"))
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first,
+              let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
+
+        let navigationController = UINavigationController()
+        sceneDelegate.window = window
+        sceneDelegate.window?.rootViewController = navigationController
+
+        let mainCoordinator = MainCoordinator(navigationController: navigationController)
+        sceneDelegate.mainCoordinator = mainCoordinator
+        mainCoordinator.start()
+
+        let transition = CATransition()
+        transition.type = .fade
+        transition.duration = 0.3
+        window.layer.add(transition, forKey: kCATransition)
+
+        window.makeKeyAndVisible()
     }
+
 }
