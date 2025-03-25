@@ -9,11 +9,11 @@ import UIKit
 
 import SnapKit
 
-class DramaHeaderCell: BaseCollectionViewCell {
-    let backdropImage = BaseImageView()
-    let titleLabel = BaseLabel(fontSize: .body_bold_24, color: .baseWhite)
-    let infoLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
-    let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
+final class DramaHeaderCell: BaseCollectionViewCell {
+    private let backdropImage = BaseImageView()
+    private let titleLabel = BaseLabel(fontSize: .body_bold_24, color: .baseWhite)
+    private let infoLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
+    private let overviewLabel = BaseLabel(fontSize: .body_regular_13, color: .baseWhite)
     
     override func configureHierarchy() {
         addSubviews(backdropImage, titleLabel, infoLabel, overviewLabel)

@@ -12,7 +12,7 @@ enum ModalType {
     case star
 }
 
-class EpisodeModalViewController: UIViewController {
+final class EpisodeModalViewController: UIViewController {
     
     let type: ModalType
     
@@ -34,7 +34,6 @@ class EpisodeModalViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
-        //view.backgroundColor = .baseBlack
         navigationItem.title = type == .comment ? "코멘트" : "별점"
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = saveButton

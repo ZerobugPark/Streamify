@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class EpisodeView: BaseView {
+final class EpisodeView: BaseView {
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     

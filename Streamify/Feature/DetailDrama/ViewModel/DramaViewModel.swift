@@ -137,13 +137,13 @@ final class DramaViewModel: BaseViewModel {
                     
                     if data.seasons[i].episode_count == 0 {
                         episodesTable.append(Episodes(isWatched: false, seasonIndex: i))
-                        seasons.append(Seasons(episodes:  episodesTable))
+                        seasons.append(Seasons(episodes:  episodesTable, wantToWatch: false))
                     }
                     
                     for _ in 0..<data.seasons[i].episode_count {
                         episodesTable.append(Episodes(isWatched: false, seasonIndex: i))
                     }
-                    seasons.append(Seasons(episodes:  episodesTable))
+                    seasons.append(Seasons(episodes:  episodesTable, wantToWatch: false))
                 }
                 let drama = DramaTable(titleID: data.id, title: data.name, vote_average: nil, genre: data.genres.first?.name ?? "", imagePath: data.backdrop_path ?? "", comment: "", wantToWatch: false, seasons: seasons)
                 repository.create(drama)

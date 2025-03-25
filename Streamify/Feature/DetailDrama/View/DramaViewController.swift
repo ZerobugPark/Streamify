@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
+final class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
     
     weak var coordinator: DetailCoordinator?
     
@@ -61,24 +61,12 @@ class DramaViewController: BaseViewController<DramaView, DramaViewModel> {
                     let (indexPath, item) = value
                     switch item {
                     case .episode(let episode):
-                        // indexPath.item을 전달
                         owner.coordinator?.showEpisodeList(episode, indexPath.item)
                     default:
                         break
                     }
                 }
                 .disposed(by: disposeBag)
-        
-        
-//        mainView.collectionView.rx.modelSelected(DramaItem.self)
-//            .bind(with: self) { owner, value in
-//                switch value {
-//                case .episode(let episode):
-//                    owner.coordinator?.showEpisodeList(episode, 0)
-//                default: break
-//                }
-//            }
-//            .disposed(by: disposeBag)
         
     }
     

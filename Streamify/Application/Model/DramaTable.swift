@@ -63,12 +63,13 @@ final class DramaTable: Object {
 class Seasons: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var episodes: List<Episodes>
-
+    @Persisted var wantToWatch: Bool
     @Persisted(originProperty: "seasons") var drama: LinkingObjects<DramaTable>
 
-    convenience init(episodes: List<Episodes>) {
+    convenience init(episodes: List<Episodes>, wantToWatch: Bool) {
         self.init()
         self.episodes = episodes
+        self.wantToWatch = wantToWatch
     }
 }
 
